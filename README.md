@@ -1,2 +1,2 @@
 # .dotfiles
-all my .dotfiles that works on all computers
+ALL MY .DOTFILES THAT WORKS ON ALL COMPUTERS

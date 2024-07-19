@@ -5,3 +5,5 @@ alias vim="nvim"
 export PATH=/opt/homebrew/bin:/opt/bin:$PATH
 
 set -o vi
+
+bindkey 'C-f' $HOME/.dotfiles/bin/.local/scripts/tmux-sessionizer
