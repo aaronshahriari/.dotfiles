@@ -1,0 +1,44 @@
+-- require("obsidian").setup({
+--     workspaces = {
+--         {
+--             name = "Personal",
+--             -- home path
+--             -- path = "~/../../mnt/c/Users/aaron/OneDrive/Documents/Aaron_Vault/Personal",
+--             -- work path
+--             path = "~/../../mnt/c/Users/AaronShahriari/Aaron_Vault/Personal",
+--         },
+--         {
+--             name = "BrundageGroup",
+--             -- home path
+--             -- path = "~/../../mnt/c/Users/aaron/OneDrive/Documents/Aaron_Vault/BrundageGroup",
+--             -- work path
+--             path = "~/../../mnt/c/Users/AaronShahriari/Aaron_Vault/BrundageGroup",
+--         },
+--     },
+--     ui = {
+--         enable = true,  -- set to false to disable all additional syntax features
+--         update_debounce = 200,  -- update delay after a text change (in milliseconds)
+--         -- Define how various check-boxes are displayed
+--         checkboxes = {
+--             [" "] = { char = "☐", hl_group = "ObsidianTodo" },
+--             ["x"] = { char = "✓", hl_group = "ObsidianDone" },
+--             [">"] = { char = "»", hl_group = "ObsidianRightArrow" },
+--             ["~"] = { char = "X", hl_group = "ObsidianTilde" },
+--         },
+--     },
+--     open_app_foreground = false,
+--     open_notes_in = "hsplit",
+--     callbacks = {
+--         -- Runs anytime you enter the buffer for a note.
+--         enter_note = function(client, note)
+--             vim.cmd(":silent ObsidianOpen")
+--         end,
+--     },
+-- })
+-- vim.keymap.set("n", "gf", function()
+--   if require("obsidian").util.cursor_on_markdown_link() then
+--     return "<cmd>ObsidianFollowLink<CR>"
+--   else
+--     return "gf"
+--   end
+-- end, { noremap = false, expr = true })

@@ -1,0 +1,7 @@
+export XDG_CONFIG_HOME=$HOME/.dotfiles/.config
+alias vim="nvim"
+
+# exporting neovim and homebrew paths
+export PATH=/opt/homebrew/bin:/opt/bin:$PATH
+
+set -o vi
