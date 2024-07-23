@@ -1,8 +1,7 @@
 # .dotfiles
 ALL MY .DOTFILES THAT WORKS ON ALL COMPUTERS
 
-## Change XDG_CONFIG Path
+## Change .zsh_profile Path in .zshrc
 ```
-export XDG_CONFIG ~/.dotfiles/.config
+source $HOME/.dotfiles/zsh/.zsh_profile
 ```
-testing some changes to here
