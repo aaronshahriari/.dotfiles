@@ -1,5 +1,5 @@
 export XDG_CONFIG_HOME=$HOME/.config
-alias vim="nvim"
+# alias vim="nvim"
 
 set -o vi
 # bindkey -s ^f "$HOME/.dotfiles/bin/.local/scripts/tmux-sessionizer\n"
