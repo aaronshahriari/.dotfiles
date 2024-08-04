@@ -6,7 +6,7 @@ live_config_reload = true
 padding.x = 0
 padding.y = 0
 decorations = "Full"
-decorations_theme_variant = "Dark" # "Dark"
+decorations_theme_variant = "Dark"
 
 [font]
 normal.family = "CaskaydiaCove Nerd Font Mono"
