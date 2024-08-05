@@ -2,6 +2,10 @@ import = ["~/.config/alacritty/themes/themes/campbell.toml"]
 
 live_config_reload = true
 
+[cursor]
+shape = "Block"
+blinking = "Never"
+
 [window]
 padding.x = 0
 padding.y = 0
