@@ -62,7 +62,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run -nb '#000000' -sf '#000000' -sb '#32CC3E' -nf '#32CC3E'
+bindsym $mod+d exec --no-startup-id dmenu_run -nb '#000000' -sf '#000000' -sb '#32CC3E' -nf '#32CC3E' -fn 'JetbrainsMono'
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -190,7 +190,14 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# remove title on each window, but keep 1 pixel
+for_window [class="^.*"] border pixel 1
+
 # colors
+
+# clients
+client.focused #4c7899 #285577 #32CC3E #2e9ef4 #32CC3E
+
 # ~/.config/i3/config
 # Set up dark theme colors
 # set $bg-color #000000
@@ -203,11 +210,7 @@ bindsym $mod+r mode "resize"
 # exec_always feh --bg-fill /path/to/wallpaper
 
 # Shortcut for Lockscreen
-bindsym $mod+x exec ./i3lock-color
+# bindsym $mod+x exec ./i3lock-color
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-    position top
-    status_command i3status -c ~/.config/i3/i3status.conf
-}
+# start polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
