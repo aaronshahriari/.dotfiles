@@ -1,5 +1,5 @@
-include ./workspaces.conf
-include ./keymaps.conf
+include $HOME/.config/i3/workspaces.conf
+include $HOME/.config/i3/keymaps.conf
 
 set $mod Mod1
 font pango:SourceCodeMono 8
