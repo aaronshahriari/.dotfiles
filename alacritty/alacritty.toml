@@ -12,10 +12,10 @@ decorations = "Full"
 decorations_theme_variant = "Dark"
 
 [font]
-normal.family = "SauceCodePro Nerd Font Mono"
-bold.family = "SauceCodePro Nerd Font Mono"
-italic.family = "SauceCodePro Nerd Font Mono"
-bold_italic.family = "SauceCodePro Nerd Font Mono"
+normal.family = "CaskaydiaCove Nerd Font Mono"
+bold.family = "CaskaydiaCove Nerd Font Mono"
+italic.family = "CaskaydiaCove Nerd Font Mono"
+bold_italic.family = "CaskaydiaCove Nerd Font Mono"
 size = 9.0
 
 [shell]
