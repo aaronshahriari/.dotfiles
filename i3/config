@@ -11,6 +11,25 @@ for_window [class="^.*"] border pixel 1
 # outline client
 client.focused #4C7899 #285577 #67A86C #2E9EF4 #67A86C
 
+# start dmenu - display manager
+bindsym $mod+Shift+d exec --no-startup-id ~/.local/bin/scripts/display-sessionizer.sh dmenu -nb '#000000' -sf '#000000' -sb '#67A86C' -nf '#67A86C' -fn 'JetbrainsMono-11'
+
+# FIX: update this to replace existing command
+# start dmenu - device manager
+# bindsym $mod+Shift+e exec --no-startup-id ~/.local/bin/scripts/device-sessionizer.sh dmenu -nb '#000000' -sf '#000000' -sb '#67A86C' -nf '#67A86C' -fn 'JetbrainsMono-11'
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec --no-startup-id dmenu_run -nb '#000000' -sf '#000000' -sb '#67A86C' -nf '#67A86C' -fn 'JetbrainsMono-11'
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
 # add picom here if screen tearing becomes and issue at all
 # exec_always --no-startup-id picom &
 
