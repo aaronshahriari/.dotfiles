@@ -5,6 +5,10 @@ monitors=$(xrandr --listmonitors | awk '{print $4}' | uniq | grep -v '^$')
 num_monitors=$(echo "$monitors" | wc -l)
 primary_display=$(echo "$monitors" | dmenu -l $num_monitors -nb '#000000' -sf '#000000' -sb '#67A86C' -nf '#67A86C' -fn 'JetbrainsMono-11' -p "Select Primary Monitor:")
 
+if [ -z "$primary_display" ]; then
+    exit 1
+fi
+
 case "$(printf "Home Setup\nTwo-Display\nSingle-Display\n" | dmenu -l 10 -nb '#000000' -sf '#000000' -sb '#67A86C' -nf '#67A86C' -fn 'JetbrainsMono-11' -p "Display Setup:")" in
     "Home Setup") 
         xrandr --output "$primary_display" --primary
@@ -30,7 +34,7 @@ case "$(printf "Home Setup\nTwo-Display\nSingle-Display\n" | dmenu -l 10 -nb '#0
             exit 1
         fi
 
-        # might need to edit this to set --mode if becomes a hassle to change alot
+        # might need to edit this to set --mode (aka set the resolution) if becomes a hassle to change alot
         position=$(printf "Right\nLeft\nAbove\nBelow\n" | dmenu -l 4 -nb '#000000' -sf '#000000' -sb '#67A86C' -nf '#67A86C' -fn 'JetbrainsMono-11' -p "Secondary Monitor Position:")
         case "$position" in
             "Right") xrandr --output "$secondary_display" --auto --right-of "$primary_display" ;;
@@ -45,14 +49,17 @@ case "$(printf "Home Setup\nTwo-Display\nSingle-Display\n" | dmenu -l 10 -nb '#0
             "Laptop")
                 echo "Laptop - set xrandr command here"
                 # xrandr --output "$primary_display" --primary --mode 1920x1080
+                # xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.8
             ;;
             "Home")
                 echo "Home - set xrandr command here"
                 # xrandr --output "$primary_display" --primary --mode 1920x1080
+                # xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.8
             ;;
             "Other")
                 echo "Other - set xrandr command here"
                 # xrandr --output "$primary_display" --primary --mode 1920x1080
+                # xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.8
             ;;
             *) echo "Invalid monitor type selected." ;;
         esac ;;
