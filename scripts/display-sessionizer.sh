@@ -8,8 +8,8 @@ primary_display=$(echo "$monitors" | dmenu -l $num_monitors -nb '#000000' -sf '#
 case "$(printf "Home Setup\nTwo-Display\nSingle-Display\n" | dmenu -l 10 -nb '#000000' -sf '#000000' -sb '#67A86C' -nf '#67A86C' -fn 'JetbrainsMono-11' -p "Display Setup:")" in
     "Home Setup") 
         xrandr --output "$primary_display" --primary
-        xrandr --output eDP-1 --mode 1920x1080
-        xinput set-prop "pointer:${userSettings.mouse}" "libinput Accel Speed" -0.8 ;;
+        xrandr --output eDP-1 --mode 1920x1080 --left-of "$primary_display"
+        xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.8 ;;
     "Two-Display")
         # get the list of connected monitors
         monitors=$(xrandr --listmonitors | awk '{print $4}' | uniq | grep -v '^$')
@@ -26,7 +26,7 @@ case "$(printf "Home Setup\nTwo-Display\nSingle-Display\n" | dmenu -l 10 -nb '#0
 
         # check if both displays were selected
         if [ -z "$primary_display" ] || [ -z "$secondary_display" ]; then
-            echo "Both monitors must be selected.
+            echo "Both monitors must be selected."
             exit 1
         fi
 
