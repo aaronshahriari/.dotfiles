@@ -5,7 +5,7 @@ CLEAR='#ffffff22'
 DEFAULT='#000000'
 TEXT='#000000'
 WRONG='#67A86C'
-VERIFYING='#bb00bbbb'
+VERIFYING='#67A86C'
 
 i3lock-color \
 --insidever-color=$CLEAR     \
