@@ -27,7 +27,7 @@ i3lock-color \
 --keyhl-color=$WRONG         \
 --bshl-color=$WRONG          \
 \
---image ~/Pictures/i3lock.png \
+--image ./wallpapers/i3lock.png \
 --screen 1                   \
 --blur 5                     \
 --clock                      \

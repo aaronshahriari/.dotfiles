@@ -32,7 +32,7 @@ bindsym $mod+Shift+r restart
 
 # Define other color settings
 # client.focused $bg-color $text-color $bg-color $text-color
-exec_always --no-startup-id feh --bg-scale ~/.config/i3/wallpapers/stars_mountains.jpg
+exec_always --no-startup-id feh --bg-scale ./wallpapers/desktop_wall.png
 
 # FIX: Shortcut for Lockscreen
 # bindsym $mod+x exec ./i3lock-color
