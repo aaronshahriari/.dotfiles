@@ -30,12 +30,15 @@ bindsym $mod+Shift+r restart
 # add picom here if screen tearing becomes and issue at all
 # exec_always --no-startup-id picom &
 
+# run autostart script to capture all needed autostart things
+exec_always --no-startup-id $HOME/.local/bin/scripts/autostart.sh
+
 # Define other color settings
 # client.focused $bg-color $text-color $bg-color $text-color
-exec_always --no-startup-id feh --bg-scale ~/.config/i3/wallpapers/desktop_wall.png
+# exec_always --no-startup-id feh --bg-scale ~/.config/i3/wallpapers/desktop_wall.png
 
 # FIX: Shortcut for Lockscreen
 # bindsym $mod+x exec ./i3lock-color
 
 # start polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
