@@ -4,12 +4,13 @@ BLANK='#00000000'
 CLEAR='#ffffff22'
 DEFAULT='#000000'
 TEXT='#000000'
-WRONG='#67A86C'
+WRONG='#A86773'
 VERIFYING='#67A86C'
 
 i3lock-color \
 --insidever-color=$CLEAR     \
 --ringver-color=$VERIFYING   \
+--radius 100   \
 \
 --insidewrong-color=$CLEAR   \
 --ringwrong-color=$WRONG     \
@@ -32,6 +33,6 @@ i3lock-color \
 --blur 5                     \
 --clock                      \
 --indicator                  \
---time-str="%H:%M"        \
---date-str="%A, %Y-%m-%d"    \
+--time-str="%I:%M"        \
+--date-str="%B %d, %Y"    \
 --tiling                     \
