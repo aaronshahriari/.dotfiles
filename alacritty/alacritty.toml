@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/themes/themes/campbell.toml"]
+import = ["~/.config/alacritty/themes/themes/pastel_dark.toml"]
 
 live_config_reload = true
 
