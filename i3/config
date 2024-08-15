@@ -28,7 +28,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # add picom here if screen tearing becomes and issue at all
-# exec_always --no-startup-id picom &
+exec_always --no-startup-id picom -b &
 
 # run autostart script to capture all needed autostart things
 exec_always --no-startup-id $HOME/.local/bin/scripts/autostart.sh

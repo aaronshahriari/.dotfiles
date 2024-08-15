@@ -1,19 +1,20 @@
-output DP-2
-off
 output eDP-1
+off
+output DP-2
 crtc 1
 mode 1920x1080
-pos 0x0
-rate 59.96
+pos 1920x0
+rate 60.00
+rotate left
+x-prop-audio auto
 x-prop-broadcast_rgb Full
 x-prop-colorspace Default
 x-prop-max_bpc 12
 x-prop-non_desktop 0
-x-prop-scaling_mode Full aspect
 output DP-1
 crtc 0
 mode 1920x1080
-pos 3840x0
+pos 0x565
 primary
 rate 60.00
 x-prop-audio auto
