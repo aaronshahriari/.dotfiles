@@ -4,8 +4,8 @@ live_config_reload = true
 
 [[keyboard.bindings]]
 key = "Back"
-mods = "Command"
-chars = "\u0015"
+mods = "Control"
+chars = "\u0017"
 
 [env]
 TERM = "xterm-256color"
