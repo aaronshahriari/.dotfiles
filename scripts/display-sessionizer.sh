@@ -12,6 +12,7 @@ case "$(printf "Home\nLaptop\nSingle-Display\n" | dmenu -l 10 -nb '#000000' -sf 
             "Double")
                 autorandr --load home-two
                 xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.8 ;;
+        esac
     # "Laptop")
     #     autorandr --load laptop ;;
     # "Single-Display")
