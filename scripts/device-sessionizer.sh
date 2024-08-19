@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-case "$(printf "Shutdown\nReboot\nLock\nExit i3\n" | dmenu -l 10 -nb '#000000' -sf '#000000' -sb '#67A86C' -nf '#67A86C' -fn 'CaskaydiaCoveNerdFontMono-10' -p "System:")" in
+source ./theme.sh
+
+case "$(printf "Shutdown\nReboot\nLock\nExit i3\n" | dmenu -l 10 -nb $BLACK -sf $BLACK -sb $MAIN_COL -nf $MAIN_COL -fn $FONT -p "System:")" in
     "Shutdown") sudo poweroff ;;
     "Reboot") reboot ;;
     "Lock") ~/.local/bin/scripts/i3lock.sh ;;
