@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 BLACK="#000000";
 WHITE="#FFFFFF";
 LIGHT_GREY="#BBBBBB";
