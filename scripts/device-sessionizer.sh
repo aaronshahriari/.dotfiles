@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ./themes.sh
+source ~/.local/bin/scripts/themes.sh
 
 case "$(printf "Shutdown\nReboot\nLock\nExit i3\n" | dmenu -l 10 -nb $BLACK -sf $BLACK -sb $MAIN -nf $MAIN -fn $FONT -p "System:")" in
     "Shutdown") sudo poweroff ;;

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ./themes.sh
+source ~/.local/bin/scripts/themes.sh
 
 case "$(printf "Home\n" | dmenu -l 10 -nb $BLACK -sf $BLACK -sb $MAIN -nf $MAIN -fn $FONT -p "Display Setup:")" in
     "Home")
