@@ -4,5 +4,6 @@ BLACK="#000000"
 WHITE="#FFFFFF"
 LIGHTGREY="#BBBBBB"
 OUTLINE="#4249a6"
-MAIN="#67A86C"
+# MAIN="#67A86C" # light green
+# MAIN="#421975" #light purple
 FONT="CaskaydiaCoveNerdFontMono:size=9"
