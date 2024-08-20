@@ -2,7 +2,7 @@
 
 source ~/.local/bin/scripts/themes.sh
 
-case "$(printf "Shutdown\nReboot\nLock\n" | dmenu -l 10 -p "System:")" in
+case "$(printf "Shutdown\nReboot\nLock\n" | dmenu -i -l 10 -p "System:")" in
     "Shutdown") sudo poweroff ;;
     "Reboot") reboot ;;
     "Lock") ~/.local/bin/scripts/i3lock.sh ;;
