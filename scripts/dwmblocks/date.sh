@@ -1,1 +1,3 @@
-/nix/store/zq42030swhixybmyrkabidgfmazy4cb7-home-manager-files/.local/bin/scripts/dwmblocks/date.sh
+#!/usr/bin/env bash
+
+date "+%D %I:%M%p"
