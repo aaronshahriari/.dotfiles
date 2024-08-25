@@ -11,6 +11,9 @@ case "$(printf "Shutdown\nReboot\nLock\n" | dmenu -i -l 10 -p "System:")" in
             "Yes") reboot ;;
             *) exit 1 ;;
         esac ;;
-    "Lock") slock ;;
+    "Lock")
+        systemctl suspend
+        slock
+        ;;
     *) exit 1 ;;
 esac
