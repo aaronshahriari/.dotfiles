@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-source ~/.local/bin/scripts/themes.sh
-
 case "$(printf "Home\n" | dmenu -i -l 10 -p "Display Setup:")" in
     "Home")
         case "$(printf "Laptop\nSingle\nDouble\n" | dmenu -i -l 10 -p "Display Setup:")" in
