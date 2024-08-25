@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-case $BLOCK_BUTTON in
-	1) notify-send "left click detected"; pkill -RTMIN+2 "dwmblocks" ;;
-	2) notify-send "middle click detected"; pkill -RTMIN+2 "dwmblocks" ;; 
-	3) notify-send "right click detected"; pkill -RTMIN+2 "dwmblocks" ;; 
-esac
-
 battery=/sys/class/power_supply/BAT0
 case "$(cat "$battery/status" 2>&1)" in
     "Full") status="󰁹" ;;
