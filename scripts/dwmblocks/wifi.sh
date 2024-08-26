@@ -7,6 +7,7 @@ esac
 
 # wifi
 if [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'up' ] ; then
+    network=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2)
 	wifisignal="$(awk '/^\s*w/ { print int($3 * 100 / 70) }' /proc/net/wireless)"
     if [ "$wifisignal" -ge 90 ]; then
         iconstrength="^c#8BC34A^󰤨 ^d^"
@@ -28,4 +29,4 @@ fi
 #     ethericon=""
 # fi
 
-printf "%s^c#ffffff^%s^d^" "$iconstrength" "$wifisignal"
+printf "%s^c#ffffff^%s^d^" "$iconstrength" "$network"
