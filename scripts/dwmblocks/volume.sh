@@ -5,19 +5,20 @@ case $BLOCK_BUTTON in
     2) wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; pkill -RTMIN+1 dwmblocks ;;
     4) wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+; pkill -RTMIN+1 dwmblocks ;;
     5) wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-; pkill -RTMIN+1 dwmblocks ;;
+	6) setsid -f "alacritty" -e "nvim" "$0" ;;
 esac
 
 # Get the volume and mute status
 vol="$(amixer get Master | grep -oP '[0-9]+(?=%)' | head -1)"
 mute_status="$(amixer get Master | grep -oP '\[(on|off)\]' | head -1)"
 
-[ "$mute_status" == "[off]" ] && echo "  " && exit
+[ "$mute_status" == "[off]" ] && echo "^c#B71C1C^ ^d^" && exit
 
 case 1 in
-	$((vol >= 70)) ) icon="  " ;;
-	$((vol >= 30)) ) icon=" " ;;
-	$((vol >= 1)) ) icon=" " ;;
-	* ) echo "  " ;;
+	$((vol >= 70)) ) icon=" " ;;
+	$((vol >= 30)) ) icon="" ;;
+	$((vol >= 1)) ) icon="" ;;
+	* ) echo "^c#B71C1C^ ^d^" ;;
 esac
 
-printf "%s %s" "$icon" "$vol"
+printf "^c#ffffff^%s %s^d^" "$icon" "$vol"
