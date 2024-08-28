@@ -5,4 +5,10 @@ export PATH="$HOME/.local/bin/scripts/:$PATH"
 alias vim="nvim"
 
 set -o vi
+
+# reverse search
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+
+# tmux sessionizer
 # bindkey -s ^f "$HOME/.dotfiles/bin/.local/scripts/tmux-sessionizer\n"
