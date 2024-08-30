@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-case "$(printf "Home\n" | dmenu -i -l 10 -p "Display Setup:")" in
+case "$(printf "Home\n" | dmenu -m 0 -i -l 10 -p "Display Setup:")" in
     "Home")
-        case "$(printf "Laptop\nSingle\nDouble\n" | dmenu -i -l 10 -p "Display Setup:")" in
+        case "$(printf "Laptop\nSingle\nDouble\n" | dmenu -m 0 -i -l 10 -p "Display Setup:")" in
             # "Laptop")
             #     autorandr --load laptop
             #     xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.8 ;;
