@@ -29,4 +29,4 @@ fi
 #     ethericon=""
 # fi
 
-printf "| %s^c#ffffff^%s^d^" "$iconstrength" "$network"
+printf "%s^c#ffffff^%s^d^" "$iconstrength" "$network"

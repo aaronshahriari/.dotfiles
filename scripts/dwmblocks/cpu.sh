@@ -20,4 +20,4 @@ elif [ "$usage" -ge 0 ]; then
     icon="^c#8BC34A^ ^d^"
 fi
 
-printf "| %s ^c#ffffff^%s%%^d^" "$icon" "$usage"
+printf "%s ^c#ffffff^%s%%^d^" "$icon" "$usage"
