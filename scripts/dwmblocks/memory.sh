@@ -26,4 +26,4 @@ elif [ "$usage" -ge 0 ]; then
 fi
 
 # Display memory usage percentage
-printf "%s ^c#ffffff^%s%%^d^" "$icon" "$usage"
+printf "| %s ^c#ffffff^%s%%^d^" "$icon" "$usage"

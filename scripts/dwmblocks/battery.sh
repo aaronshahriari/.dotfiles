@@ -116,4 +116,4 @@ case "$(cat "$battery/status" 2>&1)" in
     *) exit 1 ;;
 esac
 
-printf "%s^c#ffffff^%s%%^d^" "$status" "$capacity"
+printf "| %s^c#ffffff^%s%%^d^" "$status" "$capacity"

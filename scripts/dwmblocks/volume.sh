@@ -18,13 +18,13 @@ esac
 vol="$(amixer get Master | grep -oP '[0-9]+(?=%)' | head -1)"
 mute_status="$(amixer get Master | grep -oP '\[(on|off)\]' | head -1)"
 
-[ "$mute_status" == "[off]" ] && echo "^c#B71C1C^ ^d^" && exit
+[ "$mute_status" == "[off]" ] && echo "| ^c#B71C1C^ ^d^" && exit
 
 case 1 in
 	$((vol >= 70)) ) icon=" " ;;
 	$((vol >= 30)) ) icon="" ;;
 	$((vol >= 1)) ) icon="" ;;
-	* ) echo "^c#B71C1C^ ^d^" ;;
+	* ) echo "| ^c#B71C1C^ ^d^" ;;
 esac
 
-printf "^c#ffffff^%s %s^d^" "$icon" "$vol"
+printf "| ^c#ffffff^%s %s^d^" "$icon" "$vol"

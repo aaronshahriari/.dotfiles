@@ -8,4 +8,4 @@ esac
 usage=$(df -h /home | awk ' /[0-9]/ {print $3 "/" $2}')
 icon="󰠦"
 
-printf "^c#ffffff^%s %s^d^" "$icon" "$usage"
+printf "| ^c#ffffff^%s %s^d^" "$icon" "$usage"
