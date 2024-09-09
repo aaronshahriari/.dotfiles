@@ -2,6 +2,9 @@ import = ["~/.config/alacritty/themes/themes/pastel_dark.toml"]
 
 live_config_reload = true
 
+[mouse]
+hide_when_typing = true
+
 [[keyboard.bindings]]
 key = "Back"
 mods = "Control"
