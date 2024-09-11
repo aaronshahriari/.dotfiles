@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # prompt the user with dmenu to enter a search query
-case "$(printf "win\ntab\n" | dmenu -m 0 -i -l 10 -p "Display Setup:")" in
+case "$(printf "win\ntab\n" | dmenu -m 0 -i -l 10 -p "Window Type:")" in
     "win")
         query=$(echo "" | dmenu -m 0 -l 0 -g 0 -p "Search:")
         if [ -n "$query" ]; then
