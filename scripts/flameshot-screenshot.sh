@@ -13,10 +13,10 @@ LATEST_SCREENSHOT=$(find $SCREENSHOT_DIR -type f -mmin -0.0333 -print | sort -r 
 if [[ -n $LATEST_SCREENSHOT ]]; then
     # Check if the file exists and is not empty
     if [[ -f $LATEST_SCREENSHOT && -s $LATEST_SCREENSHOT ]]; then
-        notify-send "Screenshot Taken" -i "$LATEST_SCREENSHOT"
+        notify-send -u low "Screenshot Taken" -i "$LATEST_SCREENSHOT"
     else
-        notify-send "Screenshot Error" "The screenshot file is empty or couldn't be saved."
+        notify-send -u low "Screenshot Error" "The screenshot file is empty or couldn't be saved."
     fi
 else
-    notify-send "Screenshot Cancelled"
+    notify-send -u low "Screenshot Cancelled"
 fi
