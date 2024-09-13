@@ -27,7 +27,7 @@ normal.family = "CaskaydiaCove Nerd Font Mono"
 bold.family = "CaskaydiaCove Nerd Font Mono"
 italic.family = "CaskaydiaCove Nerd Font Mono"
 bold_italic.family = "CaskaydiaCove Nerd Font Mono"
-size = 9.0
+size = 4.0
 
 [shell]
 program = "/run/current-system/sw/bin/zsh"
