@@ -5,7 +5,7 @@ case $BLOCK_BUTTON in
 esac
 
 notify_file=/tmp/battery-notify
-battery=/sys/class/power_supply/BAT0
+battery=/sys/class/power_supply/BAT1
 capacity="$(cat "$battery/capacity" 2>&1)"
 
 case "$(cat "$battery/status" 2>&1)" in
