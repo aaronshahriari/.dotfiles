@@ -14,7 +14,7 @@ case "$(cat "$battery/status" 2>&1)" in
         if [ -f "$notify_file" ]; then
             content=$(cat "$notify_file")
             if  [ "$content" -ne 3 ]; then
-                notify-send -u normal "Fully Charged "$capacity%"" -i ~/.local/.dotfiles/scripts/icons/full_battery.png
+                notify-send -u normal "Fully Charged "$capacity%"" -i ~/.local/bin//scripts/icons/full_battery.png
                 echo 3 > "$notify_file"
             fi
         else
@@ -42,7 +42,7 @@ case "$(cat "$battery/status" 2>&1)" in
                 if [ -f "$notify_file" ]; then
                     content=$(cat "$notify_file")
                     if  [ "$content" -ne 2 ]; then
-                        notify-send -u critical "Low Battery "$capacity%"" -i ~/.local/.dotfiles/scripts/icons/empty_battery.png
+                        notify-send -u critical "Low Battery "$capacity%"" -i ~/.local/bin/scripts/icons/empty_battery.png
                         echo 2 > "$notify_file"
                     fi
                 else
@@ -55,7 +55,7 @@ case "$(cat "$battery/status" 2>&1)" in
                 if [ -f "$notify_file" ]; then
                     content=$(cat "$notify_file")
                     if  [ "$content" -ne 1 ]; then
-                        notify-send -u critical "Low Battery "$capacity%"" -i ~/.local/.dotfiles/scripts/icons/empty_battery.png
+                        notify-send -u critical "Low Battery "$capacity%"" -i ~/.local/bin/scripts/icons/empty_battery.png
                         echo 1 > "$notify_file"
                     fi
                 else
@@ -87,7 +87,7 @@ case "$(cat "$battery/status" 2>&1)" in
                 if [ -f "$notify_file" ]; then
                     content=$(cat "$notify_file")
                     if  [ "$content" -ne 2 ]; then
-                        notify-send -u critical "Low Battery "$capacity%"" -i ~/.local/.dotfiles/scripts/icons/empty_battery.png
+                        notify-send -u critical "Low Battery "$capacity%"" -i ~/.local/bin/scripts/icons/empty_battery.png
                         echo 2 > "$notify_file"
                     fi
                 else
@@ -100,7 +100,7 @@ case "$(cat "$battery/status" 2>&1)" in
                 if [ -f "$notify_file" ]; then
                     content=$(cat "$notify_file")
                     if  [ "$content" -ne 1 ]; then
-                        notify-send -u critical "Low Battery "$capacity%"" -i ~/.local/.dotfiles/scripts/icons/empty_battery.png
+                        notify-send -u critical "Low Battery "$capacity%"" -i ~/.local/bin/scripts/icons/empty_battery.png
                         echo 1 > "$notify_file"
                     fi
                 else
