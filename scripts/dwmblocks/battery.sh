@@ -22,7 +22,9 @@ case "$(cat "$battery/status" 2>&1)" in
         fi
         ;;
     "Discharging")
-        if [ "$capacity" -ge 90 ]; then
+        if [ "$capacity" -ge 99 ]; then
+            status="^c#8BC34A^󰁹 ^d^"
+        elif [ "$capacity" -ge 90 ]; then
             status="^c#8BC34A^󰂂 ^d^"
         elif [ "$capacity" -ge 80 ]; then
             status="^c#8BC34A^󰂁 ^d^"
@@ -67,7 +69,9 @@ case "$(cat "$battery/status" 2>&1)" in
         fi
         ;;
     "Charging")
-        if [ "$capacity" -ge 90 ]; then
+        if [ "$capacity" -ge 99 ]; then
+            status="^c#8BC34A^󰂅 ^d^"
+        elif [ "$capacity" -ge 90 ]; then
             status="^c#8BC34A^󰂋 ^d^"
         elif [ "$capacity" -ge 80 ]; then
             status="^c#8BC34A^󰂊 ^d^"
