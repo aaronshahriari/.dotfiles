@@ -1,0 +1,34 @@
+import = ["~/.config/alacritty/themes/themes/pastel_dark.toml"]
+
+live_config_reload = true
+
+[mouse]
+hide_when_typing = true
+
+[[keyboard.bindings]]
+key = "Back"
+mods = "Control"
+chars = "\u0017"
+
+[env]
+TERM = "xterm-256color"
+
+[cursor]
+style = { shape = "Block", blinking = "Never" }
+
+[window]
+padding.x = 0
+padding.y = 0
+decorations = "Full"
+decorations_theme_variant = "Dark"
+
+[font]
+normal.family = "CaskaydiaCove Nerd Font Mono"
+bold.family = "CaskaydiaCove Nerd Font Mono"
+italic.family = "CaskaydiaCove Nerd Font Mono"
+bold_italic.family = "CaskaydiaCove Nerd Font Mono"
+size = 7.0
+
+[shell]
+program = "/run/current-system/sw/bin/zsh"
+args = ["-l"]
