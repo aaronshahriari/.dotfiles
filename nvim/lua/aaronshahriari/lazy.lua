@@ -19,6 +19,7 @@ require('lazy').setup({
     --         "ibhagwan/fzf-lua",
     --     }
     -- },
+    { "folke/trouble.nvim" },
     {
         "hrsh7th/nvim-cmp",
         lazy = false,
