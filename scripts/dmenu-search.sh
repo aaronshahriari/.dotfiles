@@ -7,6 +7,6 @@ query=$(echo "" | dmenu -m 0 -l 0 -g 0 -p "Search:")
 
 # if a query was entered, open firefox with the search query
 if [ -n "$query" ]; then
-    # firefox "https://duckduckgo.com/?q=$query"
-    firefox --search "$query"
+    google-chrome-stable "https://duckduckgo.com/?q=$query"
+    # firefox --search "$query"
 fi
