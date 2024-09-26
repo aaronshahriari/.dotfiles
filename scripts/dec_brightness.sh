@@ -5,14 +5,14 @@ NOTIF_ID=12345
 
 # icon path
 # ICON_PATH=~/.local/bin/scripts/icons/inc_bright.png
-ICON_PATH=~/Github/.dotfiles/scripts/icons/inc_bright.png
+ICON_PATH=~/Github/.dotfiles/scripts/icons/dec_bright.png
 
 connected_displays=$(xrandr --listmonitors | grep -oP '^\s*[0-9]+:\s+\+[*]?\K[^ ]+')
 
 # Loop through the list of connected displays and echo each one
 for display in $connected_displays; do
     # increment amount +
-    STEP=0.1
+    STEP=-0.1
 
     # Get current brightness
     CURRENT_BRIGHTNESS=$(xrandr --verbose | grep -i brightness | awk '{print $2}' | head -n 1)
