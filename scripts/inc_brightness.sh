@@ -4,8 +4,8 @@
 NOTIF_ID=12345
 
 # icon path
-# ICON_PATH=~/.local/bin/scripts/icons/inc_bright.png
-ICON_PATH=~/Github/.dotfiles/scripts/icons/inc_bright.png
+ICON_PATH=~/.local/bin/scripts/icons/inc_bright.png
+# ICON_PATH=~/Github/.dotfiles/scripts/icons/inc_bright.png # local testing
 
 connected_displays=$(xrandr --listmonitors | grep -oP '^\s*[0-9]+:\s+\+[*]?\K[^ ]+')
 
