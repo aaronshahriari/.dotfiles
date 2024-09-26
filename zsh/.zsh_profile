@@ -11,4 +11,4 @@ bindkey -v
 bindkey '^R' history-incremental-search-backward
 
 # tmux sessionizer
-# bindkey -s ^f "$HOME/.dotfiles/bin/.local/scripts/tmux-sessionizer\n"
+bindkey -s ^f "~/.local/bin/scripts/tmux-sessionizer.sh\n"
