@@ -19,3 +19,8 @@ lspconfig.apex_ls.setup({
 
 -- setup for lua
 lspconfig.lua_ls.setup({})
+--
+-- setup for nix
+lspconfig.nix.setup({
+    filetypes = { "nix"},
+})
