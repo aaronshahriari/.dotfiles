@@ -21,7 +21,4 @@ lspconfig.apex_ls.setup({
 lspconfig.lua_ls.setup({})
 --
 -- setup for nix
-lspconfig.nix.setup({
-    cmd = { "nil" },
-    filetypes = { "nix" },
-})
+lspconfig.nil_ls.setup({})
