@@ -22,5 +22,6 @@ lspconfig.lua_ls.setup({})
 --
 -- setup for nix
 lspconfig.nix.setup({
-    filetypes = { "nix"},
+    cmd = { "nil" },
+    filetypes = { "nix" },
 })
