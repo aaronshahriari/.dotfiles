@@ -49,11 +49,11 @@ mode = mode:gsub("%s+$", "") -- this removes any trailing whitespace (including 
 
 -- check for specific values
 if mode == "home-two" then
-  config.font_size = 11
+  config.font_size = 13
 elseif mode == "laptop" then
-  config.font_size = 7
-else
   config.font_size = 9
+else
+  config.font_size = 11
 end
 
 -- Log the current font size
