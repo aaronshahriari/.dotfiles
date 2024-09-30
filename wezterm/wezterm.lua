@@ -39,11 +39,18 @@ config.window_padding = {
 local file = io.open("/tmp/setup_display", "r")
 
 -- reading & setting the font-size
-local mode = file and file:read("*all") or ""
+local mode = file and file:read("*line") or ""
+
+-- close the file if it was successfully opened
 if file then file:close() end
-if mode:find("home-two") then
+
+mode = mode:gsub("\n", "") -- this specifically removes newline characters
+mode = mode:gsub("%s+$", "") -- this removes any trailing whitespace (including spaces)
+
+-- check for specific values
+if mode == "home-two" then
   config.font_size = 11
-elseif mode:find("laptop") then
+elseif mode == "laptop" then
   config.font_size = 7
 else
   config.font_size = 9
