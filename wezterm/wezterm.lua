@@ -49,6 +49,9 @@ else
   config.font_size = 9
 end
 
+-- Log the current font size
+wezterm.log_info("Current font size is: " .. config.font_size)
+
 -- fonts
 config.font = wezterm.font 'CaskaydiaCove Nerd Font Mono'
 
