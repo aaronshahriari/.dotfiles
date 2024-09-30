@@ -49,15 +49,15 @@ mode = mode:gsub("%s+$", "") -- this removes any trailing whitespace (including 
 
 -- check for specific values
 if mode == "home-two" then
-  config.font_size = 13
+  config.font_size = 14
 elseif mode == "laptop" then
-  config.font_size = 9
+  config.font_size = 10
 else
-  config.font_size = 11
+  config.font_size = 12
 end
 
--- Log the current font size
-wezterm.log_info("Current font size is: " .. config.font_size)
+-- use this for logging
+-- wezterm.log_info("Current font size is: " .. config.font_size)
 
 -- fonts
 config.font = wezterm.font 'CaskaydiaCove Nerd Font Mono'
