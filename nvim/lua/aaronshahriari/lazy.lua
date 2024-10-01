@@ -23,11 +23,23 @@ require('lazy').setup({
         "VonHeikemen/lsp-zero.nvim",
         branch = "v4.x",
         dependencies = {
-            {"neovim/nvim-lspconfig"},
+            { "neovim/nvim-lspconfig" },
         }
     },
     { "norcalli/nvim-colorizer.lua" },
-    { "folke/trouble.nvim" },
+    -- { "folke/trouble.nvim" },
+    {
+        "folke/trouble.nvim",
+        opts = {},
+        cmd = "Trouble",
+        keys = {
+            {
+                "<C-x>",
+                "<cmd>Trouble diagnostics toggle<cr>",
+                desc = "Diagnostics (Trouble)",
+            },
+        }
+    },
     {
         "hrsh7th/nvim-cmp",
         lazy = false,
@@ -54,7 +66,7 @@ require('lazy').setup({
     },
     {
         "epwalsh/obsidian.nvim",
-        version = "*",  -- recommended, use latest release instead of latest commit
+        version = "*", -- recommended, use latest release instead of latest commit
         lazy = true,
         ft = "markdown",
         dependencies = {
@@ -82,11 +94,11 @@ require('lazy').setup({
     {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.4",
-        dependencies = {"nvim-lua/plenary.nvim"},
+        dependencies = { "nvim-lua/plenary.nvim" },
     },
 
     -- new theme
-    { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
+    { "bluz71/vim-moonfly-colors",  name = "moonfly", lazy = false, priority = 1000 },
     {
         "nvim-treesitter/nvim-treesitter",
         tag = "v0.9.2",
@@ -96,7 +108,7 @@ require('lazy').setup({
     {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
-        dependencies = {"nvim-lua/plenary.nvim"}
+        dependencies = { "nvim-lua/plenary.nvim" }
     },
 
     "mbbill/undotree",
