@@ -1,9 +1,7 @@
 local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
-    -- see :help lsp-zero-keybindings
-    -- to learn the available actions
-    lsp_zero.default_keymaps({buffer = bufnr})
+    lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
 -- load nvim-lspconfig
@@ -19,6 +17,21 @@ lspconfig.apex_ls.setup({
 
 -- setup for lua
 lspconfig.lua_ls.setup({})
---
+
 -- setup for nix
-lspconfig.nil_ls.setup({})
+lspconfig.nil_ls.setup({
+    settings = {
+        ['nil'] = {
+            formatting = {
+                command = { "nixfmt" },
+            },
+        },
+    },
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    buffer = buffer,
+    callback = function()
+        vim.lsp.buf.format { async = false }
+    end
+})
