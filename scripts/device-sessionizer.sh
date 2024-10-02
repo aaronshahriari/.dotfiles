@@ -3,6 +3,7 @@
 case "$(printf "Lock\nSleep\nReboot\nShutdown\n" | dmenu -m 0 -i -l 10 -p "System:")" in
     "Lock") slock ;;
     "Sleep")
+        slock
         systemctl suspend
         ;;
     "Reboot")

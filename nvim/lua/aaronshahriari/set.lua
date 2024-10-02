@@ -49,9 +49,9 @@ vim.opt.cursorline = false
 -- create a new autocmd in the augroup
 local augroup = vim.api.nvim_create_augroup("TermWindowConfig", { clear = true })
 vim.api.nvim_create_autocmd("TermOpen", {
-  group = augroup,
-  pattern = "*",
-  callback = function()
-    vim.opt_local.scrolloff = 0
-  end,
+    group = augroup,
+    pattern = "*",
+    callback = function()
+        vim.opt_local.scrolloff = 0
+    end,
 })
