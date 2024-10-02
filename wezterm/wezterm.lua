@@ -29,10 +29,10 @@ config.keys = {
 
 -- setup padding
 config.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0,
+    left = 0,
+    right = 0,
+    top = 0,
+    bottom = 0,
 }
 
 -- define file to set font-size
@@ -44,23 +44,26 @@ local mode = file and file:read("*line") or ""
 -- close the file if it was successfully opened
 if file then file:close() end
 
-mode = mode:gsub("\n", "") -- this specifically removes newline characters
+mode = mode:gsub("\n", "")   -- this specifically removes newline characters
 mode = mode:gsub("%s+$", "") -- this removes any trailing whitespace (including spaces)
 
 -- check for specific values
 if mode == "home-two" then
-  config.font_size = 14
+    config.font_size = 14
+elseif mode == "home-two2" then
+    config.font_size = 14
 elseif mode == "laptop" then
-  config.font_size = 10
+    config.font_size = 10
 else
-  config.font_size = 12
+    config.font_size = 12
 end
 
 -- use this for logging
 -- wezterm.log_info("Current font size is: " .. config.font_size)
 
 -- fonts
-config.font = wezterm.font 'CaskaydiaCove Nerd Font Mono'
+-- config.font = wezterm.font 'CaskaydiaCove Nerd Font Mono'
+config.font = wezterm.font 'MesloLGS Nerd Font Mono'
 
 -- cursor
 config.cursor_blink_rate = 0
@@ -68,10 +71,10 @@ config.hide_mouse_cursor_when_typing = true
 
 -- tabs settings
 config.window_frame = {
-  font = wezterm.font 'CaskaydiaCove Nerd Font Mono',
-  font_size = 9.0,
-  active_titlebar_bg = '#333333',
-  inactive_titlebar_bg = '#333333',
+    font = wezterm.font 'CaskaydiaCove Nerd Font Mono',
+    font_size = 9.0,
+    active_titlebar_bg = '#333333',
+    inactive_titlebar_bg = '#333333',
 }
 
 return config
