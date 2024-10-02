@@ -63,7 +63,7 @@ end
 
 -- fonts
 -- config.font = wezterm.font 'CaskaydiaCove Nerd Font Mono'
-config.font = wezterm.font 'MesloLGS Nerd Font'
+config.font = wezterm.font 'MesloLGS Nerd Font Mono'
 
 -- cursor
 config.cursor_blink_rate = 0
