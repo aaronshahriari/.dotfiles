@@ -14,7 +14,7 @@ case "$(cat "$battery/status" 2>&1)" in
         if [ -f "$notify_file" ]; then
             content=$(cat "$notify_file")
             if  [ "$content" -ne 3 ]; then
-                notify-send -u normal "Fully Charged "$capacity%"" -i ~/.local/bin//scripts/icons/full_battery.png
+                notify-send -u normal "Fully Charged "$capacity%"" -i ~/.local/bin/scripts/icons/full_battery.png
                 echo 3 > "$notify_file"
             fi
         else
