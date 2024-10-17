@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 case "$(printf "Lock\nSleep\nReboot\nShutdown\n" | dmenu -m 0 -i -l 10 -p "System:")" in
-    "Lock") sudo xsecurelock ;;
+    "Lock") xsecurelock ;;
     "Sleep")
         systemctl suspend
-        sudo xsecurelock
+        xsecurelock
         ;;
     "Reboot")
         case "$(printf "Yes\nNo" | dmenu -m 0 -i -l 10 -p "Are You Sure:")" in
