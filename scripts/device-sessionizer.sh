@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 case "$(printf "Lock\nSleep\nReboot\nShutdown\n" | dmenu -m 0 -i -l 10 -p "System:")" in
-    "Lock") slock ;;
+    "Lock") xsecurelock ;;
     "Sleep")
         systemctl suspend
         xsecurelock
