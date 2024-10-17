@@ -4,7 +4,7 @@ case "$(printf "Lock\nSleep\nReboot\nShutdown\n" | dmenu -m 0 -i -l 10 -p "Syste
     "Lock") slock ;;
     "Sleep")
         systemctl suspend
-        slock
+        xsecurelock
         ;;
     "Reboot")
         case "$(printf "Yes\nNo" | dmenu -m 0 -i -l 10 -p "Are You Sure:")" in
