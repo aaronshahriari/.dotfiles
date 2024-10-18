@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 case "$(printf "Lock\nSleep\nReboot\nShutdown\n" | dmenu -m 0 -i -l 10 -p "System:")" in
     "Lock") xsecurelock ;;
