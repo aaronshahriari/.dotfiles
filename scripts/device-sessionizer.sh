@@ -10,7 +10,6 @@ export XSECURELOCK_SHOW_DATETIME=1
 export XSECURELOCK_FONT="CaskaydiaCove Nerd Font"
 export XSECURELOCK_DATETIME_FORMAT="%D %I:%M%p"
 export XSECURELOCK_SHOW_KEYBOARD_LAYOUT=0
-export XSECURELOCK_SINGLE_AUTH_WINDOW=1
 export XSECURELOCK_DEBUG_WINDOW_INFO=1
 
 case "$(printf "Lock\nSleep\nReboot\nShutdown\n" | dmenu -m 0 -i -l 10 -p "System:")" in
