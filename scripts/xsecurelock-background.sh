@@ -8,10 +8,8 @@ else
   IMAGE_PATH="/usr/share/backgrounds/lockscreen.jpg"
 fi
 
-echo "TESTING THIS WORKS"
-
-# feh \
-#   --window-id="$window_id" \
-#   --xinerama-index="$XSCREENSAVER_SAVER_INDEX" \
-#   --zoom=fill \
-#   -F "$IMAGE_PATH" 
+feh \
+  --window-id="$window_id" \
+  --xinerama-index="$XSCREENSAVER_SAVER_INDEX" \
+  --zoom=fill \
+  -F "$IMAGE_PATH" 
