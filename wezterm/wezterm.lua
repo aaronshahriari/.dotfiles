@@ -10,8 +10,9 @@ config.color_scheme = '3024 (base16)'
 
 -- tabbar
 -- config.enable_tab_bar = false
-config.hide_tab_bar_if_only_one_tab = true
+-- config.hide_tab_bar_if_only_one_tab = true
 config.window_close_confirmation = 'NeverPrompt'
+config.tab_bar_at_bottom = true
 
 -- keybindings
 config.keys = {
@@ -69,7 +70,7 @@ config.hide_mouse_cursor_when_typing = true
 -- tabs settings
 config.window_frame = {
     font = wezterm.font 'CaskaydiaCove Nerd Font Mono',
-    font_size = 9.0,
+    font_size = 11.0,
     active_titlebar_bg = '#333333',
     inactive_titlebar_bg = '#333333',
 }

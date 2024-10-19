@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Select a directory using fzf or pass it as an argument
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
@@ -10,21 +11,17 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
+# Get a session name from the directory name
 selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+# Check if WezTerm is already running with this workspace
+wezterm_running=$(wezterm cli list | grep $selected_name)
+
+# Create a new WezTerm tab if not already running
+if [[ -z $wezterm_running ]]; then
+    wezterm cli spawn --cwd "$selected" --domain local --new-window --title "$selected_name"
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
-fi
-
-if [[ -z $TMUX ]]; then
-    tmux attach-session -t $selected_name
-else
-    # If already in a Tmux session, switch to the specified Tmux session
-    tmux switch-client -t $selected_name
-fi
+# Focus the existing WezTerm window if already running
+wezterm cli activate-pane --domain local --title "$selected_name"
