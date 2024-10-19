@@ -12,13 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-    -- {
-    --     "xixiaofinland/sf.nvim",
-    --     dependencies = {
-    --         "nvim-treesitter/nvim-treesitter",
-    --         "ibhagwan/fzf-lua",
-    --     }
-    -- },
+    "asiryk/auto-hlsearch.nvim",
     {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v4.x",
