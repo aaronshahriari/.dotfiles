@@ -18,7 +18,13 @@ case "$(printf "Home\n" | dmenu -m 0 -i -l 10 -p "Display:")" in
             #     xinput set-prop "pointer:PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 0
             #     xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.8 ;;
             "Double")
-                autorandr --load home-two
+                active_monitors=$(xrandr --listmonitors | awk '{print $4}' | tail -n +2)
+
+                if [[ "$active_monitors" == *"DisplayPort-5"* && "$active_monitors" == *"DisplayPort-4"* ]]; then
+                    autorandr --load home-two2
+                elif [[ "$active_monitors" == *"DisplayPort-7"* && "$active_monitors" == *"DisplayPort-6"* ]]; then
+                    autorandr --load home-two
+                fi
                 feh --bg-fill /usr/share/backgrounds/desktop_wall.jpg --bg-fill /usr/share/backgrounds/desktop_wall.jpg
                 xinput set-prop "pointer:PIXA3854:00 093A:0274 Touchpad" "libinput Scrolling Pixel Distance" 50
                 xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.8 ;;

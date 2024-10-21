@@ -1,5 +1,6 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
+local sessionizer = require("sessionizer")
 
 -- create datetime bottom right
 wezterm.on('update-right-status', function(window)
@@ -38,6 +39,8 @@ config.leader = { key = "Space", mods = "CTRL" }
 
 config.keys = {
     -- tmux like commands to use wezterm
+    -- testing
+    { key = "f", mods = "LEADER",       action = wezterm.action_callback(sessionizer.toggle) },
     { key = "c", mods = "LEADER",       action = wezterm.action { SpawnTab = "CurrentPaneDomain" } },
     { key = "h", mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Left" } },
     { key = "j", mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Down" } },
