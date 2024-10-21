@@ -1,6 +1,5 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
-local sessionizer = require("sessionizer")
 
 -- create datetime bottom right
 wezterm.on('update-right-status', function(window)
@@ -37,10 +36,10 @@ config.window_frame = {
 
 config.leader = { key = "Space", mods = "CTRL" }
 
+-- active copy mode via Ctrl+Shift+x
 config.keys = {
     -- tmux like commands to use wezterm
     -- testing
-    { key = "f", mods = "LEADER",       action = wezterm.action_callback(sessionizer.toggle) },
     { key = "c", mods = "LEADER",       action = wezterm.action { SpawnTab = "CurrentPaneDomain" } },
     { key = "h", mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Left" } },
     { key = "j", mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Down" } },
@@ -61,7 +60,7 @@ config.keys = {
     { key = "7", mods = "LEADER",       action = wezterm.action { ActivateTab = 6 } },
     { key = "8", mods = "LEADER",       action = wezterm.action { ActivateTab = 7 } },
     { key = "9", mods = "LEADER",       action = wezterm.action { ActivateTab = 8 } },
-    { key = "d", mods = "LEADER",       action = wezterm.action { CloseCurrentPane = { confirm = true } } },
+    { key = "d", mods = "LEADER",       action = wezterm.action { CloseCurrentTab = { confirm = true } } },
     { key = "x", mods = "LEADER",       action = wezterm.action { CloseCurrentPane = { confirm = true } } },
     {
         key = 'w',
