@@ -2,7 +2,7 @@
 
 case "$(printf "Home\n" | dmenu -m 0 -i -l 10 -p "Display:")" in
     "Home")
-        case "$(printf "Laptop\nSingle\nDouble\n" | dmenu -m 0 -i -l 10 -p "Display Setup:")" in
+        case "$(printf "Laptop\nSingle\nDouble\n" | dmenu -i -l 10 -p "Display Setup:")" in
             "Laptop")
                 autorandr --load laptop
                 feh --bg-fill /usr/share/backgrounds/desktop_wall.jpg --bg-fill /usr/share/backgrounds/desktop_wall.jpg
