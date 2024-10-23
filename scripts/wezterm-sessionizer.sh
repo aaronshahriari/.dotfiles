@@ -10,19 +10,18 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
-full_selected="file://$HOST$selected"
-home_dir="file://$HOST$HOME"
+hostname=$(hostname)
+full_selected="file:/$hostname$selected"
+current_dir=$(pwd)
 
 # matches CWD exact
 wezterm_running=$(wezterm cli list | grep -w $full_selected)
 if [[ -z $wezterm_running ]]; then
-    if [[ "$full_selected" == "$home_dir" ]]; then
-        echo "wezterm cli spawn current tab"
-        cd $full_selected
+    if [[ "$current_dir" == "$HOME" ]]; then
+        cd "$selected" || exit 1
         clear
     else
-        echo "wezterm cli spawn --cwd $selected"
-        # wezterm cli spawn --cwd $selected
+        wezterm cli spawn --cwd $selected
     fi
 else
     tabid=$(echo "$wezterm_running" | awk '{print $2}')
