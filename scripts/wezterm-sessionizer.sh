@@ -9,39 +9,15 @@ fi
 if [[ -z $selected ]]; then
     exit 0
 fi
-# echo "$selected"
 
 hostname=$(wezterm cli list-clients | awk 'NR==2 {print $2}')
-# echo "$hostname"
+full_selected="file://$hostname$selected"
 
-wezterm_running=$(wezterm cli list | awk 'NR > 1 { print $NF }')
-# echo "$wezterm_running"
-
-full_wezterm_path="file://$hostname$selected"
-# echo "$full_wezterm_path"
-
-path_exsist=false
-
-# fully empty create a window
+# matches CWD exact
+wezterm_running=$(wezterm cli list | grep -w $full_selected)
 if [[ -z $wezterm_running ]]; then
-    echo "ALL EMPTY THEN CREATE WINDOW"
-    echo ""
+    wezterm cli spawn --cwd $selected
 else
-    echo "NOT EMPTY CHECK EACH WINDOW"
-    echo ""
-    while IFS= read -r line; do
-        if [[ "$full_wezterm_path" == "$line" ]]; then
-            echo "inside true"
-            path_exists=true
-            break
-        fi
-    done <<< "$wezterm_running"
+    tabid=$(echo "$wezterm_running" | awk '{print $2}')
+    wezterm cli activate-tab --tab-id $tabid
 fi
-
-if $path_exists; then
-    echo "PATH DOES NOT EXIST."
-else
-    echo "PATH EXISTS."
-fi
-
-# wezterm cli activate-pane --domain local --title "$selected_name"
