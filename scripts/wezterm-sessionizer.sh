@@ -6,9 +6,9 @@ else
     selected=$(find ~/Github ~/ ~/work ~/personal -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
-if [[ -z $selected ]]; then
-    exit 0
-fi
+# if [[ -z $selected ]]; then
+#     exit 0
+# fi
 
 hostname=$(hostname)
 full_selected="file:/$hostname$selected"
