@@ -16,7 +16,15 @@ lspconfig.apex_ls.setup({
 })
 
 -- setup for lua
-lspconfig.lua_ls.setup({})
+lspconfig.lua_ls.setup({
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
+})
 
 -- setup for nix
 lspconfig.nil_ls.setup({
