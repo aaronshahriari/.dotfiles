@@ -7,7 +7,8 @@ else
 fi
 
 if [[ -z $selected ]]; then
-    exit 0
+    # exit 0
+    return 0
 fi
 
 hostname=$(hostname)
