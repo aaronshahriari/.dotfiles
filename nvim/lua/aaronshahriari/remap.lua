@@ -46,21 +46,16 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]])
 
 -- run tmux inside of vim
--- vim.keymap.set("n", "<C-f>", "<cmd>silent !~/.local/bin/scripts/wezterm-sessionizer.sh<CR>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !~/.local/bin/scripts/wezterm-sessionizer.sh<CR>")
 
--- vim.keymap.set("n", "<C-f>", function()
---     vim.cmd("silent !/usr/bin/env bash -c '~/.local/bin/scripts/wezterm-sessionizer.sh'")
--- end)
-
-vim.keymap.set("n", "<C-f>", "<cmd>silent !echo 'test'<CR>")
-
--- Define a function for creating a small terminal
+-- define a function for creating a small terminal
 -- entering the current directory of file you are inside
 function Small_terminal()
     vim.cmd("new")
     vim.cmd("wincmd J")
     vim.api.nvim_win_set_height(0, 12)
     vim.cmd("term")
+    -- if i want to auto start typing
     -- vim.api.nvim_feedkeys("a", "n", true)
 end
 
