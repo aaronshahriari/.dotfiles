@@ -25,7 +25,7 @@ case "$(printf "Lock\nSleep\nReboot\nShutdown\n" | dmenu -m 0 -i -l 10 -p "Syste
         esac ;;
     "Shutdown")
         case "$(printf "Yes\nNo" | dmenu -m 0 -i -l 10 -p "Are You Sure:")" in
-            "Yes") sudo shutdown -h now ;;
+            "Yes") shutdown -h now ;;
             *) exit 1 ;;
         esac ;;
     *) exit 1 ;;
