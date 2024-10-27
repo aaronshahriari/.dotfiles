@@ -18,7 +18,8 @@ case "$(printf "Home\n" | dmenu -m 0 -i -l 10 -p "Display:")" in
             #     xinput set-prop "pointer:PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 0
             #     xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.8 ;;
             "Double")
-                active_monitors=$(xrandr --listmonitors | awk '{print $4}' | tail -n +2)
+                # active_monitors=$(xrandr --listmonitors | awk '{print $4}' | tail -n +2)
+                active_monitors=$(xrandr | grep " connected" | awk '{print $1}')
 
                 if [[ "$active_monitors" == *"DisplayPort-5"* && "$active_monitors" == *"DisplayPort-4"* ]]; then
                     autorandr --load home-two2
