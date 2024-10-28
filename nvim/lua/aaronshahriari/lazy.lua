@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+    "willothy/wezterm.nvim",
     "asiryk/auto-hlsearch.nvim",
     {
         "VonHeikemen/lsp-zero.nvim",
