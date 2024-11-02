@@ -15,7 +15,7 @@ export XSECURELOCK_DEBUG_WINDOW_INFO=1
 case "$(printf "Lock\nSleep\nReboot\nShutdown\n" | dmenu -m 0 -i -l 10 -p "System:")" in
     "Lock") xsecurelock ;;
     "Sleep")
-        systemctl suspend
+        systemctl suspend-then-hibernate
         xsecurelock
         ;;
     "Reboot")
