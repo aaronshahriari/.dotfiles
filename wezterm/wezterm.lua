@@ -20,6 +20,9 @@ config.color_scheme = '3024 (base16)'
 
 config.window_close_confirmation = 'NeverPrompt'
 
+-- turn off bell
+config.audible_bell = "Disabled"
+
 -- TABBAR
 config.enable_tab_bar = false
 -- config.hide_tab_bar_if_only_one_tab = true

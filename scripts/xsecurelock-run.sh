@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#!/bin/bash
+
 # Source any environment settings, like your zsh profile
 source ~/.config/zsh/.zsh_profile
 
