@@ -37,6 +37,9 @@ lspconfig.nil_ls.setup({
     },
 })
 
+-- setup for md
+lspconfig.markdown_oxide.setup({})
+
 vim.api.nvim_create_autocmd("BufWritePre", {
     buffer = buffer,
     callback = function()
