@@ -5,6 +5,7 @@ require("obsidian").setup({
             path = "~/aaron_linux_vault/",
         },
     },
+    disable_frontmatter = false,
     ui = {
         enable = true,         -- set to false to disable all additional syntax features
         update_debounce = 200, -- update delay after a text change (in milliseconds)
