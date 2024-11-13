@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-case "$(printf "Home\n" | dmenu -m 0 -i -l 10 -p "Display:")" in
+case "$(printf "Home\n" | dmenu -i -l 10 -p "Display:")" in
     "Home")
         case "$(printf "Laptop\nSingle\nDouble\n" | dmenu -i -l 10 -p "Display Setup:")" in
             "Laptop")

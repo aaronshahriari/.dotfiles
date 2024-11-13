@@ -12,19 +12,19 @@ export XSECURELOCK_DATETIME_FORMAT="%D %I:%M%p"
 export XSECURELOCK_SHOW_KEYBOARD_LAYOUT=0
 export XSECURELOCK_DEBUG_WINDOW_INFO=1
 
-case "$(printf "Lock\nSleep\nReboot\nShutdown\n" | dmenu -m 0 -i -l 10 -p "System:")" in
+case "$(printf "Lock\nSleep\nReboot\nShutdown\n" | dmenu -i -l 10 -p "System:")" in
     "Lock") xsecurelock ;;
     "Sleep")
         systemctl suspend
         xsecurelock
         ;;
     "Reboot")
-        case "$(printf "Yes\nNo" | dmenu -m 0 -i -l 10 -p "Are You Sure:")" in
+        case "$(printf "Yes\nNo" | dmenu -i -l 10 -p "Are You Sure:")" in
             "Yes") reboot ;;
             *) exit 1 ;;
         esac ;;
     "Shutdown")
-        case "$(printf "Yes\nNo" | dmenu -m 0 -i -l 10 -p "Are You Sure:")" in
+        case "$(printf "Yes\nNo" | dmenu -i -l 10 -p "Are You Sure:")" in
             "Yes") shutdown -h now ;;
             *) exit 1 ;;
         esac ;;
