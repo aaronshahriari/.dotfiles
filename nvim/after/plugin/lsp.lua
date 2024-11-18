@@ -40,6 +40,11 @@ lspconfig.nil_ls.setup({
 -- setup for md
 lspconfig.markdown_oxide.setup({})
 
+-- setup for elixir
+require 'lspconfig'.elixirls.setup({
+    filetypes = { "exs", "elixir", "eelixir", "heex", "surface" },
+})
+
 vim.api.nvim_create_autocmd("BufWritePre", {
     buffer = buffer,
     callback = function()
