@@ -4,6 +4,10 @@ require("obsidian").setup({
             name = "Personal",
             path = "~/aaron_linux_vault/",
         },
+        {
+            name = "BrundageGroup",
+            path = "~/work/BrundageGroup/",
+        },
     },
     disable_frontmatter = true,
     ui = {
