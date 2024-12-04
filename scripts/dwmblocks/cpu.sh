@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 case $BLOCK_BUTTON in
-	1) setsid -f "alacritty" -e top ;;
-	6) setsid -f "alacritty" -e "nvim" "$0" ;;
+	1) setsid -f "wezterm" -e top ;;
+	6) setsid -f "wezterm" -e "nvim" "$0" ;;
 esac
 
 usage="$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print int(100 - $1)}')"
