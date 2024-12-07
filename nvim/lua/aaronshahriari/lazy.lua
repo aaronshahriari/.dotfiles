@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     {
-        "asiryk/auto-hlsearch.nvim",
+        "tjdevries/colorbuddy.nvim",
     },
     {
         "VonHeikemen/lsp-zero.nvim",
