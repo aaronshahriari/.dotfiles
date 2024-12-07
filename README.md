@@ -5,4 +5,3 @@ ALL MY .DOTFILES THAT WORKS ON ALL COMPUTERS
 ```
 source $HOME/.dotfiles/zsh/.zsh_profile
 ```
-Testing changes here for nixos new shell script
