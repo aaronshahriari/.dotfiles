@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 case $BLOCK_BUTTON in
-    1) alacritty -e nmtui ;;
-	6) setsid -f "alacritty" -e "nvim" "$0" ;;
+    1) wezterm -e nmtui ;;
+	6) setsid -f "wezterm" -e "nvim" "$0" ;;
 esac
 
 # wifi

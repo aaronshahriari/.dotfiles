@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 case $BLOCK_BUTTON in
-    1) setsid -w -f "alacritty" -e alsamixer; kill -35 $(pidof dwmblocks) ;; 
+    1) setsid -w -f "wezterm" -e alsamixer; kill -35 $(pidof dwmblocks) ;; 
     3) wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -35 $(pidof dwmblocks) ;;
     4)
         wpctl set-mute @DEFAULT_AUDIO_SINK@ 0;
@@ -11,7 +11,7 @@ case $BLOCK_BUTTON in
         wpctl set-mute @DEFAULT_AUDIO_SINK@ 0;
         wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-;
         kill -35 $(pidof dwmblocks) ;; 
-	6) setsid -f "alacritty" -e "nvim" "$0" ;;
+	6) setsid -f "wezterm" -e "nvim" "$0" ;;
 esac
 
 # Get the volume and mute status
