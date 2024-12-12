@@ -16,11 +16,18 @@ require('lazy').setup({
         "tjdevries/colorbuddy.nvim",
     },
     {
+        "neovim/nvim-lspconfig",
+        opts = {
+            diagnostics = {
+                float = {
+                    border = "rounded",
+                },
+            },
+        },
+    },
+    {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v4.x",
-        dependencies = {
-            { "neovim/nvim-lspconfig" },
-        }
     },
     { "norcalli/nvim-colorizer.lua" },
     -- { "folke/trouble.nvim" },
