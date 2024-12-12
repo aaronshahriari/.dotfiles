@@ -48,7 +48,8 @@ Group.new("LineNr", c.light_white, c.black, s.none)
 Group.new("Substitute", c.black, c.aqua, s.none)
 Group.new("IncSearch", c.black, c.blue, s.none)
 
--- treesitter groups set
+-- groups
+Group.new("@text.title", c.white, nil, s.none)
 Group.new("@constant", c.orange, nil, s.none)
 Group.new("@function", c.yellow, nil, s.none)
 Group.new("@function.bracket", g.Normal, g.Normal)
