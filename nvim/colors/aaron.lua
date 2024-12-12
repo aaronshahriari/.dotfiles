@@ -1,4 +1,4 @@
-require("colorbuddy").colorscheme('main_colorscheme')
+require("colorbuddy").colorscheme('aaron')
 
 local colorbuddy = require('colorbuddy')
 local Color = colorbuddy.Color
@@ -7,8 +7,7 @@ local c = colorbuddy.colors
 local g = colorbuddy.groups
 local s = colorbuddy.styles
 
-local background_string = "#000000"
-Color.new('white', '#f2e5bc')
+Color.new('white', '#d9d9d9')
 Color.new('light_white', '#424242')
 Color.new('red', '#cc6666')
 Color.new('pink', '#fef601')
@@ -23,11 +22,24 @@ Color.new('orange', '#de935f')
 Color.new('brown', '#a3685a')
 Color.new('seagreen', '#698b69')
 Color.new('turquoise', '#698b69')
-Color.new("background", background_string)
-Color.new("gray0", background_string)
+Color.new("background", '#000000')
+
+-- DIAGNOSTICS
+Group.new("DiagnosticError", c.red)
+Group.new("DiagnosticOk", c.green)
+Group.new("DiagnosticWarn", c.orange)
+Group.new("DiagnosticHint", c.violet)
+Group.new("DiagnosticInfo", c.purple)
+
+-- CURSORS
+Group.new("CursorLine", c.white, c.background)
+
+-- floats
+Group.new("NormalFloat", c.superwhite)
+Group.new("NormalNC", c.superwhite:dark(), c.background)
 
 -- nvim groups set
-Group.new("Normal", c.superwhite, c.gray0)
+Group.new("Normal", c.superwhite, c.background)
 Group.new("Visual", c.none, c.light_white, s.none)
 Group.new("Conceal", c.none, c.none, s.none)
 Group.new("LineNr", c.light_white, c.black, s.none)
