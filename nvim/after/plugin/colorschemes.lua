@@ -1,1 +1,1 @@
-vim.cmd.colorscheme("main_colorscheme")
+vim.cmd.colorscheme("aaron")
