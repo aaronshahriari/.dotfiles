@@ -41,6 +41,7 @@ Group.new("lspfloatwinborder", c.white)
 Group.new("NormalNC", c.superwhite:dark(), c.background)
 
 -- nvim groups set
+Group.new("Title", c.white, nil, s.none)
 Group.new("Normal", c.superwhite, c.background)
 Group.new("Visual", c.none, c.light_white, s.none)
 Group.new("Conceal", c.none, c.none, s.none)
