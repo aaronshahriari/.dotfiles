@@ -35,7 +35,9 @@ Group.new("DiagnosticInfo", c.purple)
 Group.new("CursorLine", c.white, c.background)
 
 -- floats
-Group.new("NormalFloat", c.superwhite)
+Group.new("NormalFloat", c.white)
+Group.new("FloatBorder", c.white)
+Group.new("lspfloatwinborder", c.white)
 Group.new("NormalNC", c.superwhite:dark(), c.background)
 
 -- nvim groups set
