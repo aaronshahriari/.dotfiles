@@ -17,6 +17,4 @@ if [[ -n $LATEST_SCREENSHOT ]]; then
     else
         notify-send -u low "Screenshot Error" "The screenshot file is empty or couldn't be saved."
     fi
-else
-    notify-send -u low "Screenshot Cancelled"
 fi
