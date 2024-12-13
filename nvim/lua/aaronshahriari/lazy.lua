@@ -23,19 +23,6 @@ require('lazy').setup({
         }
     },
     { "norcalli/nvim-colorizer.lua" },
-    -- { "folke/trouble.nvim" },
-    {
-        "folke/trouble.nvim",
-        opts = {},
-        cmd = "Trouble",
-        keys = {
-            {
-                "<C-x>",
-                "<cmd>Trouble diagnostics toggle<cr>",
-                desc = "Diagnostics (Trouble)",
-            },
-        }
-    },
     {
         "hrsh7th/nvim-cmp",
         lazy = false,

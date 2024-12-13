@@ -15,8 +15,22 @@ vim.keymap.set("n", "<Left>", "gT")
 vim.keymap.set("n", "<Right>", "gt")
 
 -- used to see diagnostics
--- vim.keymap.set("n", "gl", vim.diagnostic.open_float())
--- vim.keymap.set("n", "<C-x>", vim.diagnostic.setqflist(), { buffer = true })
+local qflist_open = false
+vim.keymap.set("n", "gl", ":lua vim.diagnostic.open_float()<CR>")
+-- vim.keymap.set("n", "<C-x>", ":lua Toggle_qflist()<CR>")
+vim.keymap.set("n", "<C-x>", function()
+    if qflist_open then
+        vim.cmd("cclose")
+        qflist_open = false
+    else
+        vim.diagnostic.setqflist({ open = true, bufnr = 0 })
+        qflist_open = true
+    end
+end, { buffer = true })
+
+-- used to see diagnostics
+vim.keymap.set("n", "gl", ":lua vim.diagnostic.open_float()")
+vim.keymap.set("n", "<C-x>", ":lua vim.diagnostic.setqflist(), { buffer = true }")
 
 -- Map to change split size
 vim.keymap.set("n", "<leader>h", "<C-w>10<")
