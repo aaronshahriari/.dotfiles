@@ -17,7 +17,6 @@ vim.keymap.set("n", "<Right>", "gt")
 -- used to see diagnostics
 local qflist_open = false
 vim.keymap.set("n", "gl", ":lua vim.diagnostic.open_float()<CR>")
--- vim.keymap.set("n", "<C-x>", ":lua Toggle_qflist()<CR>")
 vim.keymap.set("n", "<C-x>", function()
     if qflist_open then
         vim.cmd("cclose")
