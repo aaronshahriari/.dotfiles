@@ -15,9 +15,9 @@ vim.keymap.set("n", "<Left>", "gT")
 vim.keymap.set("n", "<Right>", "gt")
 
 -- used to see diagnostics
-vim.keymap.set("n", "gl", ":lua vim.diagnostic.open_float()<CR>")
+vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
 -- used to full diagnostics in qflist
--- vim.keymap.set("n", "<C-x>", vim.diagnostic.setqflist({ open = true, bufnr = 0 }))
+vim.keymap.set("n", "<C-x>", function() vim.diagnostic.setqflist({ open = true, bufnr = 0 }) end)
 
 -- Map to change split size
 vim.keymap.set("n", "<leader>h", "<C-w>10<")

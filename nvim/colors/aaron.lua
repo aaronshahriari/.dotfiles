@@ -30,7 +30,7 @@ Group.new("DiagnosticOk", c.green)
 Group.new("DiagnosticWarn", c.orange)
 Group.new("DiagnosticHint", c.violet)
 Group.new("DiagnosticInfo", c.purple)
-Group.new("QuickFixLine", c.background, c.red)
+Group.new("QuickFixLine", c.red, c.background)
 
 -- CURSORS
 Group.new("CursorLine", c.white, c.background)
