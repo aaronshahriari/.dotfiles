@@ -28,10 +28,6 @@ vim.keymap.set("n", "<C-x>", function()
     end
 end, { buffer = true })
 
--- used to see diagnostics
-vim.keymap.set("n", "gl", ":lua vim.diagnostic.open_float()")
-vim.keymap.set("n", "<C-x>", ":lua vim.diagnostic.setqflist(), { buffer = true }")
-
 -- Map to change split size
 vim.keymap.set("n", "<leader>h", "<C-w>10<")
 vim.keymap.set("n", "<leader>l", "<C-w>10>")
