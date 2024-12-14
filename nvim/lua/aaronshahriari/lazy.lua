@@ -74,7 +74,7 @@ require('lazy').setup({
     },
 
     -- new theme
-    { "bluz71/vim-moonfly-colors",  name = "moonfly", lazy = false, priority = 1000 },
+    { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
     {
         "nvim-treesitter/nvim-treesitter",
         tag = "v0.9.2",
