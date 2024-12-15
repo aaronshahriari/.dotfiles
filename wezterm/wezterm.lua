@@ -68,11 +68,13 @@ config.keys = {
     -- { key = "9", mods = "LEADER",       action = wezterm.action { ActivateTab = 8 } },
     -- { key = "d", mods = "LEADER",       action = wezterm.action { CloseCurrentTab = { confirm = true } } },
     -- { key = "x", mods = "LEADER",       action = wezterm.action { CloseCurrentPane = { confirm = true } } },
-    {
-        key = 'w',
-        mods = 'CTRL|SHIFT',
-        action = wezterm.action.CloseCurrentTab { confirm = false },
-    },
+    -- {
+    --     key = 'w',
+    --     mods = 'CTRL|SHIFT',
+    --     action = wezterm.action.CloseCurrentTab { confirm = false },
+    -- },
+    { key = 'T', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
+    { key = 'X', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
     {
         key = 'Backspace',
         mods = 'CTRL',
