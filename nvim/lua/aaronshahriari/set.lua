@@ -46,12 +46,11 @@ vim.opt.cursorline = false
 -- change in builtin.lua found here -> ~\Local\nvim-data\site\pack\packer\start\midnight\lua\midnight\highlight
 -- vim.cmd('highlight NonText guifg=#575757')
 
--- create a new autocmd in the augroup
-local augroup = vim.api.nvim_create_augroup("TermWindowConfig", { clear = true })
+-- create terminal config
 vim.api.nvim_create_autocmd("TermOpen", {
-    group = augroup,
-    pattern = "*",
+    group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
     callback = function()
-        vim.opt_local.scrolloff = 0
+        vim.opt.number = false
+        vim.opt.relativenumber = false
     end,
 })

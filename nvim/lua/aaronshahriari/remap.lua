@@ -55,31 +55,19 @@ vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]])
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/bin/scripts/tmux-sessionizer.sh<CR>")
 
 -- define a function for creating a small terminal
--- entering the current directory of file you are inside
-function Small_terminal()
-    vim.cmd("new")
-    vim.cmd("wincmd J")
+vim.keymap.set("n", "<leader>st", function()
+    vim.cmd.new()
+    vim.cmd.term()
+    vim.cmd.wincmd("J")
     vim.api.nvim_win_set_height(0, 12)
-    vim.cmd("term")
-    -- if i want to auto start typing
-    -- vim.api.nvim_feedkeys("a", "n", true)
-end
-
--- Create a mapping for the small terminal function
-vim.keymap.set("n", "<leader>st", ":lua Small_terminal()<CR>")
+end)
 
 -- Define a function for creating a split terminal
--- opens in the directory entered before vim
-function Split_terminal()
-    vim.cmd("new")
-    vim.cmd("wincmd L")
-    vim.cmd("wincmd =")
-    vim.cmd("term")
-    -- vim.api.nvim_feedkeys("a", "n", true)
-end
-
--- Create a mapping for the small terminal function
-vim.keymap.set("n", "<leader>t", ":lua Split_terminal()<CR>")
+vim.keymap.set("n", "<leader>t", function()
+    vim.cmd.new()
+    vim.cmd.term()
+    vim.cmd.wincmd("L")
+end)
 
 -- source lua file
 vim.keymap.set("n", "<leader><leader>", function()

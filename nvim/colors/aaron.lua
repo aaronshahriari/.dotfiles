@@ -24,6 +24,14 @@ Color.new('seagreen', '#698b69')
 Color.new('turquoise', '#698b69')
 Color.new("background", '#000000')
 
+-- MARKDOWN
+Group.new("@text.title.1.markdown", c.green)
+Group.new("@text.title.2.markdown", c.purple)
+Group.new("@text.title.3.markdown", c.orange)
+
+-- COMPLETION
+Group.new("PmenuSel", c.none, c.black)
+
 -- DIAGNOSTICS
 Group.new("DiagnosticError", c.red)
 Group.new("DiagnosticOk", c.green)
@@ -35,7 +43,7 @@ Group.new("QuickFixLine", c.red, c.background)
 -- CURSORS
 Group.new("CursorLine", c.white, c.background)
 
--- floats
+-- FLOATS
 Group.new("NormalFloat", c.white)
 Group.new("FloatBorder", c.white)
 Group.new("lspfloatwinborder", c.white)
