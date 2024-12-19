@@ -27,7 +27,7 @@ Color.new("background", '#000000')
 -- MARKDOWN
 Group.new("@text.title.1.markdown", c.green)
 Group.new("@text.title.2.markdown", c.purple)
-Group.new("@text.title.3.markdown", c.orange)
+Group.new("@text.title.3.markdown", c.light_white)
 
 -- COMPLETION
 Group.new("PmenuSel", c.none, c.black)
