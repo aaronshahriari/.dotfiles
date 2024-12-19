@@ -4,18 +4,6 @@ return {
   config = function()
     local capabilities = require("blink.cmp").get_lsp_capabilities()
     local lspconfig = require("lspconfig")
-    local _border = "single"
-
-    -- Add the border on hover and on signature help popup window
-    local handlers = {
-      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = _border }),
-      ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = _border }),
-    }
-
-    -- Add border to the diagnostic popup window
-    vim.diagnostic.config({
-      float = { border = _border },
-    })
 
     -- setup for lua
     lspconfig.lua_ls.setup({
