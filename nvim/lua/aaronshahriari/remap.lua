@@ -9,6 +9,7 @@ vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>")
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>")
+vim.keymap.set("n", "<C-T>", "<C-w>T")
 
 -- Map these to move through tabs
 vim.keymap.set("n", "<Left>", "gT")
@@ -16,8 +17,9 @@ vim.keymap.set("n", "<Right>", "gt")
 
 -- used to see diagnostics
 vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
--- used to full diagnostics in qflist
-vim.keymap.set("n", "<C-x>", function() vim.diagnostic.setqflist({ open = true, bufnr = 0 }) end)
+
+-- used to single file diagnostics in qflist
+vim.keymap.set("n", "<C-x>", ":Telescope diagnostics<CR>")
 
 -- Map to change split size
 vim.keymap.set("n", "<leader>h", "<C-w>10<")
