@@ -3,16 +3,19 @@ local wezterm = require('wezterm')
 
 -- create datetime bottom right
 wezterm.on('update-right-status', function(window)
-    local date = wezterm.strftime '%m-%d-%Y %H:%M'
+  local date = wezterm.strftime '%m-%d-%Y %H:%M'
 
-    -- Make it italic and underlined
-    window:set_right_status(wezterm.format {
-        { Text = date },
-    })
+  -- Make it italic and underlined
+  window:set_right_status(wezterm.format {
+    { Text = date },
+  })
 end)
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
+
+-- keep from getting blocks in terminal
+config.front_end = "WebGpu"
 
 -- setup color_scheme
 -- config.color_scheme = 'Pastel White (terminal.sexy)'
@@ -39,55 +42,55 @@ config.enable_tab_bar = false
 -- config.leader = { key = "Space", mods = "CTRL" }
 -- active copy mode via Ctrl+Shift+x
 config.keys = {
-    -- {
-    --     key = 'f',
-    --     mods = 'CTRL',
-    --     action = wezterm.action_callback(function(window, pane)
-    --         sessionizer.select_and_open_directory_in_new_tab(window, pane)
-    --     end),
-    -- },
-    -- { key = "c", mods = "LEADER",       action = wezterm.action { SpawnTab = "CurrentPaneDomain" } },
-    -- { key = "h", mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Left" } },
-    -- { key = "j", mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Down" } },
-    -- { key = "k", mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Up" } },
-    -- { key = "l", mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Right" } },
-    -- { key = "H", mods = "LEADER|SHIFT", action = wezterm.action { AdjustPaneSize = { "Left", 5 } } },
-    -- { key = "J", mods = "LEADER|SHIFT", action = wezterm.action { AdjustPaneSize = { "Down", 5 } } },
-    -- { key = "K", mods = "LEADER|SHIFT", action = wezterm.action { AdjustPaneSize = { "Up", 5 } } },
-    -- { key = "L", mods = "LEADER|SHIFT", action = wezterm.action { AdjustPaneSize = { "Right", 5 } } },
-    -- { key = "s", mods = "LEADER",       action = wezterm.action { SplitVertical = { domain = "CurrentPaneDomain" } } },
-    -- { key = "v", mods = "LEADER",       action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
-    -- { key = "1", mods = "LEADER",       action = wezterm.action { ActivateTab = 0 } },
-    -- { key = "2", mods = "LEADER",       action = wezterm.action { ActivateTab = 1 } },
-    -- { key = "3", mods = "LEADER",       action = wezterm.action { ActivateTab = 2 } },
-    -- { key = "4", mods = "LEADER",       action = wezterm.action { ActivateTab = 3 } },
-    -- { key = "5", mods = "LEADER",       action = wezterm.action { ActivateTab = 4 } },
-    -- { key = "6", mods = "LEADER",       action = wezterm.action { ActivateTab = 5 } },
-    -- { key = "7", mods = "LEADER",       action = wezterm.action { ActivateTab = 6 } },
-    -- { key = "8", mods = "LEADER",       action = wezterm.action { ActivateTab = 7 } },
-    -- { key = "9", mods = "LEADER",       action = wezterm.action { ActivateTab = 8 } },
-    -- { key = "d", mods = "LEADER",       action = wezterm.action { CloseCurrentTab = { confirm = true } } },
-    -- { key = "x", mods = "LEADER",       action = wezterm.action { CloseCurrentPane = { confirm = true } } },
-    -- {
-    --     key = 'w',
-    --     mods = 'CTRL|SHIFT',
-    --     action = wezterm.action.CloseCurrentTab { confirm = false },
-    -- },
-    { key = 'T', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
-    { key = 'X', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
-    {
-        key = 'Backspace',
-        mods = 'CTRL',
-        action = wezterm.action.SendString("\x17"),
-    },
+  -- {
+  --     key = 'f',
+  --     mods = 'CTRL',
+  --     action = wezterm.action_callback(function(window, pane)
+  --         sessionizer.select_and_open_directory_in_new_tab(window, pane)
+  --     end),
+  -- },
+  -- { key = "c", mods = "LEADER",       action = wezterm.action { SpawnTab = "CurrentPaneDomain" } },
+  -- { key = "h", mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Left" } },
+  -- { key = "j", mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Down" } },
+  -- { key = "k", mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Up" } },
+  -- { key = "l", mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Right" } },
+  -- { key = "H", mods = "LEADER|SHIFT", action = wezterm.action { AdjustPaneSize = { "Left", 5 } } },
+  -- { key = "J", mods = "LEADER|SHIFT", action = wezterm.action { AdjustPaneSize = { "Down", 5 } } },
+  -- { key = "K", mods = "LEADER|SHIFT", action = wezterm.action { AdjustPaneSize = { "Up", 5 } } },
+  -- { key = "L", mods = "LEADER|SHIFT", action = wezterm.action { AdjustPaneSize = { "Right", 5 } } },
+  -- { key = "s", mods = "LEADER",       action = wezterm.action { SplitVertical = { domain = "CurrentPaneDomain" } } },
+  -- { key = "v", mods = "LEADER",       action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
+  -- { key = "1", mods = "LEADER",       action = wezterm.action { ActivateTab = 0 } },
+  -- { key = "2", mods = "LEADER",       action = wezterm.action { ActivateTab = 1 } },
+  -- { key = "3", mods = "LEADER",       action = wezterm.action { ActivateTab = 2 } },
+  -- { key = "4", mods = "LEADER",       action = wezterm.action { ActivateTab = 3 } },
+  -- { key = "5", mods = "LEADER",       action = wezterm.action { ActivateTab = 4 } },
+  -- { key = "6", mods = "LEADER",       action = wezterm.action { ActivateTab = 5 } },
+  -- { key = "7", mods = "LEADER",       action = wezterm.action { ActivateTab = 6 } },
+  -- { key = "8", mods = "LEADER",       action = wezterm.action { ActivateTab = 7 } },
+  -- { key = "9", mods = "LEADER",       action = wezterm.action { ActivateTab = 8 } },
+  -- { key = "d", mods = "LEADER",       action = wezterm.action { CloseCurrentTab = { confirm = true } } },
+  -- { key = "x", mods = "LEADER",       action = wezterm.action { CloseCurrentPane = { confirm = true } } },
+  -- {
+  --     key = 'w',
+  --     mods = 'CTRL|SHIFT',
+  --     action = wezterm.action.CloseCurrentTab { confirm = false },
+  -- },
+  { key = 'T', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
+  { key = 'X', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
+  {
+    key = 'Backspace',
+    mods = 'CTRL',
+    action = wezterm.action.SendString("\x17"),
+  },
 }
 
 -- setup padding
 config.window_padding = {
-    left = 0,
-    right = 0,
-    top = 0,
-    bottom = 0,
+  left = 0,
+  right = 0,
+  top = 0,
+  bottom = 0,
 }
 
 -- define file to set font-size
@@ -104,11 +107,11 @@ mode = mode:gsub("%s+$", "") -- this removes any trailing whitespace (including 
 
 -- check for specific values
 if mode == "home-two" then
-    config.font_size = 14
+  config.font_size = 14
 elseif mode == "laptop" then
-    config.font_size = 19
+  config.font_size = 19
 else
-    config.font_size = 15
+  config.font_size = 15
 end
 
 -- use this for logging
