@@ -31,6 +31,8 @@ Group.new("@text.title.3.markdown", c.purple)
 
 -- COMPLETION
 Group.new("PmenuSel", c.none, c.black)
+Group.new("Pmenu", c.none, c.light_white)
+Group.new("BlinkCmpMenuSelection", c.none, c.light_white)
 
 -- DIAGNOSTICS
 Group.new("DiagnosticError", c.red)
