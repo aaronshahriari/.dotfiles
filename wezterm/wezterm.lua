@@ -2,14 +2,14 @@
 local wezterm = require('wezterm')
 
 -- create datetime bottom right
-wezterm.on('update-right-status', function(window)
-  local date = wezterm.strftime '%m-%d-%Y %H:%M'
-
-  -- Make it italic and underlined
-  window:set_right_status(wezterm.format {
-    { Text = date },
-  })
-end)
+-- wezterm.on('update-right-status', function(window)
+--   local date = wezterm.strftime '%m-%d-%Y %H:%M'
+--
+--   -- Make it italic and underlined
+--   window:set_right_status(wezterm.format {
+--     { Text = date },
+--   })
+-- end)
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
@@ -21,7 +21,7 @@ config.front_end = "WebGpu"
 -- config.color_scheme = 'Pastel White (terminal.sexy)'
 config.color_scheme = '3024 (base16)'
 
-config.window_close_confirmation = 'NeverPrompt'
+-- config.window_close_confirmation = 'NeverPrompt'
 
 -- turn off bell
 config.audible_bell = "Disabled"

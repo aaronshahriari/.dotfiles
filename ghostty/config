@@ -1,0 +1,20 @@
+# font
+font-family = "CaskaydiaCove Nerd Font Mono"
+font-size = 14
+
+# THEME
+theme = 3024 Night
+
+# cursor
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = false
+mouse-hide-while-typing = true
+
+# upper window stuff
+gtk-titlebar = false
+
+# keybinds
+keybind = ctrl+shift+t=unbind
+keybind = ctrl+shift+w=unbind
+keybind = ctrl+backspace=text:\x17
