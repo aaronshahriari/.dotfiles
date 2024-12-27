@@ -2,8 +2,10 @@
 font-family = "CaskaydiaCove Nerd Font Mono"
 font-size = 14
 
-# THEME
+# window stuff
 theme = 3024 Night
+confirm-close-surface = false
+resize-overlay = never
 
 # cursor
 shell-integration-features = no-cursor
