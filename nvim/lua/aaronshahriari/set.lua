@@ -1,7 +1,7 @@
 -- not allow the mouse
 -- vim.o.mouse = ""
 
-vim.opt.guicursor = "a:blinkon100"
+vim.opt.guicursor = "a:blinkon0"
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -48,9 +48,9 @@ vim.opt.cursorline = false
 
 -- create terminal config
 vim.api.nvim_create_autocmd("TermOpen", {
-    group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
-    callback = function()
-        vim.opt.number = false
-        vim.opt.relativenumber = false
-    end,
+  group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
+  callback = function()
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+  end,
 })
