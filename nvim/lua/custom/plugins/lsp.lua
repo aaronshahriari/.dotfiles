@@ -7,11 +7,8 @@ return {
 
     -- setup for html
     lspconfig.html.setup({
-
       capabilities = capabilities,
-
-      filetypes = { "html", "templ", "elixir" },
-
+      filetypes = { "html", "templ", "heex" },
       init_options = {
         configurationSection = { "html", "css", "javascript", "elixir", "eelixir", "heex", "surface" },
         embeddedLanguages = {
