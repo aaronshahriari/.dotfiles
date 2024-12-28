@@ -5,6 +5,26 @@ return {
     local capabilities = require("blink.cmp").get_lsp_capabilities()
     local lspconfig = require("lspconfig")
 
+    -- setup for html
+    lspconfig.html.setup({
+
+      capabilities = capabilities,
+
+      filetypes = { "html", "templ", "elixir" },
+
+      init_options = {
+        configurationSection = { "html", "css", "javascript", "elixir", "eelixir", "heex", "surface" },
+        embeddedLanguages = {
+          css = true,
+          javascript = true,
+          elixir = true,
+          eelixir = true,
+          heex = true,
+        },
+        provideFormatter = true,
+      },
+    })
+
     -- setup for lua
     lspconfig.lua_ls.setup({
       capabilities = capabilities,
