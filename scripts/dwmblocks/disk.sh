@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 case $BLOCK_BUTTON in
-	6) setsid -f "wezterm" -e "nvim" "$0" ;;
+	6) setsid -f "ghostty" -e "nvim" "$0" ;;
 esac
 
 # home for now

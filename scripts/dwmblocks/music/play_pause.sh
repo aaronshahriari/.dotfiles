@@ -3,7 +3,7 @@
 case $BLOCK_BUTTON in
     1) playerctl play-pause;
         kill -43 $(pidof dwmblocks) ;; 
-	6) setsid -f "wezterm" -e "nvim" "$0" ;;
+	6) setsid -f "ghostty" -e "nvim" "$0" ;;
 esac
 
 # check if playerctl is on

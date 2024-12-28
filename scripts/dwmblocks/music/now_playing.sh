@@ -7,7 +7,7 @@ case $BLOCK_BUTTON in
         kill -42 $(pidof dwmblocks) ;; 
     3) playerctl next;
         kill -42 $(pidof dwmblocks) ;; 
-	6) setsid -f "wezterm" -e "nvim" "$0" ;;
+	6) setsid -f "ghostty" -e "nvim" "$0" ;;
 esac
 
 # check if playerctl is on
