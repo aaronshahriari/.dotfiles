@@ -3,7 +3,8 @@ font-family = "CaskaydiaCove Nerd Font Mono"
 font-size = 14
 
 # window stuff
-theme = 3024 Night
+# theme = 3024 Night
+theme = Dark Pastel
 confirm-close-surface = false
 resize-overlay = never
 

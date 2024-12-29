@@ -18,7 +18,7 @@ return {
           eelixir = true,
           heex = true,
         },
-        provideFormatter = true,
+        provideFormatter = false,
       },
     })
 
