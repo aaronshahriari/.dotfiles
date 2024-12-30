@@ -16,8 +16,8 @@ vim.keymap.set("n", "<Left>", "gT")
 vim.keymap.set("n", "<Right>", "gt")
 
 -- Map these to move through tabs
-vim.keymap.set("n", "<S-Left>", vim.cmd(":-tabmove"))
-vim.keymap.set("n", "<S-Right>", vim.cmd(":+tabmove"))
+vim.keymap.set("n", "<S-Left>", function() vim.cmd("tabmove -1") end)
+vim.keymap.set("n", "<S-Right>", function() vim.cmd("tabmove +1") end)
 
 -- used to see diagnostics
 vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
