@@ -13,6 +13,6 @@ case "$(printf "Wallpaper\nLogitech Mouse\nTouchpad\nDWMBlocks\n" | dmenu -m 0 -
         ;;
     "Restart DWMBlocks")
         pkill dwmblocks
-        dwmblocks &
+        nohup dwmblocks & disown
         ;;
 esac
