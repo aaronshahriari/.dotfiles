@@ -6,4 +6,3 @@ xinput set-prop "pointer:PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabl
 xinput set-prop "pointer:PIXA3854:00 093A:0274 Touchpad" "libinput Scrolling Pixel Distance" 50
 xsetroot -cursor_name left_ptr
 xset s 300 5
-xss-lock -l -- xsecurelock
