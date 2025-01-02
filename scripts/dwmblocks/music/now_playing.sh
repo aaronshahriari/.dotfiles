@@ -19,7 +19,6 @@ player_status="$(playerctl metadata 2>&1)"
 if [ "$player_status" = "No players found" ]; then
     printf ""
 else
-    # curr_song="$(playerctl metadata --format '{{ artist }} - {{ title }}')"
-    curr_song="$(playerctl metadata --format '{{ artist }} - {{ title }}' | tr -d '\r' | sed 's/[^[:print:]]//g' | awk '{$1=$1; print}')"
+    curr_song="$(playerctl metadata --format '{{ artist }} - {{ title }}')"
     printf "^c#6e8387^%s^d^\n" "$curr_song"
 fi
