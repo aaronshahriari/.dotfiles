@@ -20,5 +20,5 @@ if [ "$player_status" = "No players found" ]; then
     printf ""
 else
     curr_song="$(playerctl metadata --format '{{ artist }} - {{ title }}')"
-    printf "^c#6e8387^%s ^d^" "$curr_song"
+    printf "^c#6e8387^%s^d^\n" "$curr_song"
 fi
