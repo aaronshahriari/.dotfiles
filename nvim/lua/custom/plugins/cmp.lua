@@ -14,6 +14,8 @@ return {
   config = function()
     local cmp = require("cmp")
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
 
     cmp.setup({
       snippet = {

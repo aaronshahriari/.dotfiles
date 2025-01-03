@@ -2,12 +2,17 @@ return {
   "neovim/nvim-lspconfig",
   config = function()
     local lspconfig = require("lspconfig")
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
 
     -- setup for tailwindcss
-    lspconfig.tailwindcss.setup({})
+    lspconfig.tailwindcss.setup({
+      capabilities = capabilities,
+    })
 
     -- setup for html
     lspconfig.html.setup({
+      capabilities = capabilities,
       filetypes = { "html", "templ", "heex" },
       init_options = {
         configurationSection = { "html", "css", "javascript", "elixir", "eelixir", "heex", "surface" },
@@ -24,6 +29,7 @@ return {
 
     -- setup for lua
     lspconfig.lua_ls.setup({
+      capabilities = capabilities,
       settings = {
         Lua = {
           diagnostics = {
@@ -35,6 +41,7 @@ return {
 
     -- setup for nix
     lspconfig.nil_ls.setup({
+      capabilities = capabilities,
       settings = {
         ['nil'] = {
           formatting = {
