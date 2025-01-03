@@ -13,7 +13,7 @@ return {
       workspaces = {
         {
           name = "Personal",
-          path = "~/aaron_linux_vault/",
+          path = "~/personal/AaronVault/",
         },
         {
           name = "BrundageGroup",
