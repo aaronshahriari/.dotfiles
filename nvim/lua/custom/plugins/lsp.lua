@@ -1,13 +1,10 @@
 return {
   "neovim/nvim-lspconfig",
-  dependencies = { 'saghen/blink.cmp' },
   config = function()
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
     local lspconfig = require("lspconfig")
 
     -- setup for html
     lspconfig.html.setup({
-      capabilities = capabilities,
       filetypes = { "html", "templ", "heex" },
       init_options = {
         configurationSection = { "html", "css", "javascript", "elixir", "eelixir", "heex", "surface" },
@@ -24,7 +21,6 @@ return {
 
     -- setup for lua
     lspconfig.lua_ls.setup({
-      capabilities = capabilities,
       handlers = handlers,
       settings = {
         Lua = {
