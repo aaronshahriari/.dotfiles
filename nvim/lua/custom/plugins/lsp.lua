@@ -8,6 +8,15 @@ return {
     -- setup for tailwindcss
     lspconfig.tailwindcss.setup({
       capabilities = capabilities,
+      tailwindCSS = {
+        includeLanguages = {
+          eelixir = "html-eex",
+          eruby = "erb",
+          htmlangular = "html",
+          templ = "html"
+        },
+        validate = true
+      }
     })
 
     -- setup for html
