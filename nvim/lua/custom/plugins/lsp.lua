@@ -3,6 +3,9 @@ return {
   config = function()
     local lspconfig = require("lspconfig")
 
+    -- setup for tailwindcss
+    lspconfig.tailwindcss.setup({})
+
     -- setup for html
     lspconfig.html.setup({
       filetypes = { "html", "templ", "heex" },
