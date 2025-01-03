@@ -24,7 +24,6 @@ return {
 
     -- setup for lua
     lspconfig.lua_ls.setup({
-      handlers = handlers,
       settings = {
         Lua = {
           diagnostics = {
