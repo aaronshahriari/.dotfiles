@@ -8,14 +8,21 @@ return {
     -- setup for tailwindcss
     lspconfig.tailwindcss.setup({
       capabilities = default_capabilities,
-      tailwindCSS = {
-        includeLanguages = {
+      init_options = {
+        userLanguages = {
+          elixir = "html-eex",
           eelixir = "html-eex",
-          eruby = "erb",
-          htmlangular = "html",
-          templ = "html"
+          heex = "html-eex",
         },
-        validate = true
+      },
+      settings = {
+        tailwindCSS = {
+          experimental = {
+            classRegex = {
+              'class[:]\\s*"([^"]*)"',
+            },
+          },
+        },
       }
     })
 
