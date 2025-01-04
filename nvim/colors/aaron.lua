@@ -33,7 +33,11 @@ Group.new("@text.title.3.markdown", c.purple)
 -- COMPLETION
 Group.new("PmenuSel", c.none, c.black)
 Group.new("Pmenu", c.none, c.dark_grey)
-Group.new("CmpItemMenu", c.none, c.dark_grey)
+Group.new("CmpItemAbbr", c.none, c.dark_grey)
+Group.new("CmpItemAbbrMatch", c.none, c.dark_grey)
+Group.new("CmpItemKindFunction", c.none, c.dark_grey)
+Group.new("CmpItemKindVariable", c.none, c.dark_grey)
+Group.new("CmpItemKindKeyword", c.none, c.dark_grey)
 
 -- DIAGNOSTICS
 Group.new("DiagnosticError", c.red)
