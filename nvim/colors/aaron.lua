@@ -52,7 +52,7 @@ Group.new("QuickFixLine", c.red, c.background)
 Group.new("CursorLine", c.white, c.background)
 
 -- FLOATS
-Group.new("NormalFloat", c.dark_grey, c.white)
+Group.new("NormalFloat", c.none, c.dark_grey)
 Group.new("FloatBorder", c.white)
 Group.new("lspfloatwinborder", c.white)
 Group.new("NormalNC", c.superwhite:dark(), c.background)
