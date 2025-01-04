@@ -9,6 +9,7 @@ local s = colorbuddy.styles
 
 Color.new('white', '#d9d9d9')
 Color.new('light_white', '#424242')
+Color.new('dark_grey', '#212121')
 Color.new('red', '#cc6666')
 Color.new('pink', '#fef601')
 Color.new('green', '#99cc99')
@@ -31,8 +32,8 @@ Group.new("@text.title.3.markdown", c.purple)
 
 -- COMPLETION
 Group.new("PmenuSel", c.none, c.black)
-Group.new("Pmenu", c.none, c.light_white)
-Group.new("BlinkCmpMenuSelection", c.none, c.light_white)
+Group.new("Pmenu", c.none, c.dark_grey)
+Group.new("CmpItemMenu", c.none, c.dark_grey)
 
 -- DIAGNOSTICS
 Group.new("DiagnosticError", c.red)
