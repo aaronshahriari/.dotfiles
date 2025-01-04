@@ -18,10 +18,10 @@ return {
     cmp.setup({
       window = {
         completion = {
-          border = 'solid', -- Rounded border for completion popup
+          border = 'single', -- Rounded border for completion popup
         },
         documentation = {
-          border = 'solid', -- Rounded border for documentation popup
+          border = 'single', -- Rounded border for documentation popup
         },
       },
       snippet = {
@@ -44,14 +44,14 @@ return {
     })
 
     -- Configure borderd for LspInfo ui
-    require("lspconfig.ui.windows").default_options.border = "solid"
+    require("lspconfig.ui.windows").default_options.border = "single"
 
     vim.diagnostic.config({
       update_in_insert = true,
       float = {
         focusable = false,
         style = "minimal",
-        border = "solid",
+        border = "single",
         source = "always",
         header = "",
         prefix = "",
