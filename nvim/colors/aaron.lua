@@ -34,12 +34,6 @@ Group.new("@text.title.3.markdown", c.purple)
 Group.new("PmenuSel", c.none, c.black)
 Group.new("Pmenu", c.none, c.dark_grey)
 
--- Group.new("CmpItemAbbr", c.none, c.dark_grey)
--- Group.new("CmpItemAbbrMatch", c.none, c.dark_grey)
--- Group.new("CmpItemKindFunction", c.none, c.dark_grey)
--- Group.new("CmpItemKindVariable", c.none, c.dark_grey)
--- Group.new("CmpItemKindKeyword", c.none, c.dark_grey)
-
 -- DIAGNOSTICS
 Group.new("DiagnosticError", c.red)
 Group.new("DiagnosticOk", c.green)
@@ -52,7 +46,7 @@ Group.new("QuickFixLine", c.red, c.background)
 Group.new("CursorLine", c.white, c.background)
 
 -- FLOATS
-Group.new("NormalFloat", c.none, c.dark_grey)
+Group.new("NormalFloat", c.white)
 Group.new("FloatBorder", c.white)
 Group.new("lspfloatwinborder", c.white)
 Group.new("NormalNC", c.superwhite:dark(), c.background)
