@@ -16,6 +16,14 @@ return {
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
     cmp.setup({
+      window = {
+        completion = {
+          border = 'rounded', -- Rounded border for completion popup
+        },
+        documentation = {
+          border = 'rounded', -- Rounded border for documentation popup
+        },
+      },
       snippet = {
         expand = function(args)
           require('luasnip').lsp_expand(args.body)
