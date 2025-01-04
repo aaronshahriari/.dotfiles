@@ -17,11 +17,11 @@ return {
 
     cmp.setup({
       window = {
-        completion = {
-          border = 'single', -- Rounded border for completion popup
-        },
+        -- completion = {
+        --   border = 'single',
+        -- },
         documentation = {
-          border = 'single', -- Rounded border for documentation popup
+          border = 'single',
         },
       },
       snippet = {
