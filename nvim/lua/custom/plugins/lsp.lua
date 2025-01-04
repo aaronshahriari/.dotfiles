@@ -5,8 +5,15 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     local default_capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
+    -- Default handlers for LSP
+    local default_handlers = {
+      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+    }
+
     -- setup for tailwindcss
     lspconfig.tailwindcss.setup({
+      handlers = default_handlers,
       capabilities = default_capabilities,
       init_options = {
         userLanguages = {
@@ -28,6 +35,7 @@ return {
 
     -- setup for html
     lspconfig.html.setup({
+      handlers = default_handlers,
       capabilities = default_capabilities,
       filetypes = { "html", "templ", "heex" },
       init_options = {
@@ -45,6 +53,7 @@ return {
 
     -- setup for lua
     lspconfig.lua_ls.setup({
+      handlers = default_handlers,
       capabilities = default_capabilities,
       settings = {
         Lua = {
@@ -57,6 +66,7 @@ return {
 
     -- setup for nix
     lspconfig.nil_ls.setup({
+      handlers = default_handlers,
       capabilities = default_capabilities,
       settings = {
         ['nil'] = {

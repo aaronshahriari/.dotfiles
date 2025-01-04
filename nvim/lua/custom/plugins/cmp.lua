@@ -35,6 +35,9 @@ return {
       })
     })
 
+    -- Configure borderd for LspInfo ui
+    require("lspconfig.ui.windows").default_options.border = "rounded"
+
     vim.diagnostic.config({
       update_in_insert = true,
       float = {
