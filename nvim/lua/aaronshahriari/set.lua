@@ -43,9 +43,6 @@ vim.opt.conceallevel = 1
 
 vim.opt.cursorline = false
 
--- change in builtin.lua found here -> ~\Local\nvim-data\site\pack\packer\start\midnight\lua\midnight\highlight
--- vim.cmd('highlight NonText guifg=#575757')
-
 -- create terminal config
 vim.api.nvim_create_autocmd("TermOpen", {
   group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
@@ -54,3 +51,31 @@ vim.api.nvim_create_autocmd("TermOpen", {
     vim.opt.relativenumber = false
   end,
 })
+
+-- set tabnames
+vim.o.showtabline = 1 -- always show the tabline
+vim.o.tabline = '%!v:lua.MyTabline()'
+
+-- custom tabline function
+function MyTabline()
+  local s = ''
+  for i = 1, vim.fn.tabpagenr('$') do
+    local winnr = vim.fn.tabpagewinnr(i)           -- get the window number for the tab
+    local bufnr = vim.fn.tabpagebuflist(i)[winnr]  -- get the buffer for the window
+    local bufname = vim.fn.bufname(bufnr)          -- get the buffer name
+    local file = vim.fn.fnamemodify(bufname, ':t') -- extract only the file name
+
+    -- -- handle [No Name] as oil tree
+    if file == '' then
+      file = 'Oil'
+    end
+
+    -- highlight the current tab
+    if i == vim.fn.tabpagenr() then
+      s = s .. '%#TabLineSel# ' .. i .. ': ' .. (file ~= '' and file or '[No Name]') .. ' %#TabLine#'
+    else
+      s = s .. '%#TabLine# ' .. i .. ': ' .. (file ~= '' and file or '[No Name]') .. ' '
+    end
+  end
+  return s
+end
