@@ -72,9 +72,9 @@ function MyTabline()
 
     -- highlight the current tab
     if i == vim.fn.tabpagenr() then
-      s = s .. '%#TabLineSel# ' .. i .. ': ' .. (file ~= '' and file or '[No Name]') .. ' %#TabLine#'
+      s = s .. '%#TabLineSel# ' .. (file ~= '' and file or '[No Name]') .. ' %#TabLine#'
     else
-      s = s .. '%#TabLine# ' .. i .. ': ' .. (file ~= '' and file or '[No Name]') .. ' '
+      s = s .. '%#TabLine# ' .. (file ~= '' and file or '[No Name]') .. ' '
     end
   end
   return s
