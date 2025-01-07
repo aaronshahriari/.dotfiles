@@ -5,5 +5,3 @@ ALL MY .DOTFILES THAT WORKS ON ALL COMPUTERS
 ```
 source $HOME/.dotfiles/zsh/.zsh_profile
 ```
-## TODO
-1. Setup tabs and tab names in neovim
