@@ -18,17 +18,19 @@ bindsym $mod+Shift+s exec ~/.local/bin/scripts/flameshot-screenshot.sh
 bindsym $mod+Shift+d exec --no-startup-id ~/.local/bin/scripts/display-sessionizer.sh dmenu -m 0 -c
 bindsym $mod+Shift+e exec --no-startup-id ~/.local/bin/scripts/device-sessionizer.sh dmenu -m 0 -c
 bindsym $mod+g exec ~/.local/bin/scripts/dmenu-search.sh dmenu -m 0 -c
-bindsym $mod+minus exec wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-bindsym $mod+equal exec wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-bindsym $mod+Shift+m exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym $mod+minus exec "amixer set Master 5%- unmute"
+bindsym $mod+equal exec "amixer set Master 5%+ unmute"
+# bindsym $mod+Shift+m exec 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'
+bindsym $mod+Shift+m exec "amixer set Master toggle"
 bindsym $mod+Shift+minus exec ~/.local/bin/scripts/dec_brightness.sh
 bindsym $mod+Shift+equal exec ~/.local/bin/scripts/inc_brightness.sh
-bindsym $mod+XF86AudioPlay exec ~/.local/bin/scripts/dwmblocks/music/keyboard/play-pause.sh
-bindsym $mod+XF86XK_AudioNext exec playerctl next
-bindsym $mod+XF86XK_AudioNext exec playerctl previous
+# bindsym $mod+XF86AudioPlay exec ~/.local/bin/scripts/dwmblocks/music/keyboard/play-pause.sh
+# bindsym $mod+XF86XK_AudioNext exec playerctl next
+# bindsym $mod+XF86XK_AudioNext exec playerctl previous
 
 # ON STARTUP
-bindsym $mod+d exec --no-startup-id dmenu_run -m
+bindsym $mod+d exec --no-startup-id dmenu_run -m 0
+# bindsym $mod+d exec --no-startup-id dmenu_run -nb '#000000' -sf '#000000' -sb '#67A86C' -nf '#67A86C' -fn 'JetbrainsMono-11'
 exec_always --no-startup-id picom -b &
 exec_always --no-startup-id $HOME/.local/bin/scripts/autostart.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
