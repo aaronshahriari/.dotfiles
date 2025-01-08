@@ -15,6 +15,7 @@ Color.new('pink', '#fef601')
 Color.new('green', '#99cc99')
 Color.new('yellow', '#f8fe7a')
 Color.new('blue', '#81a2be')
+Color.new('dark_blue', '#070738')
 Color.new('aqua', '#8ec07c')
 Color.new('cyan', '#8abeb7')
 Color.new('purple', '#8e6fbd')
@@ -31,7 +32,7 @@ Group.new("@text.title.2.markdown", c.orange)
 Group.new("@text.title.3.markdown", c.purple)
 
 -- COMPLETION
-Group.new("PmenuSel", c.none, c.black)
+Group.new("PmenuSel", c.none, c.dark_blue)
 Group.new("Pmenu", c.none, c.dark_grey)
 
 -- DIAGNOSTICS
