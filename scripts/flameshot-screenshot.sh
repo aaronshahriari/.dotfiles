@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # set the directory to save the screenshot
-SCREENSHOT_DIR="/home/aaronshahriari/Pictures/Screenshots/"
+SCREENSHOT_DIR="$HOME/Pictures/Screenshots/"
 
 # take a screenshot without notifications and save it in the directory
 flameshot gui -c -p $SCREENSHOT_DIR
