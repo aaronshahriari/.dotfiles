@@ -3,8 +3,8 @@ return {
   config = function()
     vim.keymap.set("n", "<leader>gs", function()
       vim.cmd.Git
-      vim.cmd("resize 15")
-    end)
+      vim.cmd.resize("15")
+    end))
     local AaronShahriari = vim.api.nvim_create_augroup("AaronShahriari", {})
     local autocmd = vim.api.nvim_create_autocmd
     autocmd("BufWinEnter", {
