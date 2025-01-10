@@ -5,4 +5,4 @@ case $BLOCK_BUTTON in
 esac
 
 date_str=$(date "+%D %I:%M%p")
-printf "^c#ffffff^%s ^d^" "$date_str"
+printf "^c#ffffff^%s^d^" "$date_str"

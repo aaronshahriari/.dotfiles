@@ -9,4 +9,4 @@ esac
 
 power_icon="⏻"
 
-printf "^c#6e8387^%s ^d^" "$power_icon"
+printf "^c#6e8387^%s  ^d^" "$power_icon"
