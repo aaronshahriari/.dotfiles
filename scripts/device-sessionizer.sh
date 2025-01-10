@@ -1,23 +1,16 @@
 #!/usr/bin/env bash
 
-export XSECURELOCK_PASSWORD_PROMPT="asterisks"
-export XSECURELOCK_AUTH_CURSOR_BLINK=0
-export XSECURELOCK_SAVER=~/.local/bin/scripts/xsecurelock-background.sh
-export XSECURELOCK_AUTH_BACKGROUND_COLOR="#337690"
-export XSECURELOCK_SINGLE_AUTH_WINDOW=0
-export XSECURELOCK_AUTH_FOREGROUND_COLOR="#000000"
-export XSECURELOCK_SHOW_DATETIME=1
-export XSECURELOCK_FONT="CaskaydiaCove Nerd Font"
-export XSECURELOCK_DATETIME_FORMAT="%D %I:%M%p"
-export XSECURELOCK_SHOW_KEYBOARD_LAYOUT=0
-export XSECURELOCK_DEBUG_WINDOW_INFO=1
-
-case "$(printf "Lock\nSleep\nReboot\nShutdown\n" | dmenu -i -l 10 -p "System:")" in
+case "$(printf "Lock\nSleep\nSwitch User\nReboot\nShutdown\n" | dmenu -i -l 10 -p "System:")" in
     "Lock") xsecurelock ;;
     "Sleep")
         systemctl suspend
         xsecurelock
         ;;
+    "Switch User")
+        case "$(printf "Yes\nNo" | dmenu -i -l 10 -p "Are You Sure:")" in
+            "Yes") dm-tool switch-to-greeter ;;
+            *) exit 1 ;;
+        esac ;;
     "Reboot")
         case "$(printf "Yes\nNo" | dmenu -i -l 10 -p "Are You Sure:")" in
             "Yes") reboot ;;
