@@ -11,8 +11,8 @@ case "$(printf "Wallpaper\nLogitech Mouse\nTouchpad\nDWMBlocks\n" | dmenu -m 0 -
         xinput set-prop "pointer:PIXA3854:00 093A:0274 Touchpad" "libinput Scrolling Pixel Distance" 50
         xinput set-prop "pointer:PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 0
         ;;
-    "Restart DWMBlocks")
+    "DWMBlocks")
         pkill dwmblocks
-        nohup dwmblocks & disown
+        nohup dwmblocks > /dev/null 2>&1 & disown
         ;;
 esac
