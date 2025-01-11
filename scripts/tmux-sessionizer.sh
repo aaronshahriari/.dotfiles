@@ -23,7 +23,10 @@ hydrate() {
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/personal/AaronVault ~/github ~/ ~/work ~/personal -mindepth 1 -maxdepth 1 -type d | fzf)
+    if [[ $USER == "aaronshahriari" ]]; then
+        selected=$(find ~/personal/AaronVault ~/github ~/ ~/work ~/personal -mindepth 1 -maxdepth 1 -type d | fzf)
+    elif [[ $USER == "aaronshahriari_work" ]]; then
+        selected=$(find ~/github ~/nixos-config ~/ ~/work -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
