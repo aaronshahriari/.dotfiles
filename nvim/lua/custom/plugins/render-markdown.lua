@@ -18,20 +18,14 @@ return {
       indent = { enabled = false, },
       checkbox = {
         enabled = true,
-        position = 'inline',
+        position = 'overlay',
         unchecked = {
           icon = ' ',
-          -- highlight for the unchecked icon
-          -- highlight = 'RenderMarkdownUnchecked',
-          -- highlight for item associated with unchecked checkbox
           scope_highlight = nil,
         },
         checked = {
           icon = ' ',
-          -- highlight for the checked icon
-          -- highlight = 'RenderMarkdownChecked',
-          -- highlight for item associated with checked checkbox
-          scope_highlight = nil,
+          scope_highlight = '@markup.strikethrough',
         },
         -- custom = {
         --   todo = {
