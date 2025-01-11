@@ -1,4 +1,4 @@
-# NeoVim Setup - testing push here
+# NeoVim Setup
 Here you will learn how I like to setup my NeoVim configuration when I use a new device.
 
 ## Step 1: Download NeoVim
