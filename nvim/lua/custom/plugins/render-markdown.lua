@@ -18,14 +18,14 @@ return {
       indent = { enabled = false, },
       checkbox = {
         enabled = true,
-        position = 'overlay',
+        position = 'inline',
         unchecked = {
           icon = ' ',
           scope_highlight = nil,
         },
         checked = {
           icon = ' ',
-          scope_highlight = '@markup.strikethrough',
+          scope_highlight = nil,
         },
         -- custom = {
         --   todo = {
