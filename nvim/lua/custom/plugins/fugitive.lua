@@ -3,7 +3,6 @@ return {
   config = function()
     vim.keymap.set("n", "<leader>gc", function()
       vim.cmd("Gclog")
-      vim.cmd("resize 15")
     end)
     vim.keymap.set("n", "<leader>gs", function()
       vim.cmd("Git")
