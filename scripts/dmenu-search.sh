@@ -1,13 +1,4 @@
-#!/bin/sh
-
-# title: dmenu_websearch <http://efe.kim/dmenu_websearch.html>
-# license: CC0
-# author: Sunur Efe Vural <efe@efe.kim>
-# version: Mar 22, 2019
-# dependencies: dmenu, xdotool, hexdump, xprop, setxkbmap, coreutils.
-
-# A browser-independent address bar with bookmark support. When the
-# cursor is on a web browser it acts as the address bar of that browser.
+#!/usr/bin/env bash
 
 browser='google-chrome-stable --new-window'
 engine='https://duckduckgo.com/?q=%s'

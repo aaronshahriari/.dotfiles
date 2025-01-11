@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 windows=$(wmctrl -xl | tr -s '[:blank:]' | cut -d ' ' -f 3-3,5- | sed 's/^[a-zA-Z0-9-]*\.//' | sort | uniq)
 
 # Add spaces to align the WM_NAMEs of the windows
