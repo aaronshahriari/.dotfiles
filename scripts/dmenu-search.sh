@@ -1,130 +1,33 @@
 #!/usr/bin/env bash
 
-# Configuration
-browser='google-chrome-stable --new-window'
-engine='https://duckduckgo.com/?q=%s'
-bookmarks="$HOME/.bookmarks"
+browser="google-chrome-stable --new-window"
+engine="https://duckduckgo.com/?q=%s"
 bookmarks_json="$HOME/.config/google-chrome/Default/Bookmarks"
 
-# Ensure jq is installed
-if ! command -v jq &> /dev/null; then
-    echo "jq is not installed. Please install it to use this script."
-    exit 1
+# Use a recursive jq query to find all bookmarks, including those in nested folders
+mapfile -t bookmarks < <(jq -r '
+  .. | objects | select(.type? == "url") | "\(.name) \t\(.url)"
+' "$bookmarks_json")
+
+names=("${bookmarks[@]%%$'\t'*}")
+selected_input=$(printf "%s\n" "${names[@]}" | dmenu -i -g 1 -p "Go:")
+
+if [[ -z "$selected_input" ]]; then
+  exit 0
 fi
 
-# Function to parse JSON bookmarks
-parse_json_bookmarks() {
-    if [ -f "$bookmarks_json" ]; then
-        jq -r '
-          .roots | 
-          .. | 
-          objects | 
-          select(.type? == "url") | 
-          "\(.name) \(.url)"
-        ' "$bookmarks_json" | sort -u > "$bookmarks"
-    fi
-}
+url_found=false
+for entry in "${bookmarks[@]}"; do
+  name="${entry%%$'\t'*}"
+  url="${entry#*$'\t'}"
+  if [[ "$name" == "$selected_input" ]]; then
+    $browser "$url"
+    url_found=true
+    break
+  fi
+done
 
-# Parse JSON bookmarks before proceeding
-parse_json_bookmarks
-
-# Function to open URLs or search
-gotourl() {
-    if [ "$nbrowser" = surf ]; then
-        xprop -id "$winid" -f _SURF_GO 8s -set _SURF_GO "$choice"
-    elif [ -n "$winid" ] && [ -z "$nbrowser" ]; then
-        # Change layout to US because xdotool struggles with non-latin layouts
-        layout=$(setxkbmap -query | awk '/^layout:/{ print $2 }')
-        setxkbmap -layout us
-        xdotool key --clearmodifiers "$shortcut" \
-            type --clearmodifiers --delay 2 "$choice"
-        xdotool key --clearmodifiers Return
-        setxkbmap -layout "$layout"
-    elif [ -n "$nbrowser" ]; then
-        $nbrowser "$choice"
-    else
-        $browser "$choice"
-    fi
-}
-
-searchweb() {
-    # Convert search query to percent encoding and insert it into URL
-    choice=$(echo "$choice" | iconv -f utf-8 -t ascii//TRANSLIT || echo "$choice")
-    choice=$(echo "$choice" | hexdump -v -e '/1 " %02x"')
-    choice=$(echo "$engine" | sed "s/%s/${choice% 0a}/;s/[[:space:]]/%/g")
-    gotourl
-}
-
-# Get the current active window before starting the search
-previous_window=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $NF}')
-
-xprop -root | grep '^_NET_ACTIVE_WINDOW' && {
-    winid=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $NF}')
-    class=$(xprop -id "$winid" WM_CLASS | awk -F'"' '{print $(NF-1)}')
-    case "$class" in
-        Firefox) nbrowser='firefox' ;;
-        IceCat) nbrowser='icecat' ;;
-        Chromium) nbrowser='chromium' ;;
-        Chrome) nbrowser='chrome' ;;
-        Opera) nbrowser='opera' ;;
-        Vivaldi) nbrowser='vivaldi' ;; # not tested
-        Brave) nbrowser='brave' ;;     # not tested
-        Conkeror) nbrowser='conkeror' ;; # not tested
-        Palemoon) nbrowser='palemoon' ;; # not tested
-        Iceweasel) nbrowser='iceweasel' ;; # not tested
-        qutebrowser) nbrowser='qutebrowser' ;;
-        Midori) nbrowser='midori' ;;     # not that good
-        Luakit) nbrowser='luakit' ;;     # uses the last window instance
-        Uzbl|Vimb) shortcut='o' ;;
-        Links) shortcut='g' ;;
-        Netsurf*|Epiphany|Dillo|Konqueror|Arora) shortcut='ctrl+l' ;;
-        Surf) nbrowser='surf' 
-            uricur=$(xprop -id "$winid" _SURF_URI | awk -F'"' '{print $(NF-1)}') ;;
-        *) pid=$(xprop -id "$winid" _NET_WM_PID | awk '{print $3}')
-            while pgrep -oP "$pid" >/dev/null; do
-                pid=$(pgrep -oP "$pid")
-            done
-            pname=$(awk '/^Name:/{ print $NF }' /proc/"$pid"/status) ||
-                winid="" ;;
-    esac
-    [ -n "$pname" ] && case "$pname" in
-        w3m) shortcut="U" ;;
-        lynx|elinks|links) shortcut="g" ;;
-        *) winid="" ;;
-    esac
-}
-
-# Ensure the bookmarks file exists
-[ -f "$bookmarks" ] || touch "$bookmarks"
-
-tmpfile=$(mktemp /tmp/dmenu_websearch.XXXXXX)
-trap 'rm -f "$tmpfile"' EXIT
-printf '%s\n%s\n' "$uricur" "$1" > "$tmpfile"
-cat "$bookmarks" >> "$tmpfile"
-sed -i -E '/^(#|$)/d' "$tmpfile"
-choice=$(dmenu -i -p "Go:" -w "$winid" < "$tmpfile") || exit 1
-
-# Detect links without protocol (This is WIP)
-protocol='^(https?|ftps?|mailto|about|file):///?'
-checkurl() {
-    grep -Fx "$choice" "$tmpfile" &&
-        choice=$(echo "$choice" | awk '{ print $1 }') && return 0
-    [ ${#choice} -lt 4 ] && return 1
-    echo "$choice" | grep -Z ' ' && return 1
-    echo "$choice" | grep -EiZ "$protocol" && return 0
-    echo "$choice" | grep -FZ '..' && return 1
-    prepath=$(echo "$choice" | sed 's/(\/|#|\?).*//')
-    echo "$prepath" | grep -FvZ '.' && return 1
-    echo "$prepath" | grep -EZ '^([[:alnum:]~_:-]+\.?){1,3}' && return 0
-}
-
-if checkurl; then
-    echo "$choice" | grep -EivZ "$protocol" &&
-        choice="http://$choice"
-    gotourl
-else
-    searchweb
+if [[ "$url_found" == false ]]; then
+  query=$(printf "$engine" "$selected_input")
+  $browser "$query"
 fi
-
-# Focus back on the previously active window
-[ -n "$previous_window" ] && xdotool windowactivate "$previous_window"
