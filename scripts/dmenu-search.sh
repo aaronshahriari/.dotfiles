@@ -1,9 +1,34 @@
 #!/usr/bin/env bash
 
+# Configuration
 browser='google-chrome-stable --new-window'
 engine='https://duckduckgo.com/?q=%s'
 bookmarks="$HOME/.bookmarks"
+bookmarks_json="$HOME/.config/google-chrome/Default/Bookmarks"
 
+# Ensure jq is installed
+if ! command -v jq &> /dev/null; then
+    echo "jq is not installed. Please install it to use this script."
+    exit 1
+fi
+
+# Function to parse JSON bookmarks
+parse_json_bookmarks() {
+    if [ -f "$bookmarks_json" ]; then
+        jq -r '
+          .roots | 
+          .. | 
+          objects | 
+          select(.type? == "url") | 
+          "\(.name) \(.url)"
+        ' "$bookmarks_json" | sort -u > "$bookmarks"
+    fi
+}
+
+# Parse JSON bookmarks before proceeding
+parse_json_bookmarks
+
+# Function to open URLs or search
 gotourl() {
     if [ "$nbrowser" = surf ]; then
         xprop -id "$winid" -f _SURF_GO 8s -set _SURF_GO "$choice"
@@ -30,12 +55,14 @@ searchweb() {
     gotourl
 }
 
+# Get the current active window before starting the search
+previous_window=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $NF}')
+
 xprop -root | grep '^_NET_ACTIVE_WINDOW' && {
     winid=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $NF}')
     class=$(xprop -id "$winid" WM_CLASS | awk -F'"' '{print $(NF-1)}')
     case "$class" in
         Firefox) nbrowser='firefox' ;;
-        # Firefox) shortcut='ctrl+l' ;; # alternative method, uses xdotool
         IceCat) nbrowser='icecat' ;;
         Chromium) nbrowser='chromium' ;;
         Chrome) nbrowser='chrome' ;;
@@ -67,6 +94,7 @@ xprop -root | grep '^_NET_ACTIVE_WINDOW' && {
     esac
 }
 
+# Ensure the bookmarks file exists
 [ -f "$bookmarks" ] || touch "$bookmarks"
 
 tmpfile=$(mktemp /tmp/dmenu_websearch.XXXXXX)
@@ -97,3 +125,6 @@ if checkurl; then
 else
     searchweb
 fi
+
+# Focus back on the previously active window
+[ -n "$previous_window" ] && xdotool windowactivate "$previous_window"
