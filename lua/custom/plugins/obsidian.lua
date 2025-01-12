@@ -39,18 +39,6 @@ return {
           vim.cmd(":silent ObsidianOpen")
         end,
       },
-      daily_notes = {
-        -- optional, if you keep daily notes in a separate directory.
-        folder = "AaronVault/Streams",
-        -- optional, if you want to change the date format for the id of daily notes.
-        date_format = "%Y-%m-%d",
-        -- optional, if you want to change the date format of the default alias of daily notes.
-        alias_format = "Streams",
-        -- optional, default tags to add to each new daily note created.
-        default_tags = { "Streams" },
-        -- optional, if you want to automatically insert a template from your template directory like 'daily.md'
-        template = nil
-      },
     })
     vim.keymap.set("n", "gf", function()
       if require("obsidian").util.cursor_on_markdown_link() then
