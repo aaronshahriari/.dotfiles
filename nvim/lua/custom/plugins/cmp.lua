@@ -16,6 +16,9 @@ return {
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
     cmp.setup({
+      completion = {
+        completeopt = 'menu,menuone,noinsert'
+      },
       window = {
         -- completion = {
         --   border = 'single',
