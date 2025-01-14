@@ -3,7 +3,7 @@
 # get the current set autorandr setups
 autorandr_profiles=$(autorandr | tr ' ' '\n')
 
-case "$(printf "$autorandr_profiles" | dmenu -i -l 10 -p "Display Setup:")" in
+case "$(printf "$autorandr_profiles" | dmenu -g 1 -i -l 10 -p "Display Setup:")" in
     "laptop")
         autorandr --load laptop
         xinput set-prop "pointer:PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 0 ;;

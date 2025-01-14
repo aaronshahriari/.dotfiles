@@ -11,8 +11,7 @@ windows=$(echo "$windows" | \
                     for(i=0; i < max - cur + 1; i++) printf " "; \
                     $1 = ""; printf "%s\n", $0}')
 
-
-target=$(echo "$windows" | dmenu -l 10 -i -p Switch: | tr -s '[:blank:]' | cut -d ' ' -f 2-)
+target=$(echo "$windows" | dmenu -g 1 -l 10 -i -p Switch: | tr -s '[:blank:]' | cut -d ' ' -f 2-)
 
 if [[ -n $target ]]; then
     wmctrl -a "$target"

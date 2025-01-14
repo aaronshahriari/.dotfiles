@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-case "$(printf "Wallpaper\nLogitech Mouse\nTouchpad\nDWMBlocks\n" | dmenu -m 0 -i -l 10 -p "Restart:")" in
+case "$(printf "Wallpaper\nLogitech Mouse\nTouchpad\nDWMBlocks\n" | dmenu -g 1 -m 0 -i -l 10 -p "Restart:")" in
     "Wallpaper")
         feh --bg-fill /usr/share/backgrounds/desktop_wall.jpg --bg-fill /usr/share/backgrounds/desktop_wall.jpg
         ;;
