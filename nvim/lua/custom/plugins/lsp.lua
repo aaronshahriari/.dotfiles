@@ -11,6 +11,9 @@ return {
       -- ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
     }
 
+    -- setup for bash
+    lspconfig.tailwindcss.setup({})
+
     -- setup for tailwindcss
     lspconfig.tailwindcss.setup({
       handlers = default_handlers,
