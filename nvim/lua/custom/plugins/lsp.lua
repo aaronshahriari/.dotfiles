@@ -12,7 +12,7 @@ return {
     }
 
     -- setup for bash
-    lspconfig.tailwindcss.setup({})
+    lspconfig.bashls.setup({})
 
     -- setup for tailwindcss
     lspconfig.tailwindcss.setup({
