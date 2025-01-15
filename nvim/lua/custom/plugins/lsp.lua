@@ -11,6 +11,9 @@ return {
       -- ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
     }
 
+    -- setup for zig
+    lspconfig.zls.setup({})
+
     -- setup for bash
     lspconfig.bashls.setup({})
 
