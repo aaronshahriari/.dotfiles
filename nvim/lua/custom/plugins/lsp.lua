@@ -11,13 +11,17 @@ return {
       -- ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
     }
 
-    -- setup for zig
+    -- SETUP FOR ZIG
     lspconfig.zls.setup({})
+    -- don't show parse errors in a separate window
+    vim.g.zig_fmt_parse_errors = 0
+    -- disable format-on-save from `ziglang/zig.vim`
+    vim.g.zig_fmt_autosave = 0
 
-    -- setup for bash
+    -- SETUP FOR BASH
     lspconfig.bashls.setup({})
 
-    -- setup for tailwindcss
+    -- SETUP FOR TAILWINDCSS
     lspconfig.tailwindcss.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
@@ -39,7 +43,7 @@ return {
       }
     })
 
-    -- setup for html
+    -- SETUP FOR HTML
     lspconfig.html.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
@@ -57,7 +61,7 @@ return {
       },
     })
 
-    -- setup for lua
+    -- SETUP FOR LUA
     lspconfig.lua_ls.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
@@ -70,7 +74,7 @@ return {
       }
     })
 
-    -- setup for nix
+    -- SETUP FOR NIX
     lspconfig.nil_ls.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
@@ -83,7 +87,7 @@ return {
       },
     })
 
-    -- setup for md
+    -- SETUP FOR MD
     lspconfig.markdown_oxide.setup({})
 
     vim.api.nvim_create_autocmd("BufWritePre", {
