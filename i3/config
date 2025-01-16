@@ -47,9 +47,9 @@ bindsym $mod+Shift+m exec "amixer set Master toggle"
 bindsym $mod+Shift+minus exec ~/.local/bin/scripts/dec_brightness.sh
 bindsym $mod+Shift+equal exec ~/.local/bin/scripts/inc_brightness.sh
 # FIX: figure these out
-# bindsym $mod+XF86AudioPlay exec ~/.local/bin/scripts/dwmblocks/music/keyboard/play-pause.sh
-# bindsym $mod+XF86XK_AudioNext exec playerctl next
-# bindsym $mod+XF86XK_AudioNext exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86XK_AudioNext exec playerctl next
+bindsym XF86XK_AudioNext exec playerctl previous
 
 # ON STARTUP
 bindsym $mod+d exec --no-startup-id dmenu_run -m 0
