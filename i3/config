@@ -6,7 +6,7 @@ font pango:MesloLGS Nerd Font 15
 focus_follows_mouse no
 
 # remove title on each window, but keep 1 pixel
-for_window [class="^.*"] border pixel 1
+# for_window [class="^.*"] border pixel 1
 
 # outline client
 client.focused #ffffff #ffffff #ffffff #ffffff #ffffff
@@ -26,8 +26,7 @@ bar {
         focused_workspace  #ffffff #ffffff #000000
         active_workspace   #000000 #000000 #ffffff
         inactive_workspace #000000 #000000 #ffffff
-        urgent_workspace   #4287f5 #4287f5 #ffffff
-        binding_mode       #45f542 #45f542 #ffffff
+        urgent_workspace   #0f1d33 #0f1d33 #ffffff
     }
 }
 
