@@ -49,8 +49,8 @@ battery 1 {
 }
 
 wireless _first_ {
-  format_up = "󰤨 <span color='#ffffff'>%quality %essid</span>"
-  format_down  = "<span color='#2196F3'>󰤭</span>"
+  format_up = "<span color='#8BC34A'>󰤨</span> <span color='#ffffff'>%quality %essid</span>"
+  format_down  = "<span color='#2196F3'>󰤭 </span>"
 }
 
 time {
