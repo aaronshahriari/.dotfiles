@@ -32,28 +32,28 @@ bar {
         focused_workspace  #ffffff #ffffff #000000
         active_workspace   #000000 #000000 #ffffff
         inactive_workspace #000000 #000000 #ffffff
-        urgent_workspace   #0f1d33 #0f1d33 #ffffff
+        urgent_workspace   #3521a6 #3521a6 #ffffff
     }
 }
 
 # run scripts w/ keybinds
 bindsym $mod+a exec --no-startup-id ~/.local/bin/scripts/audio-sessionizer.sh
-bindsym $mod+c exec ~/.local/bin/scripts/fix-devices.sh
-bindsym $mod+Shift+s exec ~/.local/bin/scripts/flameshot-screenshot.sh
+bindsym $mod+c exec --no-startup-id ~/.local/bin/scripts/fix-devices.sh
+bindsym $mod+Shift+s exec --no-startup-id ~/.local/bin/scripts/flameshot-screenshot.sh
 bindsym $mod+Shift+d exec --no-startup-id ~/.local/bin/scripts/display-sessionizer.sh dmenu -m 0 -c
 bindsym $mod+Shift+e exec --no-startup-id ~/.local/bin/scripts/device-sessionizer.sh dmenu -m 0 -c
 bindsym $mod+s exec --no-startup-id ~/.local/bin/scripts/dmenu-app-switcher.sh
-bindsym $mod+g exec ~/.local/bin/scripts/dmenu-search.sh dmenu -m 0 -c
-bindsym $mod+minus exec "amixer set Master 5%- unmute"
-bindsym $mod+equal exec "amixer set Master 5%+ unmute"
+bindsym $mod+g exec --no-startup-id ~/.local/bin/scripts/dmenu-search.sh dmenu -m 0 -c
+bindsym $mod+minus exec --no-startup-id "amixer set Master 5%- unmute"
+bindsym $mod+equal exec --no-startup-id "amixer set Master 5%+ unmute"
 # use amixer for now
 # bindsym $mod+Shift+m exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-bindsym $mod+Shift+m exec "amixer set Master toggle"
-bindsym $mod+Shift+minus exec ~/.local/bin/scripts/dec_brightness.sh
-bindsym $mod+Shift+equal exec ~/.local/bin/scripts/inc_brightness.sh
-bindsym $mod+XF86AudioPlay exec playerctl play-pause
-bindsym $mod+XF86AudioNext exec playerctl next
-bindsym $mod+Shift+XF86AudioNext exec playerctl previous
+bindsym $mod+Shift+m exec --no-startup-id "amixer set Master toggle"
+bindsym $mod+Shift+minus exec --no-startup-id ~/.local/bin/scripts/dec_brightness.sh
+bindsym $mod+Shift+equal exec --no-startup-id ~/.local/bin/scripts/inc_brightness.sh
+bindsym $mod+XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym $mod+XF86AudioNext exec --no-startup-id playerctl next
+bindsym $mod+Shift+XF86AudioNext exec --no-startup-id playerctl previous
 
 # ON STARTUP
 bindsym $mod+d exec --no-startup-id dmenu_run -m 0
