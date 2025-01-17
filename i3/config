@@ -7,6 +7,11 @@ focus_follows_mouse no
 
 # remove title on each window, but keep 1 pixel
 for_window [class="^.*"] border pixel 1
+# titles on if i want
+# for_window [class=".*"] title_format "<b>%title</b>"
+# for_window [class=".*"] title_window_icon on
+# for_window [class=".*"] title_window_icon padding 5px
+# for_window [class="^.*"] border normal 1
 
 # class        border  backgr. text    indicator child_border
 client.focused #ffffff #ffffff #000000 #ffffff   #ffffff
