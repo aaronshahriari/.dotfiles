@@ -3,11 +3,11 @@
 case "$(printf "Lock\nSleep\nSwitch User\nReboot\nShutdown\n" | dmenu -g 1 -i -l 10 -p "System:")" in
     "Lock")
         sleep 3
-        i3lock-fancy-rapid 5 3
+        i3lock-fancy-rapid 10 10
         ;;
     "Sleep")
         systemctl suspend
-        i3lock-fancy-rapid 5 3
+        i3lock-fancy-rapid 10 10
         ;;
     "Switch User")
         case "$(printf "Yes\nNo" | dmenu -g 1 -i -l 10 -p "Are You Sure:")" in
