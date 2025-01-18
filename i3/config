@@ -59,6 +59,7 @@ bindsym $mod+Shift+XF86AudioNext exec --no-startup-id playerctl previous
 bindsym $mod+d exec --no-startup-id dmenu_run -m 0
 exec_always --no-startup-id picom -b &
 exec_always --no-startup-id $HOME/.local/bin/scripts/autostart.sh
+exec_always --no-startup-id xautolock -time 30 -locker "i3lock-fancy-rapid 5 3"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
