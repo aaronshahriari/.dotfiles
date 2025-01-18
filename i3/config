@@ -4,6 +4,7 @@ include $HOME/.config/i3/keymaps.conf
 set $mod Mod1
 font pango:MesloLGS Nerd Font 15
 focus_follows_mouse no
+floating_modifier $mod
 
 # remove title on each window, but keep 1 pixel
 for_window [class="^.*"] border pixel 1
