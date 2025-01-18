@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 case "$(printf "Lock\nSleep\nSwitch User\nReboot\nShutdown\n" | dmenu -g 1 -i -l 10 -p "System:")" in
-    "Lock") i3lock-fancy-rapid 5 3 ;;
+    "Lock")
+        sleep 3
+        i3lock-fancy-rapid 5 3
+        ;;
     "Sleep")
         systemctl suspend
         i3lock-fancy-rapid 5 3
