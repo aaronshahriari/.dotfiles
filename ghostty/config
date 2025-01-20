@@ -16,7 +16,6 @@ mouse-hide-while-typing = true
 
 # upper window stuff
 gtk-titlebar = false
-window-decoration = false
 
 # keybinds
 keybind = ctrl+shift+t=unbind
