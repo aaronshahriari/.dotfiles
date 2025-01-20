@@ -7,6 +7,7 @@ return {
     vim.keymap.set("n", "<leader>gs", function()
       vim.cmd("Git")
       vim.cmd("resize 15")
+      vim.cmd("normal! 4j")
     end)
     local AaronShahriari = vim.api.nvim_create_augroup("AaronShahriari", {})
     local autocmd = vim.api.nvim_create_autocmd
