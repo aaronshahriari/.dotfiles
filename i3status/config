@@ -44,8 +44,9 @@ battery 1 {
   low_threshold=25
   status_chr = "<span color='#FFEB3B'>󱐋</span>"
   status_bat = "<span color='#8BC34A'>󰁹</span>"
-  status_unk = "<span color='#2196F3'>󰂑</span>"
   status_full = "<span color='#4CAF50'>󰁹</span>"
+  status_idle = "<span color='#4CAF50'>󰁹</span>"
+  status_unk = "<span color='#2196F3'>󰂑</span>"
 }
 
 wireless _first_ {
