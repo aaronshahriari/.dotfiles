@@ -29,7 +29,7 @@ cpu_usage {
 
 volume master {
         format = "  %volume"
-        format_muted = "<span color='#B71C1C'></span> %volume"
+        format_muted = "<span color='#B71C1C'></span>  %volume"
         device = "default"
         mixer = "Master"
         mixer_idx = 0
