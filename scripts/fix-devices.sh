@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-case "$(printf "Wallpaper\nLogitech Mouse\nTouchpad\nDWMBlocks\n" | dmenu -g 1 -m 0 -i -l 10 -p "Restart:")" in
+case "$(printf "Wallpaper\nLogitech Mouse\nTouchpad\nWireplumber\nDWMBlocks\n" | dmenu -g 1 -m 0 -i -l 10 -p "Restart:")" in
     "Wallpaper")
         feh --bg-fill /usr/share/backgrounds/desktop_wall.jpg --bg-fill /usr/share/backgrounds/desktop_wall.jpg
         ;;
@@ -10,6 +10,10 @@ case "$(printf "Wallpaper\nLogitech Mouse\nTouchpad\nDWMBlocks\n" | dmenu -g 1 -
     "Touchpad")
         xinput set-prop "pointer:PIXA3854:00 093A:0274 Touchpad" "libinput Scrolling Pixel Distance" 50
         xinput set-prop "pointer:PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 0
+        ;;
+    "Wireplumber")
+        systemctl --user restart wireplumber.service
+        systemctl --user restart pipewire.service
         ;;
     "DWMBlocks")
         pkill dwmblocks
