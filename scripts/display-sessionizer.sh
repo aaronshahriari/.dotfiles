@@ -3,39 +3,28 @@
 # get the current set autorandr setups
 autorandr_profiles=$(autorandr | tr ' ' '\n')
 
+move_workspaces() {
+    local primary=$1
+    local secondary=$2
+    for i in {1..5}; do
+        i3-msg "workspace $i; move workspace to output $primary" > /dev/null 2>&1
+    done
+    for i in {6..10}; do
+        i3-msg "workspace $i; move workspace to output $secondary" > /dev/null 2>&1
+    done
+}
+
 case "$(printf "$autorandr_profiles" | dmenu -g 1 -i -l 10 -p "Display Setup:")" in
     "laptop")
         autorandr --load laptop
         xinput set-prop "pointer:PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 0 ;;
     "home-two")
         autorandr --load home-two
-        primary="DisplayPort-5"
-        secondary="DisplayPort-4"
-        i3-msg "workspace 1; move workspace to output $primary"
-        i3-msg "workspace 2; move workspace to output $primary"
-        i3-msg "workspace 3; move workspace to output $primary"
-        i3-msg "workspace 4; move workspace to output $primary"
-        i3-msg "workspace 5; move workspace to output $primary"
-        i3-msg "workspace 6; move workspace to output $secondary"
-        i3-msg "workspace 7; move workspace to output $secondary"
-        i3-msg "workspace 8; move workspace to output $secondary"
-        i3-msg "workspace 9; move workspace to output $secondary"
-        i3-msg "workspace 10; move workspace to output $secondary"
+        move_workspaces "DisplayPort-5" "DisplayPort-4"
         ;;
     "home-two-swap")
         autorandr --load home-two-swap
-        primary="DisplayPort-4"
-        secondary="DisplayPort-5"
-        i3-msg "workspace 1; move workspace to output $primary"
-        i3-msg "workspace 2; move workspace to output $primary"
-        i3-msg "workspace 3; move workspace to output $primary"
-        i3-msg "workspace 4; move workspace to output $primary"
-        i3-msg "workspace 5; move workspace to output $primary"
-        i3-msg "workspace 6; move workspace to output $secondary"
-        i3-msg "workspace 7; move workspace to output $secondary"
-        i3-msg "workspace 8; move workspace to output $secondary"
-        i3-msg "workspace 9; move workspace to output $secondary"
-        i3-msg "workspace 10; move workspace to output $secondary"
+        move_workspaces "DisplayPort-4" "DisplayPort-5"
         ;;
 esac
 
