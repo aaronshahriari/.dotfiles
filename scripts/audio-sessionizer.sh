@@ -17,7 +17,7 @@ if [ -z "$sinks" ]; then
 fi
 
 # Select sink using dmenu
-selected_sink=$(echo "$sinks" | dmenu -g 1 -p "Select Sink:")
+selected_sink=$(echo "$sinks" | dmenu -i -g 1 -p "Select Sink:")
 
 # Set the selected sink as default if a valid sink is selected
 if [ -n "$selected_sink" ]; then
@@ -38,7 +38,7 @@ if [ -z "$sources" ]; then
 fi
 
 # Select source using dmenu
-selected_source=$(echo "$sources" | dmenu -g 1 -p "Select Source:")
+selected_source=$(echo "$sources" | dmenu -i -g 1 -p "Select Source:")
 
 # Set the selected source as default if a valid source is selected
 if [ -n "$selected_source" ]; then
