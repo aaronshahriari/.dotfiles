@@ -6,8 +6,8 @@ case "$(printf "Lock\nSleep\nSwitch User\nReboot\nShutdown\n" | dmenu -g 1 -i -l
         i3lock-fancy-rapid 10 10
         ;;
     "Sleep")
-        systemctl suspend
         i3lock-fancy-rapid 10 10
+        systemctl suspend
         ;;
     "Switch User")
         case "$(printf "Yes\nNo" | dmenu -g 1 -i -l 10 -p "Are You Sure:")" in
