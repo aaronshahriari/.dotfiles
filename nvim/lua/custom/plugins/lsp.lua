@@ -93,7 +93,7 @@ return {
     -- SETUP FOR MD
     lspconfig.markdown_oxide.setup({})
 
-    local allowed_filetypes = { "lua" }
+    local allowed_filetypes = { "lua", "nix", "sh" }
     vim.api.nvim_create_autocmd("BufWritePre", {
       callback = function()
         if vim.tbl_contains(allowed_filetypes, vim.bo.filetype) then
