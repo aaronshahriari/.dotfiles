@@ -50,17 +50,18 @@ bindsym $mod+equal exec --no-startup-id "amixer set Master 5%+ unmute"
 bindsym $mod+Shift+m exec --no-startup-id "amixer set Master toggle"
 bindsym $mod+Shift+minus exec --no-startup-id ~/.local/bin/scripts/dec_brightness.sh
 bindsym $mod+Shift+equal exec --no-startup-id ~/.local/bin/scripts/inc_brightness.sh
-# laptop volume controls
-bindsym $mod+XF86AudioMute exec --no-startup-id "amixer set Master toggle"
-bindsym $mod+XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%- unmute"
-bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+ unmute"
-
-# split keyboard
 bindsym $mod+XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym $mod+XF86AudioNext exec --no-startup-id playerctl next
 bindsym $mod+Shift+XF86AudioNext exec --no-startup-id playerctl previous
-# laptop keyboard
+
+# laptop controls
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/scripts/inc_brightness.sh
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/scripts/dec_brightness.sh
+bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%- unmute"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+ unmute"
 bindsym $mod+XF86AudioPrev exec --no-startup-id playerctl previous
+
 
 # ON STARTUP
 bindsym $mod+d exec --no-startup-id dmenu_run -m 0
