@@ -47,11 +47,13 @@ bindsym $mod+s exec --no-startup-id ~/.local/bin/scripts/dmenu-app-switcher.sh
 bindsym $mod+g exec --no-startup-id ~/.local/bin/scripts/dmenu-search.sh dmenu -m 0 -c
 bindsym $mod+minus exec --no-startup-id "amixer set Master 5%- unmute"
 bindsym $mod+equal exec --no-startup-id "amixer set Master 5%+ unmute"
-# use amixer for now
-# bindsym $mod+Shift+m exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 bindsym $mod+Shift+m exec --no-startup-id "amixer set Master toggle"
 bindsym $mod+Shift+minus exec --no-startup-id ~/.local/bin/scripts/dec_brightness.sh
 bindsym $mod+Shift+equal exec --no-startup-id ~/.local/bin/scripts/inc_brightness.sh
+# laptop volume controls
+bindsym $mod+XF86AudioMute exec --no-startup-id "amixer set Master toggle"
+bindsym $mod+XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%- unmute"
+bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+ unmute"
 
 # split keyboard
 bindsym $mod+XF86AudioPlay exec --no-startup-id playerctl play-pause
