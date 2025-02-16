@@ -39,6 +39,7 @@ bar {
 
 # run scripts w/ keybinds
 bindsym $mod+a exec --no-startup-id ~/.local/bin/scripts/audio-sessionizer.sh
+bindsym $mod+Shift+a exec --no-startup-id ~/.local/bin/scripts/mute-sessionizer.sh
 bindsym $mod+c exec --no-startup-id ~/.local/bin/scripts/fix-devices.sh
 bindsym $mod+Shift+s exec --no-startup-id ~/.local/bin/scripts/flameshot-screenshot.sh
 bindsym $mod+Shift+d exec --no-startup-id ~/.local/bin/scripts/display-sessionizer.sh dmenu -m 0 -c
