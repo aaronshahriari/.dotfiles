@@ -63,19 +63,19 @@ vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]])
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/bin/scripts/tmux-sessionizer.sh<CR>")
 
 -- define a function for creating a small terminal
-vim.keymap.set("n", "<leader>st", function()
-  vim.cmd.new()
-  vim.cmd.term()
-  vim.cmd.wincmd("J")
-  vim.api.nvim_win_set_height(0, 12)
-end)
+-- vim.keymap.set("n", "<leader>st", function()
+--   vim.cmd.new()
+--   vim.cmd.term()
+--   vim.cmd.wincmd("J")
+--   vim.api.nvim_win_set_height(0, 12)
+-- end)
 
 -- Define a function for creating a split terminal
-vim.keymap.set("n", "<leader>t", function()
-  vim.cmd.new()
-  vim.cmd.term()
-  vim.cmd.wincmd("L")
-end)
+-- vim.keymap.set("n", "<leader>t", function()
+--   vim.cmd.new()
+--   vim.cmd.term()
+--   vim.cmd.wincmd("L")
+-- end)
 
 -- source lua file
 vim.keymap.set("n", "<leader><leader>", function()
