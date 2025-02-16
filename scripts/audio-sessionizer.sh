@@ -17,11 +17,11 @@ if [ -z "$sinks" ]; then
 fi
 
 # Select sink using dmenu
-selected_sink=$(echo "$sinks" | dmenu -i -g 1 -p "Select Sink:")
+selected_sink=$(echo "$sinks" | cut -d' ' -f2- | tr -d '\n' | xargs | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1' | dmenu -i -g 1 -p "Select Sink:")
 
 # Set the selected sink as default if a valid sink is selected
 if [ -n "$selected_sink" ]; then
-    sink_id=$(echo "$selected_sink" | awk '{print $1}' | sed 's/\.$//')
+    sink_id=$(echo "$sinks" | grep "$selected_sink" | awk -F. '{print $1}')
     wpctl set-default "$sink_id"
     notify-send "Audio Sink Set To $(echo "$selected_sink" | cut -d' ' -f2-)"
 else
@@ -38,11 +38,11 @@ if [ -z "$sources" ]; then
 fi
 
 # Select source using dmenu
-selected_source=$(echo "$sources" | dmenu -i -g 1 -p "Select Source:")
+selected_source=$(echo "$sources" | cut -d' ' -f2- | tr -d '\n' | xargs | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1' | dmenu -i -g 1 -p "Select Source:")
 
 # Set the selected source as default if a valid source is selected
 if [ -n "$selected_source" ]; then
-    source_id=$(echo "$selected_source" | awk '{print $1}' | sed 's/\.$//')
+    source_id=$(echo "$sources" | grep "$selected_source" | awk -F. '{print $1}')
     wpctl set-default "$source_id"
     notify-send "Audio Source Set To $(echo "$selected_source" | cut -d' ' -f2-)"
 else
