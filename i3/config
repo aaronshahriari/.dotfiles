@@ -56,7 +56,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym Shift+XF86AudioNext exec --no-startup-id playerctl previous
 
 # testing pwvucontrol
-bindsym $mod+v exec pwvucontrol
+bindsym $mod+v exec pavucontrol
 
 # laptop controls
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/scripts/inc_brightness.sh
