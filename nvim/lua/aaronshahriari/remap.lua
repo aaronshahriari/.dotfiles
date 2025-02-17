@@ -108,7 +108,7 @@ local function toggle_terminal(position, size)
 end
 
 vim.keymap.set("n", "<C-g>", function() toggle_terminal("J", 15) end)
-vim.keymap.set("n", "<C-p>", function() toggle_terminal("L") end)
+vim.keymap.set("n", "<C-p>", function() toggle_terminal("L", 80) end)
 
 -- source lua file
 vim.keymap.set("n", "<leader><leader>", function()
