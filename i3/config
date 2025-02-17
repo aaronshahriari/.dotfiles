@@ -57,7 +57,7 @@ bindsym Shift+XF86AudioNext exec --no-startup-id playerctl previous
 
 # testing pwvucontrol
 bindsym $mod+v exec pwvucontrol && \
-    for_window [class="Pwvucontrol"] floating enable, move position center
+    for_window [class="pwvucontrol"] floating enable, move position center
 
 # laptop controls
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/scripts/inc_brightness.sh
