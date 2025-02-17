@@ -21,7 +21,7 @@ selected_sink=$(echo "$sinks" | cut -d' ' -f2- | awk '{for(i=1;i<=NF;i++) $i=tou
 
 # Set the selected sink as default if a valid sink is selected
 if [ -n "$selected_sink" ]; then
-    sink_id=$(echo "$sinks" | grep "$selected_sink" | awk -F. '{print $1}')
+    sink_id=$(echo "$sinks" | grep -i "$selected_sink" | awk -F. '{print $1}')
     wpctl set-default "$sink_id"
     notify-send "Audio Sink Set To $(echo "$selected_sink" | cut -d' ' -f2-)"
 else
@@ -42,7 +42,7 @@ selected_source=$(echo "$sources" | cut -d' ' -f2- | awk '{for(i=1;i<=NF;i++) $i
 
 # Set the selected source as default if a valid source is selected
 if [ -n "$selected_source" ]; then
-    source_id=$(echo "$sources" | grep "$selected_source" | awk -F. '{print $1}')
+    source_id=$(echo "$sources" | grep -i "$selected_source" | awk -F. '{print $1}')
     wpctl set-default "$source_id"
     notify-send "Audio Source Set To $(echo "$selected_source" | cut -d' ' -f2-)"
 else
