@@ -28,25 +28,25 @@ cpu_usage {
 }
 
 volume master {
-        format = "  %volume"
-        format_muted = "<span color='#B71C1C'></span>  %volume"
-        device = "default"
-        mixer = "Master"
-        mixer_idx = 0
+    format = "  %volume"
+    format_muted = "<span color='#B71C1C'></span>  %volume"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
 }
 
 battery 1 {
-  path=/sys/class/power_supply/BAT1/uevent
-  integer_battery_capacity = true
-  format = "%status %percentage"
-  last_full_capacity = true
-  threshold_type=percentage
-  low_threshold=25
-  status_chr = "<span color='#FFEB3B'>󱐋</span>"
-  status_bat = "<span color='#8BC34A'>󰁹</span>"
-  status_full = "<span color='#4CAF50'>󰁹</span>"
-  status_idle = "<span color='#4CAF50'>󰁹</span>"
-  status_unk = "<span color='#2196F3'>󰂑</span>"
+    path=/sys/class/power_supply/BAT1/uevent
+    integer_battery_capacity = true
+    format = "%status %percentage"
+    last_full_capacity = true
+    threshold_type=percentage
+    low_threshold=25
+    status_chr = "<span color='#FFEB3B'>󱐋</span>"
+    status_bat = "<span color='#8BC34A'>󰁹</span>"
+    status_full = "<span color='#4CAF50'>󰁹</span>"
+    status_idle = "<span color='#4CAF50'>󰁹</span>"
+    status_unk = "<span color='#2196F3'>󰂑</span>"
 }
 
 wireless _first_ {
