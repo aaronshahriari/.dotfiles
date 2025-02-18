@@ -12,7 +12,10 @@ return {
     }
 
     -- SETUP FOR PYTHON
-    lspconfig.pylsp.setup({})
+    lspconfig.pylsp.setup({
+      handlers = default_handlers,
+      capabilities = default_capabilities,
+    })
 
     -- SETUP FOR ZIG
     lspconfig.zls.setup({
