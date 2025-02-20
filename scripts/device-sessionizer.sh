@@ -3,10 +3,10 @@
 case "$(printf "Lock\nSleep\nSwitch User\nReboot\nShutdown\n" | dmenu -g 1 -i -l 10 -p "System:")" in
     "Lock")
         sleep 3
-        xautolock -locknow
+        xset s activate
         ;;
     "Sleep")
-        xautolock -locknow && systemctl suspend
+        xset s activate && systemctl suspend
         ;;
     "Switch User")
         case "$(printf "Yes\nNo" | dmenu -g 1 -i -l 10 -p "Are You Sure:")" in
