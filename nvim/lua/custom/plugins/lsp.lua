@@ -21,6 +21,11 @@ return {
     lspconfig.zls.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
+      init_options = {
+        completion = {
+          placeholder = false,
+        },
+      },
     })
     -- don't show parse errors in a separate window
     vim.g.zig_fmt_parse_errors = 0
