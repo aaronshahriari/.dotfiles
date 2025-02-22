@@ -2,11 +2,10 @@
 
 case "$(printf "Lock\nSleep\nSwitch User\nReboot\nShutdown\n" | dmenu -g 1 -i -l 10 -p "System:")" in
     "Lock")
-        sleep 3
-        xset s activate
+        i3lock -i /usr/share/backgrounds/locker-background.png
         ;;
     "Sleep")
-        xset s activate && systemctl suspend
+        i3lock -i /usr/share/backgrounds/locker-background.png && systemctl suspend
         ;;
     "Switch User")
         case "$(printf "Yes\nNo" | dmenu -g 1 -i -l 10 -p "Are You Sure:")" in
