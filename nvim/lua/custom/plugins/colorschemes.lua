@@ -12,4 +12,7 @@ return {
     lazy = false,
     priority = 1000,
   },
+  {
+    "atmosuwiryo/vim-winteriscoming",
+  },
 }
