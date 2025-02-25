@@ -8,6 +8,8 @@ return {
     "vague2k/vague.nvim",
   },
   {
-    "miikanissi/modus-themes.nvim", priority = 1000
+    "zootedb0t/citruszest.nvim",
+    lazy = false,
+    priority = 1000,
   },
 }
