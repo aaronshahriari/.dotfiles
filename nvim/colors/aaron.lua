@@ -1,33 +1,32 @@
-require("colorbuddy").colorscheme("aaron")
+require("colorbuddy").colorscheme('aaron')
 
-local colorbuddy = require("colorbuddy")
+local colorbuddy = require('colorbuddy')
 local Color = colorbuddy.Color
 local Group = colorbuddy.Group
 local c = colorbuddy.colors
 local g = colorbuddy.groups
 local s = colorbuddy.styles
 
--- Basic Colors
-Color.new("white", "#d9d9d9")
-Color.new("light_white", "#424242")
-Color.new("dark_grey", "#212121")
-Color.new("red", "#cc6666")
-Color.new("pink", "#fef601")
-Color.new("green", "#99cc99")
-Color.new("yellow", "#f8fe7a")
-Color.new("blue", "#81a2be")
-Color.new("dark_blue", "#070738")
-Color.new("aqua", "#8ec07c")
-Color.new("cyan", "#8abeb7")
-Color.new("purple", "#8e6fbd")
-Color.new("violet", "#b294bb")
-Color.new("orange", "#de935f")
-Color.new("brown", "#a3685a")
-Color.new("seagreen", "#698b69")
-Color.new("turquoise", "#698b69")
-Color.new("background", "#000000")
--- Additional custom color
-Color.new("magenta", "#ff00ff")
+-- Basic Colors (muted versions)
+Color.new('white', '#c0c0c0')       -- slightly less bright than '#d9d9d9'
+Color.new('light_white', '#5a5a5a') -- a bit brighter than before
+Color.new('dark_grey', '#212121')
+Color.new('red', '#b07b7b')         -- a more muted red
+Color.new('pink', '#f0b0b0')        -- softened pink instead of the super bright hue
+Color.new('green', '#99cc99')
+Color.new('yellow', '#e0e07a')      -- slightly muted yellow
+Color.new('blue', '#7a9fbf')        -- adjusted blue tone
+Color.new('dark_blue', '#070738')
+Color.new('aqua', '#8ec07c')
+Color.new('cyan', '#8abeb7')
+Color.new('purple', '#8e6fbd')
+Color.new('violet', '#a294bb') -- a tad more muted
+Color.new('orange', '#d18a6b') -- more subdued orange
+Color.new('brown', '#a3685a')
+Color.new('seagreen', '#698b69')
+Color.new('turquoise', '#698b69')
+Color.new("background", '#000000')
+Color.new("magenta", "#cc66cc") -- softer than full-on magenta
 
 -- MARKDOWN
 Group.new("@text.title.1.markdown", c.green)
@@ -53,11 +52,11 @@ Group.new("CursorLine", c.white, c.background)
 Group.new("NormalFloat", c.white)
 Group.new("FloatBorder", c.white)
 Group.new("lspfloatwinborder", c.white)
-Group.new("NormalNC", c.superwhite:dark(), c.background)
+Group.new("NormalNC", c.white:dark(), c.background)
 
 -- nvim default groups
 Group.new("Title", c.white, nil, s.none)
-Group.new("Normal", c.superwhite, c.background)
+Group.new("Normal", c.white, c.background)
 Group.new("Visual", c.none, c.light_white, s.none)
 Group.new("Conceal", c.none, c.none, s.none)
 Group.new("LineNr", c.light_white, c.black, s.none)
@@ -66,8 +65,8 @@ Group.new("IncSearch", c.black, c.blue, s.none)
 
 -- Additional Groups
 
--- Comments (italicized for a softer look)
-Group.new("Comment", c.light_white:dark(), nil, s.italic)
+-- Comments (brightened for clarity)
+Group.new("Comment", c.light_white, nil, s.italic)
 
 -- Search Highlights
 Group.new("Search", c.black, c.yellow, s.none)
@@ -75,7 +74,7 @@ Group.new("VisualNOS", c.none, c.dark_grey, s.none)
 
 -- Status Line
 Group.new("StatusLine", c.light_white, c.dark_grey, s.none)
-Group.new("StatusLineNC", c.light_white:dark(), c.dark_grey, s.none)
+Group.new("StatusLineNC", c.light_white, c.dark_grey, s.none)
 
 -- Cursor Line Number
 Group.new("CursorLineNr", c.yellow, c.dark_grey, s.bold)
@@ -134,5 +133,5 @@ Group.new("@function.bracket", g.Normal, g.Normal)
 Group.new("@keyword", c.violet, nil, s.none)
 Group.new("@keyword.faded", g.nontext.fg:light(), nil, s.none)
 Group.new("@property", c.blue)
-Group.new("@variable", c.superwhite, nil)
+Group.new("@variable", c.white, nil)
 Group.new("@variable.builtin", c.purple:light():light(), g.Normal)
