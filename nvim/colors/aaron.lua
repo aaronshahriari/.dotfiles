@@ -7,26 +7,27 @@ local c = colorbuddy.colors
 local g = colorbuddy.groups
 local s = colorbuddy.styles
 
--- Basic Colors (muted versions)
-Color.new('white', '#c0c0c0')       -- slightly less bright than '#d9d9d9'
-Color.new('light_white', '#5a5a5a') -- a bit brighter than before
-Color.new('dark_grey', '#212121')
-Color.new('red', '#b07b7b')         -- a more muted red
-Color.new('pink', '#f0b0b0')        -- softened pink instead of the super bright hue
-Color.new('green', '#99cc99')
-Color.new('yellow', '#e0e07a')      -- slightly muted yellow
-Color.new('blue', '#7a9fbf')        -- adjusted blue tone
+-- Basic Colors (muted and eye-friendly)
+Color.new('white', '#c0c0c0')       -- Soft white for main text
+Color.new('light_white', '#7a7a7a') -- A gentle, mid-tone for selections and accents
+Color.new('dark_grey', '#212121')   -- Deep grey for backgrounds and borders
+Color.new('grey', '#888888')        -- New grey for comments—visible yet subdued
+Color.new('red', '#b07b7b')         -- Muted red
+Color.new('pink', '#f0b0b0')        -- Soft pink
+Color.new('green', '#99cc99')       -- Gentle green
+Color.new('yellow', '#d4b16e')      -- Muted yellow, less glaring yet distinct
+Color.new('blue', '#7a9fbf')        -- Calm blue tone
 Color.new('dark_blue', '#070738')
 Color.new('aqua', '#8ec07c')
 Color.new('cyan', '#8abeb7')
 Color.new('purple', '#8e6fbd')
-Color.new('violet', '#a294bb') -- a tad more muted
-Color.new('orange', '#d18a6b') -- more subdued orange
+Color.new('violet', '#a294bb') -- Softened violet
+Color.new('orange', '#d18a6b') -- Subdued orange
 Color.new('brown', '#a3685a')
 Color.new('seagreen', '#698b69')
 Color.new('turquoise', '#698b69')
 Color.new("background", '#000000')
-Color.new("magenta", "#cc66cc") -- softer than full-on magenta
+Color.new("magenta", "#cc66cc") -- Soft magenta
 
 -- MARKDOWN
 Group.new("@text.title.1.markdown", c.green)
@@ -54,7 +55,7 @@ Group.new("FloatBorder", c.white)
 Group.new("lspfloatwinborder", c.white)
 Group.new("NormalNC", c.white:dark(), c.background)
 
--- nvim default groups
+-- Neovim Default Groups
 Group.new("Title", c.white, nil, s.none)
 Group.new("Normal", c.white, c.background)
 Group.new("Visual", c.none, c.light_white, s.none)
@@ -65,8 +66,8 @@ Group.new("IncSearch", c.black, c.blue, s.none)
 
 -- Additional Groups
 
--- Comments (brightened for clarity)
-Group.new("Comment", c.light_white, nil, s.italic)
+-- Comments (using new grey for clarity, yet distinct on the black background)
+Group.new("Comment", c.grey, nil, s.italic)
 
 -- Search Highlights
 Group.new("Search", c.black, c.yellow, s.none)
