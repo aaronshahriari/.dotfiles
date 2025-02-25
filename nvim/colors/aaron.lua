@@ -47,7 +47,7 @@ Group.new("DiagnosticInfo", c.purple)
 Group.new("QuickFixLine", c.red, c.background)
 
 -- CURSORS
-Group.new("CursorLine", c.white, c.background)
+Group.new("CursorLine", c.light_white, c.background)
 
 -- FLOATS
 Group.new("NormalFloat", c.white)
