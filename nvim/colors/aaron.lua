@@ -48,7 +48,7 @@ Group.new("DiagnosticInfo", c.purple)
 Group.new("QuickFixLine", c.red, c.background)
 
 -- CURSORS
-Group.new("CursorLine", c.highlight_col, c.background)
+Group.new("CursorLine", c.light_white, c.background)
 
 -- FLOATS
 Group.new("NormalFloat", c.white)
@@ -59,7 +59,7 @@ Group.new("NormalNC", c.white:dark(), c.background)
 -- Neovim Default Groups
 Group.new("Title", c.white, nil, s.none)
 Group.new("Normal", c.white, c.background)
-Group.new("Visual", c.none, c.light_white, s.none)
+Group.new("Visual", c.none, c.highlight_col, s.none)
 Group.new("Conceal", c.none, c.none, s.none)
 Group.new("LineNr", c.light_white, c.black, s.none)
 Group.new("Substitute", c.black, c.aqua, s.none)
