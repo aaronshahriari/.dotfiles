@@ -7,16 +7,17 @@ local c = colorbuddy.colors
 local g = colorbuddy.groups
 local s = colorbuddy.styles
 
--- Basic Colors (muted and eye-friendly)
-Color.new('white', '#c0c0c0')       -- Soft white for main text
-Color.new('light_white', '#7a7a7a') -- A gentle, mid-tone for selections and accents
-Color.new('dark_grey', '#212121')   -- Deep grey for backgrounds and borders
-Color.new('grey', '#888888')        -- New grey for comments—visible yet subdued
-Color.new('red', '#b07b7b')         -- Muted red
-Color.new('pink', '#f0b0b0')        -- Soft pink
-Color.new('green', '#99cc99')       -- Gentle green
-Color.new('yellow', '#d4b16e')      -- Muted yellow, less glaring yet distinct
-Color.new('blue', '#7a9fbf')        -- Calm blue tone
+-- basic colors (muted and eye-friendly)
+Color.new('white', '#c0c0c0')         -- Soft white for main text
+Color.new('light_white', '#7a7a7a')   -- A gentle, mid-tone for selections and accents
+Color.new('highlight_col', '#424242') -- A gentle, mid-tone for selections and accents
+Color.new('dark_grey', '#212121')     -- Deep grey for backgrounds and borders
+Color.new('grey', '#888888')          -- New grey for comments—visible yet subdued
+Color.new('red', '#b07b7b')           -- Muted red
+Color.new('pink', '#f0b0b0')          -- Soft pink
+Color.new('green', '#99cc99')         -- Gentle green
+Color.new('yellow', '#d4b16e')        -- Muted yellow, less glaring yet distinct
+Color.new('blue', '#7a9fbf')          -- Calm blue tone
 Color.new('dark_blue', '#070738')
 Color.new('aqua', '#8ec07c')
 Color.new('cyan', '#8abeb7')
@@ -47,7 +48,7 @@ Group.new("DiagnosticInfo", c.purple)
 Group.new("QuickFixLine", c.red, c.background)
 
 -- CURSORS
-Group.new("CursorLine", c.light_white, c.background)
+Group.new("CursorLine", c.highlight_col, c.background)
 
 -- FLOATS
 Group.new("NormalFloat", c.white)
