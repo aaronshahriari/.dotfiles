@@ -80,3 +80,5 @@ function MyTabline()
   end
   return s
 end
+
+vim.opt.formatoptions:remove({ "r", "o" })
