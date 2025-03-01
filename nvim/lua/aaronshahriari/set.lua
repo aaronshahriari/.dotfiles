@@ -81,6 +81,4 @@ function MyTabline()
   return s
 end
 
-callback = function()
-  vim.opt.formatoptions:remove({ "r", "o" })
-end
+vim.opt.formatoptions:remove({ "r", "o" })
