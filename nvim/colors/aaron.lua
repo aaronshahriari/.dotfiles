@@ -8,27 +8,27 @@ local g = colorbuddy.groups
 local s = colorbuddy.styles
 
 -- basic colors (muted and eye-friendly)
-Color.new('white', '#c0c0c0')         -- Soft white for main text
-Color.new('light_white', '#7a7a7a')   -- A gentle, mid-tone for selections and accents
-Color.new('highlight_col', '#424242') -- A gentle, mid-tone for selections and accents
-Color.new('dark_grey', '#212121')     -- Deep grey for backgrounds and borders
-Color.new('grey', '#888888')          -- New grey for comments—visible yet subdued
-Color.new('red', '#b07b7b')           -- Muted red
-Color.new('pink', '#f0b0b0')          -- Soft pink
-Color.new('green', '#99cc99')         -- Gentle green
-Color.new('yellow', '#d4b16e')        -- Muted yellow, less glaring yet distinct
-Color.new('blue', '#7a9fbf')          -- Calm blue tone
+Color.new('white', '#c0c0c0')
+Color.new('light_white', '#7a7a7a')
+Color.new('highlight_col', '#424242')
+Color.new('dark_grey', '#212121')
+Color.new('grey', '#888888')
+Color.new('red', '#b07b7b')
+Color.new('pink', '#f0b0b0')
+Color.new('green', '#99cc99')
+Color.new('yellow', '#d4b16e')
+Color.new('blue', '#7a9fbf')
 Color.new('dark_blue', '#070738')
 Color.new('aqua', '#8ec07c')
 Color.new('cyan', '#8abeb7')
 Color.new('purple', '#8e6fbd')
-Color.new('violet', '#a294bb') -- Softened violet
-Color.new('orange', '#d18a6b') -- Subdued orange
+Color.new('violet', '#a294bb')
+Color.new('orange', '#d18a6b')
 Color.new('brown', '#a3685a')
 Color.new('seagreen', '#698b69')
 Color.new('turquoise', '#698b69')
 Color.new("background", '#000000')
-Color.new("magenta", "#cc66cc") -- Soft magenta
+Color.new("magenta", "#cc66cc")
 
 -- MARKDOWN
 Group.new("@text.title.1.markdown", c.green)
@@ -38,6 +38,9 @@ Group.new("@text.title.3.markdown", c.purple)
 -- COMPLETION
 Group.new("PmenuSel", c.black, c.white)
 Group.new("Pmenu", c.none, c.dark_grey)
+
+-- COLORCOLUMN
+Group.new("ColorColumn", c.none, c.dark_grey)
 
 -- DIAGNOSTICS
 Group.new("DiagnosticError", c.red)

@@ -66,6 +66,11 @@ vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]])
 -- run tmux inside of vim
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/bin/scripts/tmux-sessionizer.sh<CR>")
 
+-- source lua file
+vim.keymap.set("n", "<leader><leader>", function()
+  vim.cmd("so")
+end)
+
 -- define a function for creating a small terminal
 vim.keymap.set("n", "<leader>st", function()
   vim.cmd.new()
@@ -114,7 +119,3 @@ end)
 -- vim.keymap.set("n", "<C-g>", function() toggle_terminal("J", 15) end)
 -- vim.keymap.set("n", "<C-p>", function() toggle_terminal("L", 80) end)
 --
--- -- source lua file
--- vim.keymap.set("n", "<leader><leader>", function()
---   vim.cmd("so")
--- end)
