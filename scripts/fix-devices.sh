@@ -1,11 +1,25 @@
 #!/usr/bin/env bash
 
-case "$(printf "Wallpaper\nLogitech Mouse\nTouchpad\nWireplumber\nDWMBlocks\n" | dmenu -g 1 -m 0 -i -l 10 -p "Restart:")" in
+reset_cam() {
+    cam_id=$(lsusb | grep 'C920 PRO HD Webcam' | cut -d' ' -f6)
+    if [ -n "$cam_id" ]; then
+        sudo usbreset "$cam_id"
+    else
+        echo "Webcam could not be found" >&2
+        return 1
+    fi
+
+}
+
+case "$(printf "Wallpaper\nLogitech Mouse\nLogitech Camera\nTouchpad\nWireplumber\n" | dmenu -g 1 -m 0 -i -l 10 -p "Restart:")" in
     "Wallpaper")
         feh --bg-fill /usr/share/backgrounds/desktop_wall.jpg --bg-fill /usr/share/backgrounds/desktop_wall.jpg
         ;;
     "Logitech Mouse")
         xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.8
+        ;;
+    "Logitech Camera")
+        reset_cam
         ;;
     "Touchpad")
         xinput set-prop "pointer:PIXA3854:00 093A:0274 Touchpad" "libinput Scrolling Pixel Distance" 50
@@ -14,9 +28,5 @@ case "$(printf "Wallpaper\nLogitech Mouse\nTouchpad\nWireplumber\nDWMBlocks\n" |
     "Wireplumber")
         systemctl --user restart wireplumber.service
         systemctl --user restart pipewire.service
-        ;;
-    "DWMBlocks")
-        pkill dwmblocks
-        nohup dwmblocks > /dev/null 2>&1 & disown
         ;;
 esac
