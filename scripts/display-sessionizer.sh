@@ -13,6 +13,9 @@ case "$(printf "$autorandr_profiles" | dmenu -g 1 -i -l 10 -p "Display Setup:")"
     "home-two-swap")
         autorandr --load home-two-swap
         ;;
+    "home-single")
+        autorandr --load home-single
+        ;;
 esac
 
 feh --bg-fill /usr/share/backgrounds/desktop_wall.jpg --bg-fill /usr/share/backgrounds/desktop_wall.jpg
