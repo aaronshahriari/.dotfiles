@@ -8,6 +8,10 @@ vim.cmd("autocmd FileType netrw set nu")
 vim.keymap.set('n', '<C-[>', ':cp<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-]>', ':cn<CR>', { noremap = true, silent = true })
 
+-- scrolling horizontally with the mouse (csv files ofc)
+vim.keymap.set('n', '<S-ScrollWheelUp>', '10zh', { silent = true })
+vim.keymap.set('n', '<S-ScrollWheelDown>', '10zl', { silent = true })
+
 -- Map these to move through splits
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
