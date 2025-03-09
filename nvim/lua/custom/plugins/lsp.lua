@@ -39,7 +39,6 @@ return {
     lspconfig.tailwindcss.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
-      filetypes = { "html", "css", },
       init_options = {
         userLanguages = {
           elixir = "html-eex",
