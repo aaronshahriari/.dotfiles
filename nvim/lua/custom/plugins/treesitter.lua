@@ -5,7 +5,7 @@ return {
     config = function()
       require("nvim-treesitter.configs").setup({
         -- A list of parser names, or "all"
-        ensure_installed = { "html", "markdown_inline", "java", "python", "javascript", "c", "lua", "vim", "vimdoc", "query" },
+        ensure_installed = { "markdown_inline", "java", "python", "javascript", "c", "lua", "vim", "vimdoc", "query" },
         sync_install = false,
         auto_install = true,
 
