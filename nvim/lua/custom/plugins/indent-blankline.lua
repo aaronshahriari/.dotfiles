@@ -3,7 +3,10 @@ return {
   config = function()
     local ibl = require("ibl")
     ibl.setup({
-      scope = { enabled = false },
+      scope = {
+        enabled = false,
+        show_start = false,
+      },
     })
   end
 }
