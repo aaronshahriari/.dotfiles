@@ -24,7 +24,7 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     if [[ $USER == "aaronshahriari" ]]; then
-        selected=$(find ~/personal/AaronVault ~/github ~/ ~/work ~/personal -mindepth 1 -maxdepth 1 -type d | fzf)
+        selected=$(find ~/github ~/ ~/work ~/personal -mindepth 1 -maxdepth 1 -type d | fzf)
     elif [[ $USER == "aaronshahriari_work" ]]; then
         selected=$(find ~/github ~/nixos-config ~/ ~/work -mindepth 1 -maxdepth 1 -type d | fzf)
     fi

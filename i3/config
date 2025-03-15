@@ -23,7 +23,7 @@ bar {
     # button width
     workspace_min_width 30
     separator_symbol " | "
-    padding 0 15px 0 15px
+    # padding 0 15 0 15
     colors {
         background #000000
         statusline #ffffff

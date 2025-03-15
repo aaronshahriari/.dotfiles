@@ -2,9 +2,9 @@ export XDG_CONFIG_HOME=$HOME/.config
 export PATH="$HOME/.local/bin/scripts/:$PATH"
 
 alias vim="nvim"
+alias gs="git status"
 
 set -o vi
 
 # tmux sessionizer
 bindkey -s ^f ". ~/.local/bin/scripts/tmux-sessionizer.sh\n"
-# bindkey -s ^f ". ~/.local/bin/scripts/wezterm-sessionizer.sh\n"
