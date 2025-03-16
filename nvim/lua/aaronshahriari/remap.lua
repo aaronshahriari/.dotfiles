@@ -33,6 +33,17 @@ vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
 -- used to single file diagnostics in qflist
 vim.keymap.set("n", "<C-x>", ":Telescope diagnostics<CR>")
 
+-- Toggle hlsearch if it's on, otherwise just do "enter"
+vim.keymap.set("n", "<CR>", function()
+  ---@diagnostic disable-next-line: undefined-field
+  if vim.v.hlsearch == 1 then
+    vim.cmd.nohl()
+    return ""
+  else
+    return k "<CR>"
+  end
+end, { expr = true })
+
 -- Map to change split size
 vim.keymap.set("n", "<C-Left>", "<C-w>10<")
 vim.keymap.set("n", "<C-Right>", "<C-w>10>")

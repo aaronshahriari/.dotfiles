@@ -2,7 +2,7 @@
 
 case "$(printf "Lock\nSleep\nSwitch User\nReboot\nShutdown\n" | dmenu -g 1 -i -l 10 -p "System:")" in
     "Lock")
-        i3lock -n -i /usr/share/backgrounds/locker-background.png
+        i3lock -n -i /home/$USER/Pictures/Wallpapers/lockscreen.png
         ;;
     "Sleep")
         systemctl suspend
