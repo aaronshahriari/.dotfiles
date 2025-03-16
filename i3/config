@@ -7,15 +7,20 @@ focus_follows_mouse no
 floating_modifier $mod
 
 # remove title on each window, but keep 1 pixel
-for_window [class="^.*"] border pixel 1
+for_window [class=".*"] border pixel 1
 # titles on if i want
 # for_window [class=".*"] title_format "<b>%title</b>"
 # for_window [class=".*"] title_window_icon on
-# for_window [class=".*"] title_window_icon padding 5px
+# for_window [class=".*"] title_window_icon padding 2px
 # for_window [class="^.*"] border normal 1
 
 # class        border  backgr. text    indicator child_border
 client.focused #ffffff #ffffff #000000 #ffffff   #ffffff
+# client.focused_inactive #ffffff #ffffff #000000 #ffffff   #ffffff
+# client.unfocused #ffffff #ffffff #000000 #ffffff   #ffffff
+# client.unfocused #ffffff #ffffff #000000 #ffffff   #ffffff
+# client.placeholder #ffffff #ffffff #000000 #ffffff   #ffffff
+# client.background       #0000000
 
 bar {
     status_command i3status --config ~/.config/i3status/config
@@ -23,7 +28,7 @@ bar {
     # button width
     workspace_min_width 30
     separator_symbol " | "
-    # padding 0 15 0 15
+    padding 0 15 0 15
     colors {
         background #000000
         statusline #ffffff
@@ -44,7 +49,7 @@ bindsym $mod+c exec --no-startup-id ~/.local/bin/scripts/fix-devices.sh
 bindsym $mod+Shift+s exec --no-startup-id ~/.local/bin/scripts/flameshot-screenshot.sh
 bindsym $mod+Shift+d exec --no-startup-id ~/.local/bin/scripts/display-sessionizer.sh dmenu -m 0 -c
 bindsym $mod+Shift+e exec --no-startup-id ~/.local/bin/scripts/device-sessionizer.sh dmenu -m 0 -c
-bindsym $mod+s exec --no-startup-id ~/.local/bin/scripts/dmenu-app-switcher.sh
+# bindsym $mod+s exec --no-startup-id ~/.local/bin/scripts/dmenu-app-switcher.sh
 bindsym $mod+g exec --no-startup-id ~/.local/bin/scripts/dmenu-search.sh dmenu -m 0 -c
 bindsym $mod+minus exec --no-startup-id "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
 bindsym $mod+equal exec --no-startup-id "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
@@ -71,6 +76,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym $mod+d exec --no-startup-id dmenu_run -m 0
 exec_always --no-startup-id picom -b &
 exec_always --no-startup-id $HOME/.local/bin/scripts/autostart.sh
+exec --no-startup-id autorandr --change
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

@@ -17,7 +17,7 @@ return {
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
     vim.keymap.set("n", "<space>fh", builtin.help_tags)
     vim.keymap.set("n", "<space>fc", function()
-      builtin.find_files { cwd = vim.fn.stdpath "config" }
+      builtin.find_files { cwd = "/home/aaronshahriari/github/.dotfiles/nvim/" }
     end)
   end
 }

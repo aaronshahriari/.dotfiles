@@ -1,5 +1,10 @@
 return {
   "neovim/nvim-lspconfig",
+  dependencies = {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+  },
   config = function()
     local lspconfig = require("lspconfig")
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -103,6 +108,13 @@ return {
 
     -- SETUP FOR MD
     lspconfig.markdown_oxide.setup({})
+
+    require("mason").setup()
+    local ensure_installed = {
+      "stylua",
+      "lua_ls",
+    }
+    require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
     local allowed_filetypes = { "lua", "nix", "sh" }
     vim.api.nvim_create_autocmd("BufWritePre", {
