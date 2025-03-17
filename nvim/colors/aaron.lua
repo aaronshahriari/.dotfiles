@@ -76,7 +76,8 @@ Group.new("IncSearch", c.black, c.blue, s.none)
 Group.new("Comment", c.grey, nil, s.italic)
 
 -- Search Highlights
-Group.new("Search", c.black, c.yellow, s.none)
+Group.new("Search", c.black, c.grey, s.none)
+Group.new("CurSearch", c.black, c.yellow, s.none)
 Group.new("VisualNOS", c.none, c.dark_grey, s.none)
 
 -- Status Line
