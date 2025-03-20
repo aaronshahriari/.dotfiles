@@ -7,16 +7,15 @@ local c = colorbuddy.colors
 local g = colorbuddy.groups
 local s = colorbuddy.styles
 
--- basic colors (muted and eye-friendly)
 Color.new('white', '#c0c0c0')
-Color.new('light_white', '#7a7a7a')
-Color.new('highlight_col', '#424242')
+Color.new('light_white', '#424242')
 Color.new('dark_grey', '#212121')
 Color.new('grey', '#888888')
 Color.new('red', '#b07b7b')
 Color.new('pink', '#f0b0b0')
 Color.new('green', '#99cc99')
 Color.new('yellow', '#d4b16e')
+Color.new('bright_yellow', '#d3ff33')
 Color.new('blue', '#7a9fbf')
 Color.new('dark_blue', '#070738')
 Color.new('aqua', '#8ec07c')
@@ -51,7 +50,8 @@ Group.new("DiagnosticInfo", c.purple)
 Group.new("QuickFixLine", c.red, c.background)
 
 -- CURSORS
-Group.new("CursorLine", c.light_white, c.background)
+Group.new("CursorLine", c.none, c.dark_grey)
+Group.new("CursorLineNr", c.bright_yellow, c.dark_grey)
 
 -- FLOATS
 Group.new("NormalFloat", c.white)
@@ -62,9 +62,7 @@ Group.new("NormalNC", c.white:dark(), c.background)
 -- Neovim Default Groups
 Group.new("Title", c.white, nil, s.none)
 Group.new("Normal", c.white, c.background)
-Group.new("Visual", c.none, c.highlight_col, s.none)
-Group.new("visualmode", c.none, c.highlight_col, s.none)
-Group.new("visuallinemode", c.none, c.highlight_col, s.none)
+Group.new("Visual", c.none, c.light_white, s.none)
 Group.new("Conceal", c.none, c.none, s.none)
 Group.new("LineNr", c.light_white, c.black, s.none)
 Group.new("Substitute", c.black, c.aqua, s.none)
@@ -83,9 +81,6 @@ Group.new("VisualNOS", c.none, c.dark_grey, s.none)
 -- Status Line
 Group.new("StatusLine", c.light_white, c.dark_grey, s.none)
 Group.new("StatusLineNC", c.light_white, c.dark_grey, s.none)
-
--- Cursor Line Number
-Group.new("CursorLineNr", c.yellow, c.dark_grey, s.bold)
 
 -- Splits and Tab Lines
 Group.new("VertSplit", c.dark_grey, c.background, s.none)
@@ -112,9 +107,11 @@ Group.new("Question", c.blue, c.background, s.none)
 Group.new("MoreMsg", c.green, c.background, s.none)
 
 -- Cursor Styles
-Group.new("Cursor", c.white, c.dark_grey, s.none)
-Group.new("TermCursor", c.white, c.dark_grey, s.none)
-Group.new("TermCursorNC", c.light_white, c.dark_grey, s.none)
+Group.new("Cursor", c.white, c.white, s.none)
+Group.new("TermCursor", c.white, c.white, s.none)
+Group.new("TermCursorNC", c.white, c.none, s.none)
+-- Group.new("TermCursor", c.white, c.dark_grey, s.none)
+-- Group.new("TermCursorNC", c.light_white, c.dark_grey, s.none)
 
 -- NonText (for filler lines or end-of-buffer symbols)
 Group.new("NonText", c.dark_grey, nil, s.none)
@@ -143,3 +140,9 @@ Group.new("@keyword.faded", g.nontext.fg:light(), nil, s.none)
 Group.new("@property", c.blue)
 Group.new("@variable", c.white, nil)
 Group.new("@variable.builtin", c.purple:light():light(), g.Normal)
+
+-- Diffs
+Group.new("DiffAdd", c.green:light(), c.dark_grey, s.bold)
+Group.new("DiffChange", c.blue:light(), c.dark_grey, s.bold)
+Group.new("DiffDelete", c.red:light(), c.dark_grey, s.bold)
+Group.new("DiffText", c.yellow:light(), c.dark_grey, s.bold)

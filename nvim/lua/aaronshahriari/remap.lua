@@ -33,17 +33,6 @@ vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
 -- used to single file diagnostics in qflist
 vim.keymap.set("n", "<C-x>", ":Telescope diagnostics<CR>")
 
--- Toggle hlsearch if it's on, otherwise just do "enter"
-vim.keymap.set("n", "<CR>", function()
-  ---@diagnostic disable-next-line: undefined-field
-  if vim.v.hlsearch == 1 then
-    vim.cmd.nohl()
-    return ""
-  else
-    return k "<CR>"
-  end
-end, { expr = true })
-
 -- Map to change split size
 vim.keymap.set("n", "<C-Left>", "<C-w>10<")
 vim.keymap.set("n", "<C-Right>", "<C-w>10>")
@@ -95,38 +84,5 @@ vim.keymap.set("n", "<leader>t", function()
   vim.cmd.new()
   vim.cmd.term()
   vim.cmd.wincmd("L")
+  vim.api.nvim_win_set_width(0, 80)
 end)
-
--- function to create term
--- local term_bufnr = nil
--- local term_win_id = nil
--- local function toggle_terminal(position, size)
---   if term_win_id and vim.api.nvim_win_is_valid(term_win_id) then
---     -- if terminal is open, close it
---     vim.api.nvim_win_close(term_win_id, true)
---     term_win_id = nil
---   else
---     if not term_bufnr or not vim.api.nvim_buf_is_valid(term_bufnr) then
---       -- create terminal buffer only if it doesn't exist
---       vim.cmd("new")                              -- open a new split
---       term_bufnr = vim.api.nvim_get_current_buf() -- get the buffer number
---       vim.cmd("term")                             -- start terminal in the buffer
---     else
---       -- open an existing terminal buffer in a new window
---       vim.cmd("new")                          -- open a new split
---       vim.api.nvim_win_set_buf(0, term_bufnr) -- attach existing buffer
---     end
---     -- position the terminal window
---     vim.cmd("wincmd " .. position) -- move it (j = bottom, l = right)
---     if size then
---       vim.api.nvim_win_set_height(0, size)
---     end
---
---     -- store the terminal window id
---     term_win_id = vim.api.nvim_get_current_win()
---   end
--- end
---
--- vim.keymap.set("n", "<C-g>", function() toggle_terminal("J", 15) end)
--- vim.keymap.set("n", "<C-p>", function() toggle_terminal("L", 80) end)
---
