@@ -16,6 +16,9 @@ return {
       ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
     }
 
+    -- SETUP FOR PHP
+    lspconfig.intelephense.setup({})
+
     -- SETUP FOR PYTHON
     lspconfig.pylsp.setup({
       handlers = default_handlers,

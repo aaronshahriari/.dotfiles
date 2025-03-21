@@ -1,6 +1,5 @@
 return {
   "VonHeikemen/lsp-zero.nvim",
-  branch = "v4.x",
   dependencies = {},
   config = function()
     local lsp_zero = require("lsp-zero")
