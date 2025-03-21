@@ -16,7 +16,7 @@ case "$(printf "Wallpaper\nLogitech Mouse\nLogitech Camera\nTouchpad\nWireplumbe
         feh --bg-fill /usr/share/backgrounds/desktop_wall.jpg --bg-fill /usr/share/backgrounds/desktop_wall.jpg
         ;;
     "Logitech Mouse")
-        xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.8
+        xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.9
         ;;
     "Logitech Camera")
         reset_cam
