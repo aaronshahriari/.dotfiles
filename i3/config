@@ -2,7 +2,7 @@ include $HOME/.config/i3/workspaces.conf
 include $HOME/.config/i3/keymaps.conf
 
 set $mod Mod1
-font pango:MesloLGS Nerd Font 15
+font pango:MesloLGS Nerd Font Bold 9
 focus_follows_mouse no
 floating_modifier $mod
 
@@ -26,9 +26,9 @@ bar {
     status_command i3status --config ~/.config/i3status/config
     position top
     # button width
-    workspace_min_width 30
+    workspace_min_width 20
     separator_symbol " | "
-    padding 0 15 0 15
+    padding 0 10 0 10
     colors {
         background #000000
         statusline #ffffff
@@ -38,7 +38,7 @@ bar {
         focused_workspace  #ffffff #ffffff #000000
         active_workspace   #000000 #000000 #ffffff
         inactive_workspace #000000 #000000 #ffffff
-        urgent_workspace   #3521a6 #3521a6 #ffffff
+        urgent_workspace   #eb4034 #eb4034 #ffffff
     }
 }
 
