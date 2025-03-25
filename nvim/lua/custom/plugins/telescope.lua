@@ -1,11 +1,13 @@
 return {
   "nvim-telescope/telescope.nvim",
-  tag = "0.1.4",
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     local telescope = require("telescope")
     telescope.setup {
       defaults = {
+        preview = {
+          treesitter = true,
+        },
         layout_strategy = 'horizontal',
         layout_config = { height = 0.75, width = 0.75 },
       },
