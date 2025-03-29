@@ -30,9 +30,9 @@ Color.new("background", '#000000')
 Color.new("magenta", "#cc66cc")
 
 -- MARKDOWN
-Group.new("@text.title.1.markdown", c.green)
-Group.new("@text.title.2.markdown", c.orange)
-Group.new("@text.title.3.markdown", c.purple)
+Group.new("markdownh1", c.green)
+Group.new("markdownh2", c.orange)
+Group.new("markdownh3", c.purple)
 
 -- COMPLETION
 Group.new("PmenuSel", c.black, c.white)
