@@ -16,11 +16,19 @@ return {
       ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
     }
 
-    -- SETUP FOR HTML
-    lspconfig.html.setup({
+    -- SETUP FOR ELIXIR
+    lspconfig.elixirls.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
+      cmd = { "/home/aaronshahriari/.local/share/nvim/mason/bin/elixir-ls" },
+      filetypes = { "exs", "elixir", "eelixir", "heex", "surface" },
     })
+
+    -- SETUP FOR JAVA -> this is setup in java.lua
+    -- lspconfig.jdtls.setup({
+    --   handlers = default_handlers,
+    --   capabilities = default_capabilities,
+    -- })
 
     -- SETUP FOR PHP
     lspconfig.intelephense.setup({
@@ -53,7 +61,9 @@ return {
     lspconfig.bashls.setup({})
 
     -- SETUP FOR TAILWINDCSS
-    lspconfig.tailwindcss.setup({
+    local util = require("lspconfig.util")
+
+    require("lspconfig").tailwindcss.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
       init_options = {
@@ -67,11 +77,21 @@ return {
         tailwindCSS = {
           experimental = {
             classRegex = {
-              'class[:]\\s*"([^"]*)"',
+              'class[:]\\s*"([^"]*)"', -- if you use Tailwind like: class: "..."
             },
           },
         },
-      }
+      },
+      filetypes = {
+        "html",
+        "heex",
+        "eelixir",
+        "elixir",
+      },
+      root_dir = function(fname)
+        return util.root_pattern("assets/tailwind.config.js", "tailwind.config.ts")(fname)
+            or util.find_git_ancestor(fname)
+      end,
     })
 
     -- SETUP FOR HTML
