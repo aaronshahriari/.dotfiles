@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
 
-case "$(printf "Lock\nSleep\nSwitch User\nReboot\nShutdown\n" | dmenu -g 1 -i -l 10 -p "System:")" in
+case "$(printf "Lock\nSleep\nReboot\nShutdown\n" | dmenu -g 1 -i -l 10 -p "System:")" in
     "Lock")
-        i3lock -n -i /home/$USER/Pictures/Wallpapers/lockscreen.png
+        i3lock -n -i $HOME/Pictures/Wallpapers/resize_lock.png
         ;;
     "Sleep")
+        i3lock -n -i $HOME/Pictures/Wallpapers/resize_lock.png &
+        sleep 0.5
         systemctl suspend
         ;;
-    "Switch User")
-        case "$(printf "Yes\nNo" | dmenu -g 1 -i -l 10 -p "Are You Sure:")" in
-            "Yes") dm-tool switch-to-greeter ;;
-            *) exit 1 ;;
-        esac ;;
     "Reboot")
         case "$(printf "Yes\nNo" | dmenu -g 1 -i -l 10 -p "Are You Sure:")" in
             "Yes") reboot ;;

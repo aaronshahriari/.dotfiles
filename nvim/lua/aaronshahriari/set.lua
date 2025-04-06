@@ -1,7 +1,7 @@
 -- not allow the mouse
 -- vim.o.mouse = ""
 
-vim.opt.guicursor = "a:blinkon0"
+vim.opt.guicursor = "a:blinkon0,i:ver25"
 
 vim.opt.nu = true
 vim.opt.relativenumber = true

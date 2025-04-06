@@ -11,12 +11,15 @@ reset_cam() {
 
 }
 
-case "$(printf "Wallpaper\nLogitech Mouse\nLogitech Camera\nTouchpad\nWireplumber\n" | dmenu -g 1 -m 0 -i -l 10 -p "Restart:")" in
+case "$(printf "Wallpaper\nLogitech Mouse\nDWMBlocks\nLogitech Camera\nTouchpad\nWireplumber\n" | dmenu -g 1 -m 0 -i -l 10 -p "Restart:")" in
     "Wallpaper")
         feh --bg-fill /usr/share/backgrounds/desktop_wall.jpg --bg-fill /usr/share/backgrounds/desktop_wall.jpg
         ;;
     "Logitech Mouse")
         xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.9
+        ;;
+    "DWMBlocks")
+        pkill dwmblocks && dwmblocks &
         ;;
     "Logitech Camera")
         reset_cam
