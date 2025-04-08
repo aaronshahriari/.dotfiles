@@ -83,9 +83,8 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # ON STARTUP
 bindsym $mod+d exec --no-startup-id dmenu_run -m 0
-exec_always --no-startup-id picom -b &
 exec_always --no-startup-id $HOME/.local/bin/scripts/autostart.sh
-exec --no-startup-id autorandr --change
+exec_always --no-startup-id sh -c "sleep 1 && autorandr --change"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

@@ -5,8 +5,6 @@ case "$(printf "Lock\nSleep\nReboot\nShutdown\n" | dmenu -g 1 -i -l 10 -p "Syste
         i3lock -n -i $HOME/Pictures/Wallpapers/resize_lock.png
         ;;
     "Sleep")
-        i3lock -n -i $HOME/Pictures/Wallpapers/resize_lock.png &
-        sleep 0.5
         systemctl suspend
         ;;
     "Reboot")
