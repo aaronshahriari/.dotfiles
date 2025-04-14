@@ -15,6 +15,7 @@ return {
       custom_highlights = function(colors)
         return {
           WinSeparator = { fg = colors.flamingo, bg = colors.base },
+          TermCursorNC = { fg = "#000000", bg = "#000000" },
         }
       end
     },

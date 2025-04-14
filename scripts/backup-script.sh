@@ -1,13 +1,24 @@
 #!/usr/bin/env bash
 
-CURENT_DATE_TIME=$(date "+%Y-%m-%d_%H-%M-%S")
-LOG_FILE="$HOME/backup_logs/${CURENT_DATE_TIME}-backup.log"
-SOURCE="$HOME/{.config,.ssh,backup_logs,github,nixos-config,personal,Pictures,work}"
+CURRENT_DATE_TIME=$(date "+%Y-%m-%d_%H-%M-%S")
+LOG_FILE="$HOME/backup_logs/${CURRENT_DATE_TIME}-backup.log"
+# old way
+# SOURCE="$HOME/{Videos,gimp,.zshrc,github,.config,.ssh,backup_logs,github,personal,Pictures,work}"
+SOURCE=(
+  "$HOME/Videos"
+  "$HOME/gimp"
+  "$HOME/.zshrc"
+  "$HOME/github"
+  "$HOME/.config"
+  "$HOME/.ssh"
+  "$HOME/backup_logs"
+  "$HOME/personal"
+  "$HOME/Pictures"
+  "$HOME/work"
+)
 EXPANDED_SOURCE=$(eval echo "$SOURCE")
-DESTINATION="aaronshahriari@192.168.5.48:/volume1/NetBackup/${USER}_backup"
-
-# full script
-# rsync -avuz --delete --log-file=$HOME/backup_logs/${CURENT_DATE_TIME}-backup.log -e ssh ~/personal/streams/ aaronshahriari@192.168.5.48:/volume1/NetBackup/{$USER}_backup
+DESTINATION="nas:/volume1/NetBackup/popos_${USER}_backup"
+RSYNC_LOCATION=$(which rsync)
 
 # parameterized script
-rsync -avuz --delete --log-file=$LOG_FILE -e ssh $EXPANDED_SOURCE $DESTINATION
+rsync -avuz --rsync-path="$RSYNC_LOCATION" --delete --log-file="$LOG_FILE" -e ssh "$EXPANDED_SOURCE" "$DESTINATION"

@@ -41,7 +41,7 @@ battery 1 {
     format = "%status %percentage"
     last_full_capacity = true
     threshold_type=percentage
-    low_threshold=25
+    low_threshold=30
     status_chr = "<span color='#FFEB3B'>󱐋</span>"
     status_bat = "<span color='#8BC34A'>󰁹</span>"
     status_idle = "<span color='#4CAF50'>󰁹</span>"
