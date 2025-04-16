@@ -1,10 +1,5 @@
 return {
   "neovim/nvim-lspconfig",
-  dependencies = {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-  },
   config = function()
     local lspconfig = require("lspconfig")
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -15,14 +10,6 @@ return {
       ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
       ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
     }
-
-    -- SETUP FOR ELIXIR
-    lspconfig.elixirls.setup({
-      handlers = default_handlers,
-      capabilities = default_capabilities,
-      cmd = { "/home/aaronshahriari/.local/share/nvim/mason/bin/elixir-ls" },
-      filetypes = { "exs", "elixir", "eelixir", "heex", "surface" },
-    })
 
     -- SETUP FOR JAVA -> this is setup in java.lua
     -- lspconfig.jdtls.setup({
@@ -140,13 +127,6 @@ return {
 
     -- SETUP FOR MD
     lspconfig.markdown_oxide.setup({})
-
-    require("mason").setup()
-    local ensure_installed = {
-      "stylua",
-      "lua_ls",
-    }
-    require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
     local allowed_filetypes = { "lua", "nix", "sh" }
     vim.api.nvim_create_autocmd("BufWritePre", {
