@@ -18,7 +18,7 @@ if [ -z "$streams" ]; then
 fi
 
 # select stream using dmenu
-selected_stream=$(echo "$streams" | cut -d' ' -f2- | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1' | dmenu -i -g 1 -p "Select Stream:")
+selected_stream=$(echo "$streams" | cut -d' ' -f2- | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1' | dmenu -m 0 -i -g 1 -p "Select Stream:")
 stream_id=$(echo "$streams" | grep -i "$selected_stream" | awk -F. '{print $1}')
 
 # set the selected sink as default if a valid sink is selected
