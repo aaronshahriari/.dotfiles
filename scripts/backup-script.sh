@@ -17,7 +17,7 @@ SOURCE=(
   "$HOME/work"
 )
 EXPANDED_SOURCE=$(eval echo "$SOURCE")
-DESTINATION="nas:/volume1/NetBackup/nixos_${USER}_backup"
+DESTINATION="nas_personal:/volume1/NetBackup/nixos_${USER}_backup"
 RSYNC_LOCATION=$(which rsync)
 
 # parameterized script
