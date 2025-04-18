@@ -2,8 +2,7 @@
 
 CURRENT_DATE_TIME=$(date "+%Y-%m-%d_%H-%M-%S")
 LOG_FILE="$HOME/backup_logs/${CURRENT_DATE_TIME}-backup.log"
-# old way
-# SOURCE="$HOME/{Videos,gimp,.zshrc,github,.config,.ssh,backup_logs,github,personal,Pictures,work}"
+
 SOURCE=(
   "$HOME/Videos"
   "$HOME/gimp"
@@ -16,9 +15,7 @@ SOURCE=(
   "$HOME/Pictures"
   "$HOME/work"
 )
-EXPANDED_SOURCE=$(eval echo "$SOURCE")
-DESTINATION="nas_personal:/volume1/NetBackup/nixos_${USER}_backup"
-RSYNC_LOCATION=$(which rsync)
 
-# parameterized script
-rsync -avuz --rsync-path="$RSYNC_LOCATION" --delete --log-file="$LOG_FILE" -e ssh "$EXPANDED_SOURCE" "$DESTINATION"
+DESTINATION="nas_personal:/volume1/NetBackup/nixos_${USER}_backup"
+
+rsync -avuz --delete --log-file="$LOG_FILE" -e ssh "${SOURCE[@]}" "$DESTINATION"

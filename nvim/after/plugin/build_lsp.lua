@@ -1,1 +1,1 @@
-/nix/store/7rhlqs52ym1xmpzaymvhrf7isclaicfh-home-manager-files/.config/nvim/after/plugin/build_lsp.lua
+/nix/store/57kz80i3qnq6xshcp32yc2j012lzf7rj-home-manager-files/.config/nvim/after/plugin/build_lsp.lua
