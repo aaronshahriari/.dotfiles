@@ -16,6 +16,6 @@ SOURCE=(
   "$HOME/work"
 )
 
-DESTINATION="nas_personal:/volume1/NetBackup/nixos_${USER}_backup"
+DESTINATION="nas_personal:/volume1/Backups/NixOS-Laptop"
 
 rsync -avuz --delete --log-file="$LOG_FILE" -e ssh "${SOURCE[@]}" "$DESTINATION"
