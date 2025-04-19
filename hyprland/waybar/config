@@ -4,7 +4,7 @@
     "spacing": 2,
 
     "modules-left": ["hyprland/workspaces"],
-    "modules-right": ["clock", "custom/power"],
+    "modules-right": ["wireplumber", "battery", "clock"],
     "hyprland/workspaces": {
         "active-only": "true",
         "on-click": "activate",
@@ -12,12 +12,25 @@
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1"
     },
+    "wireplumber": {
+        "format": "{volume}% {icon}  ",
+        "format-muted": "",
+        "on-click": "helvum",
+        "format-icons": ["", "", ""]
+    },
+    "battery": {
+        "bat": "BAT1",
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}  ",
+        "format-icons": ["", "", "", "", ""],
+        "max-length": 25
+    },
     "clock": {
         "format": "{:%m/%d/%Y %I:%M %p}",
         "tooltip": false
     },
-    "custom/power": {
-		"format": " ",
-		"on-click": "notify-send 'POWERING OFF'"
-	},
 }

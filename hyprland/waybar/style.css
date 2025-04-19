@@ -9,9 +9,9 @@
 @define-color important-background #D41717;
 
 * {
-    font-family:   CaskaydiaCove Nerd Font Mono;
-    font-size:     13px;
-    min-height: 0;
+    font-family:   CaskaydiaCove Nerd Font;
+    font-size:     12px;
+    min-height:    0;
 }
 
 #waybar {
@@ -21,9 +21,8 @@
 
 #workspaces button {
     border-radius: 0;
-    margin: 2px 2px;
-    padding: 0px 2px;
-    font-weight: bold;
+    margin: 1px;
+    padding: 2px;
     color: @inactive-text;
 }
 
@@ -35,26 +34,36 @@
     background-color: @active-background;
     color: @active-text;
     border-radius: 0;
-    font-weight: bold;
 }
 
 #workspaces button.active {
     background-color: @active-background;
     color: @active-text;
-    font-weight: bold;
+}
+
+#wireplumber {
+    color: @inactive-text;
+}
+
+#battery {
+    color: @inactive-text;
+}
+
+#battery.charging {
+    color: #2dcc36;
+}
+
+#battery.warning:not(.charging) {
+	color: #e6e600;
+}
+
+#battery.critical:not(.charging) {
+    color: #cc3436;
 }
 
 #clock {
     border-radius: 0;
-    margin: 2px 2px;
-    padding: 0px 2px;
-    font-weight: bold;
+    margin: 1px;
+    padding: 2px;
     color: @inactive-text;
-}
-
-#custom-power {
-    background-color: @important-background;
-    border-radius: 100px;
-    margin: 5px 5px;
-    padding: 1px 1px 1px 1px;
 }
