@@ -9,7 +9,7 @@
 @define-color important-background #D41717;
 
 * {
-    font-family:   CaskaydiaCove Nerd Font;
+    font-family:   JetBrainsMono Nerd Font;
     font-size:     12px;
     min-height:    0;
 }
@@ -24,6 +24,7 @@
     margin: 1px;
     padding: 2px;
     color: @inactive-text;
+    font-weight: bold;
 }
 
 #workspaces button:hover {
