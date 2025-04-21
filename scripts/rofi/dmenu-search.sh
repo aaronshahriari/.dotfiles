@@ -17,9 +17,12 @@ if [[ -z "$selected_input" ]]; then
 fi
 
 # Function to check if the currently focused window is a Chrome window
+# is_chrome_focused() {
+#   focused_class=$(xprop -id "$(xdotool getwindowfocus)" WM_CLASS 2>/dev/null)
+#   [[ "$focused_class" == *"google-chrome"* ]]
+# }
 is_chrome_focused() {
-  focused_class=$(xprop -id "$(xdotool getwindowfocus)" WM_CLASS 2>/dev/null)
-  [[ "$focused_class" == *"google-chrome"* ]]
+  hyprctl activewindow -j | grep -i '"class": "chrome"' >/dev/null
 }
 
 # Determine browser command based on focus
