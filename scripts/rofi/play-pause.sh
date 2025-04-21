@@ -10,11 +10,11 @@ else
     adjusted_chrome=$(echo "$all_players" | sed 's/\<chromium[^ ]*/Chrome/g')
     adjusted_spotify=$(echo "$adjusted_chrome" | sed 's/\<spotify[^ ]*/Spotify/g')
 
-    # Lists
-    player_clean_list=("$adjusted_spotify")
-    player_dirty_list=("$all_players")
+    IFS=$'\n' read -rd '' -a player_clean_list <<< "$adjusted_spotify"
+    IFS=$'\n' read -rd '' -a player_dirty_list <<< "$all_players"
 
-    case "$(printf '%s\n' "${adjusted_spotify[@]}" | tac | rofi -dmenu -m 0 -i -l 10 -p "Player:")" in
+    selection=$(printf '%s\n' "${adjusted_spotify[@]}" | tac | rofi -dmenu -m 0 -i -l 10 -p "Player")
+    case "$selection" in
         "${player_clean_list[0]}")
             if ! playerctl -p "${player_dirty_list[0]}" play-pause; then
                 notify-send -u critical "Error" "Failed to play/pause ${player_clean_list[0]}"
