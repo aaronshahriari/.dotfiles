@@ -22,7 +22,7 @@ fi
 #   [[ "$focused_class" == *"google-chrome"* ]]
 # }
 is_chrome_focused() {
-  hyprctl activewindow -j | grep -i '"class": "chrome"' >/dev/null
+  [[ $(hyprctl activewindow -j | jq -r ".class") == "google-chrome" ]]
 }
 
 # Determine browser command based on focus
