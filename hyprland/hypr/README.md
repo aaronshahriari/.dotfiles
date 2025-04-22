@@ -3,6 +3,7 @@
 ## Now
 
 ## Later
+- [ ] hyprlock tie to suspend thingy for wayland (suspends after idle time using hypridle)
 - [ ] fix flameshot screenshot thing
 - [ ] customize rofi
     - [ ] fork the exported repo in my .config to keep for later use
@@ -10,7 +11,6 @@
 - [ ] add and seupt kanshi
     - [ ] fix display script when detaching dock
 - [ ] create wayland greeter when reboot/logout etc.
-- [ ] hyprlock tie to suspend thingy for wayland
 - [ ] add lid switch command things
 - [ ] colorize swaync
 
