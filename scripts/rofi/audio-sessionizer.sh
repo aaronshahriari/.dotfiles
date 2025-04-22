@@ -6,19 +6,14 @@ get_sinks() {
 
 get_sources() {
     wpctl status | awk '
-        /Audio/ { audio=1 } 
-        /Video/ { audio=0 } 
-        audio && /Sources:/ { flag=1; next } 
-        audio && (/Sink endpoints:/ || /Source endpoints:/) { flag=0 }
-        flag && /^[ │*]/ {
-            if ($0 ~ /[0-9]+/) { 
-                gsub(/^[ │*]+/, ""); 
-                sub(/\s*\[.*$/, ""); 
-                split($0, arr, " "); 
-                print arr[1], arr[2], arr[3];
-            }
+    /Audio/,/Video/ {
+        if ($0 ~ /Sources:/) in_sources=1
+        else if ($0 ~ /Filters:/) in_sources=0
+        else if (in_sources && $0 ~ /^[ │\*]*[0-9]+\./) {
+            gsub(/^[ │\*]+/, "", $0)
+            print
         }
-    '
+    }'
 }
 
 # Get available sinks
