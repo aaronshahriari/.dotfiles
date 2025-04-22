@@ -1,7 +1,6 @@
 # Todo
 
 ## Now
-- [ ] setup hyprlock
 
 ## Later
 - [ ] fix flameshot screenshot thing
@@ -14,6 +13,9 @@
 - [ ] hyprlock tie to suspend thingy for wayland
 - [ ] add lid switch command things
 - [ ] colorize swaync
+
+## Testing
+- [?] setup hyprlock
 
 ## Completed
 - [x] fix cursors
