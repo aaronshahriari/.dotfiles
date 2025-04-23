@@ -3,7 +3,8 @@
 ## Now
 
 ## Later
-- [ ] customize waybar
+- [ ] add kanshi config
+- [ ] configure fullscreen in chrome to not remove the tabs
 - [ ] customize rofi
     - [ ] fork the exported repo in my .config to keep for later use
 - [ ] add and seupt kanshi
@@ -17,6 +18,7 @@
 - [?] setup hyprlock
 
 ## Completed
+- [x] customize waybar
 - [x] fix flameshot screenshot thing
 - [x] hyprlock tie to suspend thingy for wayland (suspends after idle time using hypridle)
 - [x] fix cursors
