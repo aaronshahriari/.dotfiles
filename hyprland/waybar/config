@@ -11,7 +11,7 @@
 
     "modules-right": [
         "custom/media",
-        "custom/separator",
+        "custom/media-separator",
         "wireplumber",
         "custom/separator",
         "cpu",
@@ -47,11 +47,20 @@
     "custom/separator": {
         "format": "|",
     },
-    "custom/media": {
-        "format": "{}",
-        "on-click": "playerctl play-pause",
-        "exec": "./modules/currently_playing.sh 2> /dev/null",
+    "custom/media-separator": {
+        "format": "{} ",
+        "exec": "bash -c \"playerctl status >/dev/null 2>&1 && echo '|' || echo ''\"",
+        "interval": 1,
         "tooltip": false
+    },
+    "custom/media": {
+        "on-click": "playerctl play-pause",
+        "format": "{} ",
+        "interval": 1,
+        "return-type": "json",
+        "exec": "$HOME/.config/waybar/modules/currently_playing.sh",
+        "exec-if": "pgrep spotify",
+        "escape": true
     },
     "wireplumber": {
         "format": "{icon} {volume}%",
