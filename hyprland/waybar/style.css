@@ -12,11 +12,32 @@
     font-family:   JetBrainsMono Nerd Font;
     font-size:     12px;
     min-height:    0;
+    font-weight:   bold;
 }
 
 #waybar {
     color: @foreground;
     background-color: @background;
+}
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#custom-os_button {
+    font-size: 15px;
+    padding-left: 12px;
+    padding-right: 15px;
+}
+
+#window * {
+    padding-left: 12px;
+    font-style: italic;
+    font-weight: normal;
 }
 
 #workspaces button {
@@ -42,12 +63,26 @@
     color: @active-text;
 }
 
-#wireplumber {
-    color: @inactive-text;
+#custom-media,
+#wireplumber,
+#cpu,
+#memory,
+#disk,
+#network,
+#battery,
+#clock,
+#custom-separator {
+    padding-left: 5px;
+    padding-right: 6px;
 }
 
-#battery {
-    color: @inactive-text;
+#custom-media {
+    color: #6e8387;
+}
+
+#wireplumber.muted {
+    color: #cc3436;
+    font-size: 15px;
 }
 
 #battery.charging {
@@ -60,11 +95,4 @@
 
 #battery.critical:not(.charging) {
     color: #cc3436;
-}
-
-#clock {
-    border-radius: 0;
-    margin: 1px;
-    padding: 2px;
-    color: @inactive-text;
 }
