@@ -3,21 +3,23 @@
 ## Now
 
 ## Later
-- [ ] add kanshi config
-- [ ] configure fullscreen in chrome to not remove the tabs
-- [ ] customize rofi
-    - [ ] fork the exported repo in my .config to keep for later use
-- [ ] add and seupt kanshi
-    - [ ] fix display script when detaching dock
-- [ ] create wayland greeter when reboot/logout etc.
-- [ ] add lid switch command things
-- [ ] colorize swaync
 - [ ] remove path from hyprshot keymap
+- [ ] create wayland greeter when reboot/logout etc.
 
 ## Testing
+- [?] add and setup kanshi
+    - [?] fix display script when detaching dock
+- [?] rofi on main montitor testing in config
 - [?] setup hyprlock
 
 ## Completed
+- [x] move rofi config to dotfiles
+- [x] configure vertical monitor to support the waybar widgets
+- [x] add lid switch command things
+- [x] customize rofi
+    - [x] fork the exported repo in my .config to keep for later use
+- [!] configure fullscreen in chrome to not remove the tabs
+- [x] add kanshi config
 - [x] customize waybar
 - [x] fix flameshot screenshot thing
 - [x] hyprlock tie to suspend thingy for wayland (suspends after idle time using hypridle)
