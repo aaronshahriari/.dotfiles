@@ -100,7 +100,6 @@
         "tooltip-format-wifi": "{frequency} MHz ({signalStrength}%)",
         "tooltip-format-ethernet": "{ipaddr}/{cidr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
         "tooltip-format-disconnected": "Disconnected ⚠",
-        "max-length": 50,
         "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤢 ", "󰤨 "]
     },
     "battery": {
@@ -114,7 +113,6 @@
         "format": "{icon} {capacity}%",
         "format-charging": "󰚥 {capacity}%",
         "format-not charging": "󰚦 {capacity}%",
-        "max-length": 25
     },
     "clock": {
         "format": "{:%m/%d/%Y %I:%M %p}",

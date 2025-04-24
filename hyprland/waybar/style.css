@@ -77,13 +77,20 @@
     padding-right: 6px;
 }
 
+#network {
+    min-width: 120px;
+}
+
+#battery {
+    min-width: 30px;
+}
+
 #custom-media {
     color: #6e8387;
 }
 
 #wireplumber.muted {
     color: #cc3436;
-    font-size: 15px;
 }
 
 #battery.charging {
