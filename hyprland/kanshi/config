@@ -1,29 +1,31 @@
 output eDP-1 {
     mode 2880x1920@120
     position 0,0
+    alias $laptop
 }
 
 output "ASUSTek COMPUTER INC VG279QR R2LMQS075473" {
   mode 1920x1080@165
   position 0,660
+  transform normal
   alias $main
 }
 
 output "ASUSTek COMPUTER INC VG279 LALMQS182653" {
   mode 1920x1080@144
   position 1920,0
-  transform flipped-90
+  transform 90
   alias $vertical
 }
 
-profile laptop {
-  output $laptop enable
-  output $main disable
-  output $vertical disable
+profile {
+    output $laptop disable
+    output $main enable
+    output $vertical enable
+    exec ~/.local/bin/scripts/ghostty-config-updater.sh 13
 }
 
-profile dual-home {
-  output $laptop disable
-  output $main enable
-  output $vertical enable
+profile {
+    output $laptop enable
+    exec ~/.local/bin/scripts/ghostty-config-updater.sh 22
 }
