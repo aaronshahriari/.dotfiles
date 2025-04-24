@@ -72,13 +72,17 @@
 #network,
 #battery,
 #clock,
-#custom-separator {
+#custom-separator,
+#custom-power_button {
     padding-left: 5px;
     padding-right: 6px;
 }
 
-#network {
-    min-width: 120px;
+#custom-power_button {
+    color: #cc3436;
+    font-weight: bold;
+    font-size: 15px;
+    padding-right: 15px;
 }
 
 #battery {

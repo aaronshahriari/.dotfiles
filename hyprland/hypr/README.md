@@ -3,10 +3,10 @@
 ## Now
 
 ## Later
-- [ ] remove path from hyprshot keymap
 - [ ] create wayland greeter when reboot/logout etc.
 
 ## Testing
+- [?] remove path from hyprshot keymap
 - [?] add and setup kanshi
     - [?] fix display script when detaching dock
 - [?] rofi on main montitor testing in config

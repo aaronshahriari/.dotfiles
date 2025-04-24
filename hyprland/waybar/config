@@ -24,7 +24,9 @@
         "custom/separator",
         "battery",
         "custom/separator",
-        "clock"
+        "clock",
+        "custom/separator",
+        "custom/power_button"
     ],
 
     // left
@@ -117,5 +119,10 @@
     "clock": {
         "format": "{:%m/%d/%Y %I:%M %p}",
         "tooltip": false
+    },
+    "custom/power_button": {
+        "format": " ",
+        "tooltip": false,
+        "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh",
     }
 }
