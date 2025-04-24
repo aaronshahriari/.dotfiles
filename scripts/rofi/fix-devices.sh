@@ -11,7 +11,7 @@ reset_cam() {
 
 }
 
-case "$(printf "Logitech Mouse\nLogitech Camera\nTouchpad\nWireplumber\n" | rofi -dmenu -g 1 -m 0 -i -l 10 -p "Restart")" in
+case "$(printf "Logitech Mouse\nLogitech Camera\nTouchpad\nWireplumber\n" | ~/.config/rofi/launchers/scripts/launcher.sh -g 1 -m 0 -i -l 10 -p "Restart")" in
     # "Wallpaper")
     #     feh --bg-fill "$HOME"/Pictures/Wallpapers/wallpaper.jpg --bg-fill "$HOME"/Pictures/Wallpapers/wallpaper.jpg
     #     ;;

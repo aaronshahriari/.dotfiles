@@ -13,7 +13,7 @@ else
     IFS=$'\n' read -rd '' -a player_clean_list <<< "$adjusted_spotify"
     IFS=$'\n' read -rd '' -a player_dirty_list <<< "$all_players"
 
-    selection=$(printf '%s\n' "${adjusted_spotify[@]}" | tac | rofi -dmenu -m 0 -i -l 10 -p "Player")
+    selection=$(printf '%s\n' "${adjusted_spotify[@]}" | tac | ~/.config/rofi/launchers/scripts/launcher.sh -m 0 -i -l 10 -p "Player")
     case "$selection" in
         "${player_clean_list[0]}")
             if ! playerctl -p "${player_dirty_list[0]}" play-pause; then

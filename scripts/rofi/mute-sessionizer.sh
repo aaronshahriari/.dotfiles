@@ -17,8 +17,8 @@ if [ -z "$streams" ]; then
     exit 1
 fi
 
-# select stream using rofi -dmenu
-selected_stream=$(echo "$streams" | cut -d' ' -f2- | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1' | rofi -dmenu -m 0 -i -g 1 -p "Select Stream")
+# select stream using ~/.config/rofi/launchers/scripts/launcher.sh
+selected_stream=$(echo "$streams" | cut -d' ' -f2- | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1' | ~/.config/rofi/launchers/scripts/launcher.sh -m 0 -i -g 1 -p "Select Stream")
 stream_id=$(echo "$streams" | grep -i "$selected_stream" | awk -F. '{print $1}')
 
 # set the selected sink as default if a valid sink is selected

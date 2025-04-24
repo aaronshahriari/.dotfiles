@@ -10,7 +10,7 @@ mapfile -t bookmarks < <(jq -r '
 ' "$bookmarks_json")
 
 names=("${bookmarks[@]%%$'\t'*}")
-selected_input=$(printf "%s\n" "${names[@]}" | rofi -dmenu -m 0 -i -g 1 -p "Go")
+selected_input=$(printf "%s\n" "${names[@]}" | ~/.config/rofi/launchers/scripts/launcher.sh -m 0 -i -g 1 -p "Go")
 
 if [[ -z "$selected_input" ]]; then
   exit 0
