@@ -16,6 +16,8 @@ local tagkey = require("key.tagkey")
 -- WIGET INITIALIZE
 local volume_init = require("signals.volume_signal")
 volume_init.volume_emit("+")
+local audio_init = require("signals.audio_signal")
+audio_init.audio_emit("+")
 
 -- {{{ Key bindings
 local globalkeys = gears.table.join(tagkey,
@@ -90,9 +92,9 @@ local globalkeys = gears.table.join(tagkey,
     end),
   awful.key({}, "XF86AudioPlay",
     function() awful.spawn(os.getenv("HOME") .. "/.local/bin/scripts/rofi/play-pause.sh") end),
-  awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl next") end),
-  awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl next") end),
-  awful.key({ "Shift" }, "XF86AudioNext", function() awful.spawn("playerctl previous") end),
+  awful.key({}, "XF86AudioNext", function() audio_init.audio_emit("next") end),
+  awful.key({}, "XF86AudioPrev", function() audio_init.audio_emit("previous") end),
+  awful.key({ "Shift" }, "XF86AudioNext", function() audio_init.audio_emit("previous") end),
 
   ---- actions ----
   awful.key({ modkey }, "c", function() awful.spawn(os.getenv("HOME") .. "/.local/bin/scripts/rofi/fix-devices.sh") end),

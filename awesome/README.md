@@ -1,13 +1,15 @@
 # AwesomeWM Configuration
 
 ## Todo
-- [x] set keybinds
-- [ ] add back tags on windows that have stuff
 - [ ] split the window tabs across the bar
-- [ ] configure wibox
 - [ ] configure rofi
 - [ ] fix cursor on some things is too large
 - [ ] not auto focusing window rule
+
+## Done
+- [x] configure wibox
+- [x] set keybinds
+- [x] add tags on windows that have stuff
 
 ## Fix
 - [ ] non-focus rule not working

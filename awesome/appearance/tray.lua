@@ -143,18 +143,9 @@ function widgets.myaudio(s)
 
   audiowidget:buttons(gears.table.join(
     awful.button({}, 1, function()
-      awful.spawn("playerctl play-pause")
+      audio_init.audio_emit("play-pause")
     end)
   ))
-
-  gears.timer {
-    timeout = 30,
-    autostart = true,
-    call_now = true,
-    callback = function()
-      audio_init.audio_emit()
-    end
-  }
 
   return wibox.widget {
     audiowidget,

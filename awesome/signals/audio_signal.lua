@@ -3,19 +3,33 @@ local beautiful = require("beautiful")
 
 local M = {}
 
-function M.audio_emit()
-  awful.spawn.easy_async_with_shell(
-    "playerctl metadata --format '{{ artist }} - {{ title }}'",
-    function(stdout)
-      local song = stdout:gsub("%s+$", "")
-      if song == "" then
-        song = ""
-      end
+function M.audio_emit(arg)
+  local command
+  if arg == "play-pause" then
+    command = "playerctl play-pause"
+  elseif arg == "next" then
+    command = "playerctl next"
+  elseif arg == "previous" then
+    command = "playerctl previous"
+  else
+    command = nil
+  end
 
-      song = beautiful.audio_span .. song .. beautiful.close_span
-      awesome.emit_signal("laptop::audio", song)
-    end
-  )
+  awful.spawn.easy_async_with_shell(command, function()
+    awful.spawn.easy_async_with_shell("playerctl metadata --format '{{ artist }} - {{ title }}'",
+      function(stdout)
+        local song = stdout:gsub("%s+$", "")
+        local display_text
+        if stdout then
+          display_text = song
+        else
+          display_text = ""
+        end
+
+        display_text = beautiful.audio_span .. display_text .. beautiful.close_span
+        awesome.emit_signal("laptop::audio", display_text)
+      end)
+  end)
 end
 
 return M
