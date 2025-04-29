@@ -19,7 +19,6 @@ local rules = require("main.rule")
 
 -- Order matters: it should follow that of the default rc.lua config
 awful.layout.layouts = layouts
--- require("main.tag")
 awful.rules.rules = rules
 
 require("appearance.wibox")

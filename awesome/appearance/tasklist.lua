@@ -3,9 +3,7 @@ local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-awesome.set_preferred_icon_size(64)
-
-beautiful.tasklist_disable_task_name = true
+beautiful.tasklist_disable_task_name = false
 
 local tasklist_buttons = gears.table.join(
   awful.button({}, 1, function(c)
@@ -40,9 +38,10 @@ local widget_template_tasklist = {
         widget = wibox.widget.textbox,
       },
       layout = wibox.layout.fixed.horizontal,
+      spacing = 7,
     },
-    left   = 5,
-    right  = 5,
+    left   = 10,
+    right  = 15,
     widget = wibox.container.margin
   },
   id     = 'background_role',

@@ -30,7 +30,6 @@ no=''
 # Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
-        -m DP-6 \
 		-theme ${dir}/${theme}.rasi
 }
 

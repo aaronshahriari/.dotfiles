@@ -2,24 +2,9 @@ local awful = require("awful")
 local gears = require("gears")
 local vars = require("main.user_vars")
 local sharedtags = require("awesome-sharedtags")
+local tags = require("main.tag")
 
 local modkey = vars.modkey
-
-local tags = sharedtags({
-  -- Screen 1 tags
-  { name = "1",  screen = 1, layout = awful.layout.layouts[1] },
-  { name = "2",  screen = 1, layout = awful.layout.layouts[1] },
-  { name = "3",  screen = 1, layout = awful.layout.layouts[1] },
-  { name = "4",  screen = 1, layout = awful.layout.layouts[1] },
-  { name = "5",  screen = 1, layout = awful.layout.layouts[1] },
-
-  -- Screen 2 tags
-  { name = "6",  screen = 2, layout = awful.layout.layouts[1], master_width_factor = 1, master_count = 0 },
-  { name = "7",  screen = 2, layout = awful.layout.layouts[1], master_width_factor = 1, master_count = 0 },
-  { name = "8",  screen = 2, layout = awful.layout.layouts[1], master_width_factor = 1, master_count = 0 },
-  { name = "9",  screen = 2, layout = awful.layout.layouts[1], master_width_factor = 1, master_count = 0 },
-  { name = "10", screen = 2, layout = awful.layout.layouts[1], master_width_factor = 1, master_count = 0 },
-})
 
 local tagkeys = {}
 
@@ -31,6 +16,7 @@ for i = 1, 10 do
         local screen = awful.screen.focused()
         local tag = tags[i]
         if tag then
+          -- don't use this
           -- sharedtags.viewonly(tag, screen)
           sharedtags.jumpto(tag)
         end

@@ -7,8 +7,6 @@ local appearance = { -- my library
   mytasklist = require("appearance.tasklist"),
   mytraywidgets = require("appearance.tray"),
   mypadding = require("appearance.padding"),
-  -- FIXME: add popups here
-  -- mypopup = require("appearance.layout_popup")
 }
 
 awful.screen.connect_for_each_screen(function(s)
@@ -19,45 +17,33 @@ awful.screen.connect_for_each_screen(function(s)
 
   s.mypopup = appearance.mypopup
 
-  s.mywibox = awful.wibar({ position = "top", screen = s, height = 20 })
+  s.mywibox = awful.wibar({ position = "top", screen = s, height = 18 })
 
   s.mywibox:setup {
-    layout = wibox.layout.align.horizontal, -- it's not the windows layout, it's the wibox layout!
+    layout = wibox.layout.align.horizontal,
 
-    {                                       -- Left widgets
+    -- LEFT WIDGETS
+    {
       layout = wibox.layout.fixed.horizontal,
 
+      appearance.mytraywidgets.nixos(s),
       appearance.mytaglist(s),
-      s.mypromptbox,
     },
 
-    appearance.mytasklist(s), -- Middle widget
-    --appearance.mypadding,
+    -- MIDDLE WIDGETS
+    appearance.mytasklist(s),
 
-    { -- Right widgets
+    -- RIGHT WIDGETS
+    {
       layout = wibox.layout.fixed.horizontal,
 
-      --wibox.container.margin(wibox.widget {
-      --	image  = "/home/robert/dotsFox/AwesomeFox/image/keyboard.png",
-      --	resize = true,
-      --	widget = wibox.widget.imagebox
-      --}, 2, 2, 2, 2),
-      appearance.mytraywidgets.mybrightness(s),
-      --wibox.container.margin(wibox.widget {
-      --	image  = "/home/robert/dotsFox/AwesomeFox/image/speaker.png",
-      --	resize = true,
-      --	widget = wibox.widget.imagebox
-      --}, 2, 2, 2, 2),
+      appearance.mytraywidgets.myaudio(s),
       appearance.mytraywidgets.myvolume(s),
+      appearance.mytraywidgets.mywifi(s),
       appearance.mytraywidgets.mybattery(s),
       appearance.mytraywidgets.mytextclock(s),
-      wibox.container.margin(appearance.mytraywidgets.mysystray(s), 2, 2, 2, 2),
-      s.mylayoutbox,
+      -- FIXME: only showing on screen 2 when setup with two monitors
+      -- wibox.container.margin(appearance.mytraywidgets.mysystray(s), 2, 2, 2, 2),
     },
   }
 end)
-
--- Other way of going through screens:
--- for s in screen do
--- 	s.mywibox.visible = not s.mywibox.visible
--- end

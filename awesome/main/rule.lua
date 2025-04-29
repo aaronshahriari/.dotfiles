@@ -1,11 +1,10 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
-
 local clientkeys = require("key.clientkey")
 local clientbuttons = require("key.clientbutton")
+local tags = require("main.tag")
 
 local rules = {
-  -- All clients will match this rule.
   {
     rule = {},
     properties = {
@@ -19,28 +18,44 @@ local rules = {
       placement = awful.placement.no_overlap + awful.placement.no_offscreen
     }
   },
-
-  -- Floating clients.
   {
-    rule_any = {
-      instance = {
-      },
-      class = {
-      },
-
-      name = {
-      },
-      role = {
-      }
-    },
-    properties = { floating = true }
+    rule = { class = "pavucontrol" },
+    properties = {
+      floating = true,
+      width = 1100,
+      height = 600,
+      placement = function(c)
+        awful.placement.centered(c, { honor_workarea = true })
+      end
+    }
   },
-
-  -- Add titlebars to normal clients and dialogs
   {
-    rule_any = { type = { "normal", "dialog" }
-    },
-    properties = { titlebars_enabled = false }
+    rule = { class = ".gimp-2.10-wrapped_" },
+    properties = {
+      tag = tags[5],
+      focus = false,
+    }
+  },
+  {
+    rule = { class = "obs" },
+    properties = {
+      tag = tags[8],
+      focus = false,
+    }
+  },
+  {
+    rule = { class = "Spotify" },
+    properties = {
+      tag = tags[6],
+      focus = false,
+    }
+  },
+  {
+    rule = { class = "1Password" },
+    properties = {
+      tag = tags[6],
+      focus = false,
+    }
   },
 }
 

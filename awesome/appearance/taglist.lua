@@ -9,12 +9,13 @@ local vars = require("main.user_vars")
 local modkey = vars.modkey
 local dpi = vars.dpi
 
--- Generate taglist squares:
+-- generate taglist squares:
 local taglist_square_size = dpi(4)
-beautiful.taglist_squares_sel = beautiful.theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
-beautiful.taglist_squares_unsel = beautiful.theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
+-- beautiful.taglist_squares_sel = beautiful.theme_assets.taglist_squares_sel(taglist_square_size, theme.tag_square_sel)
+beautiful.taglist_squares_unsel = beautiful.theme_assets.taglist_squares_unsel(taglist_square_size,
+  theme.tag_square_normal)
 
--- Create a wibox for each screen and add it
+-- create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
   awful.button({}, 1, function(t) t:view_only() end),
   awful.button({ modkey }, 1, function(t)
