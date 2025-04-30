@@ -1,15 +1,15 @@
 # AwesomeWM Configuration
 
 ## Todo
-- [ ] split the window tabs across the bar
+- [ ] configure autostart
 - [ ] configure rofi
-- [ ] fix cursor on some things is too large
-- [ ] not auto focusing window rule
+- [ ] updated AwesomeWM font size when on laptop
 
 ## Done
+- [x] fix cursor on some things is too large
+- [x] split the window tabs across the bar
 - [x] configure wibox
 - [x] set keybinds
 - [x] add tags on windows that have stuff
 
 ## Fix
-- [ ] non-focus rule not working

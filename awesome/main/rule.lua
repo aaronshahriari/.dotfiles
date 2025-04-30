@@ -21,6 +21,7 @@ local rules = {
   {
     rule = { class = "pavucontrol" },
     properties = {
+      screen = 1,
       floating = true,
       width = 1100,
       height = 600,

@@ -11,25 +11,29 @@ return {
       ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
     }
 
-    -- SETUP FOR JAVA -> this is setup in java.lua
-    -- lspconfig.jdtls.setup({
-    --   handlers = default_handlers,
-    --   capabilities = default_capabilities,
-    -- })
+    -- ELIXIR
+    lspconfig.elixirls.setup({
+      handlers = default_handlers,
+      capabilities = capabilities,
+      cmd = { "elixir-ls" },
+      filetypes = { "exs", "elixir", "eelixir", "heex", "surface" },
+      root_dir = lspconfig.util.root_pattern("mix.exs"),
+    })
 
-    -- SETUP FOR PHP
+
+    -- PHP
     lspconfig.intelephense.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
     })
 
-    -- SETUP FOR PYTHON
+    -- PYTHON
     lspconfig.pylsp.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
     })
 
-    -- SETUP FOR ZIG
+    -- ZIG
     lspconfig.zls.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
@@ -44,13 +48,13 @@ return {
     -- disable format-on-save
     vim.g.zig_fmt_autosave = 0
 
-    -- SETUP FOR BASH
+    -- BASH
     lspconfig.bashls.setup({})
 
-    -- SETUP FOR TAILWINDCSS
+    -- TAILWINDCSS
     local util = require("lspconfig.util")
 
-    require("lspconfig").tailwindcss.setup({
+    lspconfig.tailwindcss.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
       init_options = {
@@ -73,7 +77,6 @@ return {
         "html",
         "heex",
         "eelixir",
-        "elixir",
       },
       root_dir = function(fname)
         return util.root_pattern("assets/tailwind.config.js", "tailwind.config.ts")(fname)
@@ -81,7 +84,7 @@ return {
       end,
     })
 
-    -- SETUP FOR HTML
+    -- HTML
     lspconfig.html.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
@@ -99,7 +102,7 @@ return {
       },
     })
 
-    -- SETUP FOR LUA
+    -- LUA
     lspconfig.lua_ls.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
@@ -112,7 +115,7 @@ return {
       }
     })
 
-    -- SETUP FOR NIX
+    -- NIX
     lspconfig.nil_ls.setup({
       handlers = default_handlers,
       capabilities = default_capabilities,
@@ -125,7 +128,7 @@ return {
       },
     })
 
-    -- SETUP FOR MD
+    -- MD
     lspconfig.markdown_oxide.setup({})
 
     local allowed_filetypes = { "lua", "nix", "sh" }

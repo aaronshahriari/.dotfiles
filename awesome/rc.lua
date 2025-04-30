@@ -33,4 +33,4 @@ root.buttons(globalbuttons)
 
 -- FIXME: do later
 require("main.signal")
--- require("module.autostart")
+require("module.autostart")
