@@ -44,8 +44,9 @@ function widgets.mybattery(s)
     end
   end)
 
+  battery_init.battery_emit()
   gears.timer {
-    timeout = 30,
+    timeout = 15,
     autostart = true,
     call_now = true,
     callback = function()
@@ -81,7 +82,7 @@ function widgets.mywifi(s)
   ))
 
   gears.timer {
-    timeout = 30,
+    timeout = 10,
     autostart = true,
     call_now = true,
     callback = function()
@@ -136,10 +137,21 @@ function widgets.myaudio(s)
   }
 
   awesome.connect_signal("laptop::audio", function(display_text)
-    if display_text then
+    if display_text and display_text ~= "" then
       audiowidget.markup = display_text .. " | "
+    else
+      audiowidget.markup = display_text
     end
   end)
+
+  gears.timer {
+    timeout = 1,
+    autostart = true,
+    call_now = true,
+    callback = function()
+      audio_init.audio_emit()
+    end
+  }
 
   audiowidget:buttons(gears.table.join(
     awful.button({}, 1, function()

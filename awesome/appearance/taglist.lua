@@ -9,7 +9,6 @@ local vars = require("main.user_vars")
 local modkey = vars.modkey
 local dpi = vars.dpi
 
--- generate taglist squares:
 local taglist_square_size = dpi(4)
 -- beautiful.taglist_squares_sel = beautiful.theme_assets.taglist_squares_sel(taglist_square_size, theme.tag_square_sel)
 beautiful.taglist_squares_unsel = beautiful.theme_assets.taglist_squares_unsel(taglist_square_size,

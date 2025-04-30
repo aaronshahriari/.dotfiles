@@ -20,13 +20,13 @@ function M.audio_emit(arg)
       function(stdout)
         local song = stdout:gsub("%s+$", "")
         local display_text
-        if stdout then
+        if song and song ~= "" then
           display_text = song
+          display_text = beautiful.audio_span .. display_text .. beautiful.close_span
         else
           display_text = ""
         end
 
-        display_text = beautiful.audio_span .. display_text .. beautiful.close_span
         awesome.emit_signal("laptop::audio", display_text)
       end)
   end)
