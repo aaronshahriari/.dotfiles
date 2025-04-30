@@ -16,5 +16,6 @@ theme='style-2'
 
 ## Run
 rofi \
+    -monitor DP-5 \
     -show drun \
     -theme ${dir}/${theme}.rasi
