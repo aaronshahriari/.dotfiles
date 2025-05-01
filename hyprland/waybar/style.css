@@ -8,6 +8,10 @@
 
 @define-color important-background #D41717;
 
+@define-color normal-state #32A852;
+@define-color warning-state #A86F32;
+@define-color critical-state #A83232;
+
 * {
     font-family:   JetBrainsMono Nerd Font;
     font-size:     12px;
@@ -26,13 +30,6 @@
 
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
-}
-
-#custom-os_button {
-    color: #5a90db;
-    font-size: 15px;
-    padding-left: 12px;
-    padding-right: 15px;
 }
 
 #window * {
@@ -78,33 +75,84 @@
     padding-right: 6px;
 }
 
-#custom-power_button {
-    color: #cc3436;
-    font-weight: bold;
-    font-size: 15px;
-    padding-right: 15px;
-}
-
-#battery {
-    min-width: 30px;
-}
-
+/* CUSTOM-MEDIA */
 #custom-media {
     color: #6e8387;
 }
 
+/* OS-BUTTON */
+#custom-os_button {
+    color: #5a90db;
+    font-size: 15px;
+    padding-left: 12px;
+    padding-right: 15px;
+}
+
+/* WIREPLUMBER */
 #wireplumber.muted {
     color: #cc3436;
 }
 
+/* CPU */
+#cpu.warning {
+    color: @warning-state;
+}
+
+#cpu.critical {
+    color: @critical-state;
+}
+
+/* MEMORY */
+#memory.ram.warning {
+    color: @warning-state;
+}
+
+#memory.ram.critical {
+    color: @critical-state;
+}
+
+/* DISK */
+#disk.warning {
+    color: @warning-state;
+}
+
+#disk.critical {
+    color: @critical-state;
+}
+
+/* NETWORK */
+#network.disconnected {
+  color: @critical-state;
+}
+
+/* BATTERY */
+/* Default battery style */
+#battery {
+    min-width: 30px;
+}
+
+/* Charging (any %) */
 #battery.charging {
-    color: #2dcc36;
+    color: @normal-state;
 }
 
+/* Warning level (<=30%) and not charging */
 #battery.warning:not(.charging) {
-	color: #e6e600;
+    color: @warning-state;
 }
 
+/* Critical level (<=15%) and not charging */
 #battery.critical:not(.charging) {
-    color: #cc3436;
+    color: @critical-state;
+}
+
+/* CLOCK */
+/* add customizations here */
+
+/* CUSTOM-POWER_BUTTON */
+#custom-power_button {
+    color: @critical-state;
+    font-weight: bold;
+    font-size: 15px;
+    padding-right: 15px;
 }

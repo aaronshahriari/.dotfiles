@@ -1,6 +1,7 @@
-{
+[{
     "layer": "top",
     "position": "top",
+    "output": "DP-5",
     "spacing": 2,
 
     "modules-left": [
@@ -90,9 +91,13 @@
     },
     "disk":{
         "interval": 10,
-        "format": "  {percentage_used}%",
+        "format": "  {free}",
+        "states": {
+            "warning": 50,
+            "critical": 75
+        },
         "tooltip": "{}",
-        "tooltip-format": "Free {free}"
+        "tooltip-format": "Used: {percentage_used}%"
     },
     "network": {
         "format": "{ifname}",
@@ -121,8 +126,56 @@
         "tooltip": false
     },
     "custom/power_button": {
-        "format": " ",
+        "format": "⏻",
         "tooltip": false,
         "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh",
     }
-}
+},
+{
+    "layer": "top",
+    "position": "top",
+    "output": "DP-6",
+    "spacing": 2,
+
+    "modules-left": [
+        "custom/os_button",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+
+    "modules-right": [
+        "clock",
+        "custom/separator",
+        "custom/power_button"
+    ],
+
+    // left
+    "custom/os_button": {
+        "format": "",
+        "tooltip": false
+    },
+    "hyprland/workspaces": {
+        "active-only": "true",
+        "on-click": "activate",
+        "sort-by": "number",
+        "tooltip": false
+    },
+    "hyprland/window": {
+        "tooltip": false,
+        "max-length": 50,
+    },
+
+    // right
+    "custom/separator": {
+        "format": "|",
+    },
+    "clock": {
+        "format": "{:%m/%d/%Y %I:%M %p}",
+        "tooltip": false
+    },
+    "custom/power_button": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh",
+    }
+}]
