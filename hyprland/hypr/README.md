@@ -1,9 +1,12 @@
 # Todo
 
 ## Now
+- [ ] figure out screenshot situation
+- [ ] figure out hypr3 tiling patch
+- [ ] create wayland greeter when reboot/logout etc.
+- [ ]
 
 ## Later
-- [ ] create wayland greeter when reboot/logout etc.
 
 ## Testing
 - [?] remove path from hyprshot keymap
