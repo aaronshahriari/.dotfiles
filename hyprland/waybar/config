@@ -1,7 +1,7 @@
 [{
     "layer": "top",
     "position": "top",
-    "output": "DP-5",
+    "output": "DP-6",
     "spacing": 2,
 
     "modules-left": [
@@ -134,7 +134,7 @@
 {
     "layer": "top",
     "position": "top",
-    "output": "DP-6",
+    "output": "DP-5",
     "spacing": 2,
 
     "modules-left": [

@@ -4,7 +4,7 @@
 - [ ] figure out screenshot situation
 - [ ] figure out hypr3 tiling patch
 - [ ] create wayland greeter when reboot/logout etc.
-- [ ]
+- [ ] configure hyprlock some more
 
 ## Later
 
