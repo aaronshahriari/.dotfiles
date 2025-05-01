@@ -1,10 +1,11 @@
 # Todo
 
 ## Now
-- [ ] figure out screenshot situation
 - [ ] figure out hypr3 tiling patch
-- [ ] create wayland greeter when reboot/logout etc.
+- [ ] configure rule to set apps that go to -1338 workspace to specific workspace
 - [ ] configure hyprlock some more
+- [ ] create wayland greeter when reboot/logout etc.
+- [ ] confirm Luminance works on restart
 
 ## Later
 
@@ -16,6 +17,7 @@
 - [?] setup hyprlock
 
 ## Completed
+- [x] figure out screenshot situation
 - [x] move rofi config to dotfiles
 - [x] configure vertical monitor to support the waybar widgets
 - [x] add lid switch command things

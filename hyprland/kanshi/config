@@ -2,6 +2,7 @@ output eDP-1 {
     mode 2880x1920@120
     position 0,0
     alias $laptop
+    scale 2.13
 }
 
 output "ASUSTek COMPUTER INC VG279QR R2LMQS075473" {
