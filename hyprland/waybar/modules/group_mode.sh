@@ -10,9 +10,9 @@ fi
 
 case "$MODE" in
     h)
-        ICON="󰚉" ;;
+        ICON="󰯍" ;;
     v)
-        ICON="󰚈" ;;
+        ICON="󰯎" ;;
     *)
         ICON="?" ;;
 esac

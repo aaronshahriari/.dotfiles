@@ -44,8 +44,10 @@
     "custom/groupmode": {
         "format": "{}",
         "exec": "$HOME/.config/waybar/modules/group_mode.sh",
+        "on-click": "$HOME/.config/hypr/modules/group.sh swap",
         "interval": "once",
         "return-type": "json",
+        "tooltip": false,
         "signal": 11
     },
     "hyprland/window": {
