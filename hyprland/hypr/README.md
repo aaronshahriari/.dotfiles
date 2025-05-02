@@ -1,7 +1,7 @@
 # Todo
 
 ## Now
-- [ ] figure out hypr3 tiling patch
+- [ ] waybar tiling direction configuration
 - [ ] configure hyprlock some more
     - change time to not 24hr
 - [ ] figure out how kanshi interacts with hyprland config and how to use both
@@ -16,6 +16,7 @@
 - [?] rofi on main montitor not working
 
 ## Completed
+- [x] figure out hypr3 tiling patch
 - [x] figure out screenshot situation
 - [x] move rofi config to dotfiles
 - [x] configure vertical monitor to support the waybar widgets
