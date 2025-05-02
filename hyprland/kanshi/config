@@ -1,13 +1,14 @@
 output eDP-1 {
     mode 2880x1920@120
     position 0,0
-    alias $laptop
     scale 2.13
+    alias $laptop
 }
 
 output "ASUSTek COMPUTER INC VG279QR R2LMQS075473" {
   mode 1920x1080@165
-  position 0,660
+  position 0,700
+  scale 1
   transform normal
   alias $main
 }
@@ -15,18 +16,17 @@ output "ASUSTek COMPUTER INC VG279QR R2LMQS075473" {
 output "ASUSTek COMPUTER INC VG279 LALMQS182653" {
   mode 1920x1080@144
   position 1920,0
+  scale 1
   transform 90
   alias $vertical
 }
 
-profile {
+profile docked {
     output $laptop disable
     output $main enable
     output $vertical enable
-    exec ~/.local/bin/scripts/ghostty-config-updater.sh 13
 }
 
-profile {
+profile undocked {
     output $laptop enable
-    exec ~/.local/bin/scripts/ghostty-config-updater.sh 22
 }

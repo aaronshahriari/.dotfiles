@@ -2,19 +2,18 @@
 
 ## Now
 - [ ] figure out hypr3 tiling patch
-- [ ] configure rule to set apps that go to -1338 workspace to specific workspace
 - [ ] configure hyprlock some more
+    - change time to not 24hr
+- [ ] figure out how kanshi interacts with hyprland config and how to use both
 - [ ] create wayland greeter when reboot/logout etc.
-- [ ] confirm Luminance works on restart
+- [ ] setup wallpaper directory with random wallpapers
+- [ ] configure search tabs via rofi
 
 ## Later
+- [?] configure rule to set apps that go to -1338 workspace to specific workspace
 
 ## Testing
-- [?] remove path from hyprshot keymap
-- [?] add and setup kanshi
-    - [?] fix display script when detaching dock
-- [?] rofi on main montitor testing in config
-- [?] setup hyprlock
+- [?] rofi on main montitor not working
 
 ## Completed
 - [x] figure out screenshot situation

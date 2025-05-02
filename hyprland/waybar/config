@@ -6,6 +6,7 @@
     "modules-left": [
         "custom/os_button",
         "hyprland/workspaces",
+        "custom/groupmode",
         "hyprland/window"
     ],
 
@@ -39,6 +40,13 @@
         "on-click": "activate",
         "sort-by": "number",
         "tooltip": false
+    },
+    "custom/groupmode": {
+        "format": "{}",
+        "exec": "$HOME/.config/waybar/modules/group_mode.sh",
+        "interval": "once",
+        "return-type": "json",
+        "signal": 11
     },
     "hyprland/window": {
         "tooltip": false,
