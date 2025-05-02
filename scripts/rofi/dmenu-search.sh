@@ -5,6 +5,7 @@ icon_for_name() {
         *Twitch*) echo "" ;;
         *YouTube*) echo "" ;;
         *Twitter*) echo "" ;;
+        *ESPN*) echo "󰫲" ;;
         *Hulu*) echo "󰠩" ;;
         *Gmail*) echo "󰊫" ;;
         *Netflix*) echo "󰝆" ;;
@@ -37,7 +38,7 @@ for entry in "${bookmarks[@]}"; do
   name="${entry%%$'\t'*}"
   url="${entry#*$'\t'}"
   icon=$(icon_for_name "$name")
-  display="$icon $name"
+  display="$icon  $name"
   entries+=("$display")
   url_map["$display"]="$url"
 done
