@@ -19,9 +19,11 @@ icon_for_name() {
     esac
 }
 
-browser="google-chrome-stable"
+# browser="google-chrome-stable"
+# bookmarks_json="$HOME/.config/google-chrome/Default/Bookmarks"
+browser="brave"
+bookmarks_json="$HOME/.config/BraveSoftware/Brave-Browser/Default/Bookmarks"
 engine="https://duckduckgo.com/?q=%s"
-bookmarks_json="$HOME/.config/google-chrome/Default/Bookmarks"
 
 # Use a recursive jq query to find all bookmarks, including those in nested folders
 mapfile -t bookmarks < <(jq -r '
@@ -54,8 +56,11 @@ fi
 #   focused_class=$(xprop -id "$(xdotool getwindowfocus)" WM_CLASS 2>/dev/null)
 #   [[ "$focused_class" == *"google-chrome"* ]]
 # }
-is_chrome_focused() {
-  [[ $(hyprctl activewindow -j | jq -r ".class") == "google-chrome" ]]
+# is_chrome_focused() {
+#   [[ $(hyprctl activewindow -j | jq -r ".class") == "google-chrome" ]]
+# }
+is_brave_focused() {
+  [[ $(hyprctl activewindow -j | jq -r ".class") == "brave" ]]
 }
 
 # Determine browser command based on focus
