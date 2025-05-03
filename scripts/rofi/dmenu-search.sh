@@ -64,32 +64,21 @@ is_brave_focused() {
 }
 
 # Determine browser command based on focus
-if is_chrome_focused; then
-  chrome_command="$browser"
+if is_brave_focused; then
+  brave_command="$browser"
 else
-  chrome_command="$browser --new-window"
+  brave_command="$browser --new-window"
 fi
 
 url="${url_map["$selected_input"]}"
 if [[ -n "$url" ]]; then
-  $chrome_command "$url"
+  $brave_command "$url"
 else
   query=$(printf "$engine" "$selected_input")
-  $chrome_command "$query"
+  $brave_command "$query"
 fi
-
-# url_found=false
-# for entry in "${bookmarks[@]}"; do
-#   name="${entry%%$'\t'*}"
-#   url="${entry#*$'\t'}"
-#   if [[ "$name" == "$selected_input" ]]; then
-#     $chrome_command "$url"
-#     url_found=true
-#     break
-#   fi
-# done
 
 if [[ "$url_found" == false ]]; then
   query=$(printf "$engine" "$selected_input")
-  $chrome_command "$query"
+  $brave_command "$query"
 fi
