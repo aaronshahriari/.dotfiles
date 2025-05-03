@@ -60,7 +60,7 @@ fi
 #   [[ $(hyprctl activewindow -j | jq -r ".class") == "google-chrome" ]]
 # }
 is_brave_focused() {
-  [[ $(hyprctl activewindow -j | jq -r ".class") == "brave" ]]
+  [[ $(hyprctl activewindow -j | jq -r ".class") == "brave-browser" ]]
 }
 
 # Determine browser command based on focus
