@@ -11,10 +11,10 @@ reset_cam() {
 
 }
 
-case "$(printf "Logitech Mouse\nLogitech Camera\nTouchpad\nWireplumber\n" | ~/.config/rofi/launchers/scripts/launcher.sh -g 1 -m 0 -i -l 10 -p "Restart")" in
-    # "Wallpaper")
-    #     feh --bg-fill "$HOME"/Pictures/Wallpapers/wallpaper.jpg --bg-fill "$HOME"/Pictures/Wallpapers/wallpaper.jpg
-    #     ;;
+case "$(printf "Wallpaper\nLogitech Mouse\nLogitech Camera\nTouchpad\nWireplumber\n" | ~/.config/rofi/launchers/scripts/launcher.sh -g 1 -m 0 -i -l 10 -p "Restart")" in
+    "Wallpaper")
+        "$HOME"/.config/hypr/modules/wallpaper.sh
+        ;;
     "Logitech Mouse")
         xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.9
         ;;
