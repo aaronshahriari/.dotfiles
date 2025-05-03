@@ -1,10 +1,6 @@
 # Todo
 
 ## Now
-- [ ] setup wallpaper directory with random wallpapers
-- [ ] configure search tabs via rofi
-- [ ] configure hyprlock some more
-    - change time to not 24hr
 - [ ] figure out how kanshi interacts with hyprland config and how to use both
 - [ ] create wayland greeter when reboot/logout etc.
 
@@ -15,6 +11,10 @@
 - [?] rofi on main montitor not working
 
 ## Completed
+- [x] configure hyprlock some more
+    - change time to not 24hr
+- [x] setup wallpaper directory with random wallpapers
+- [x] configure search tabs via rofi
 - [x] waybar tiling direction configuration
 - [x] figure out hypr3 tiling patch
 - [x] figure out screenshot situation

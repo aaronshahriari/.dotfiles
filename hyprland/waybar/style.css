@@ -32,12 +32,6 @@
     margin-right: 0;
 }
 
-#custom-groupmode {
-    font-size: 20px;
-    font-weight: bold;
-    padding: 0 10px;
-}
-
 #window * {
     padding-left: 12px;
     font-style: italic;
