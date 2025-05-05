@@ -88,6 +88,11 @@
     padding-right: 15px;
 }
 
+#custom-bluetooth {
+    color: #5a90db;
+    font-size: 15px;
+}
+
 /* WIREPLUMBER */
 #wireplumber.muted {
     color: #cc3436;

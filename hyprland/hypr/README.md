@@ -8,6 +8,7 @@
 - [?] configure rule to set apps that go to -1338 workspace to specific workspace
 
 ## Testing
+- [ ] confirm 1P CLI rofi setup works without authenitcating every time
 - [?] rofi on main montitor not working
 
 ## Completed
