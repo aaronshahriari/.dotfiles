@@ -33,15 +33,19 @@
 }
 
 #window * {
-    padding-left: 12px;
+    margin-left: 12px;
     font-style: italic;
     font-weight: normal;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
 }
 
 #workspaces button {
     border-radius: 0;
     margin: 1px;
-    padding: 2px;
+    padding: 0px 2px;
     color: @inactive-text;
     font-weight: bold;
 }
@@ -61,6 +65,14 @@
     color: @active-text;
 }
 
+/* OS-BUTTON */
+#custom-os_button {
+    color: #5a90db;
+    font-size: 15px;
+    margin-left: 12px;
+    margin-right: 15px;
+}
+
 #custom-media,
 #wireplumber,
 #cpu,
@@ -69,95 +81,102 @@
 #network,
 #battery,
 #clock,
-#custom-separator,
 #custom-power_button {
     padding-left: 5px;
     padding-right: 6px;
 }
 
-/* CUSTOM-MEDIA */
+/* CURRENT SONG */
 #custom-media {
-    color: #6e8387;
+    background-color: #1B2430;
+    color: #ffffff;
+    margin: 4px 4px 4px 0px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 5px;
 }
 
-/* OS-BUTTON */
-#custom-os_button {
-    color: #5a90db;
-    font-size: 15px;
-    padding-left: 12px;
-    padding-right: 15px;
-}
-
+/* BLUETOOTH */
 #custom-bluetooth {
     color: #5a90db;
     font-size: 15px;
 }
 
 /* WIREPLUMBER */
+#media {
+    background-color: #1B2430;
+    margin: 4px 4px 4px 0px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
 #wireplumber.muted {
     color: #cc3436;
+    font-size: 15px;
+}
+
+/* STATS */
+#stats {
+    background-color: #1B2430;
+    margin: 4px 4px 4px 0px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 5px;
 }
 
 /* CPU */
-#cpu.warning {
-    color: @warning-state;
-}
-
-#cpu.critical {
-    color: @critical-state;
-}
+#cpu.warning { color: @warning-state; }
+#cpu.critical { color: @critical-state; }
 
 /* MEMORY */
-#memory.ram.warning {
-    color: @warning-state;
-}
-
-#memory.ram.critical {
-    color: @critical-state;
-}
+#memory.ram.warning { color: @warning-state; }
+#memory.ram.critical { color: @critical-state; }
 
 /* DISK */
-#disk.warning {
-    color: @warning-state;
-}
-
-#disk.critical {
-    color: @critical-state;
-}
+#disk.warning { color: @warning-state; }
+#disk.critical { color: @critical-state; }
 
 /* NETWORK */
-#network.disconnected {
-  color: @critical-state;
+#network {
+    background-color: #1B2430;
+    margin: 4px 4px 4px 0px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 5px;
 }
+#network.disconnected { color: @critical-state; }
 
 /* BATTERY */
 /* Default battery style */
 #battery {
-    min-width: 30px;
+    background-color: #1B2430;
+    margin: 4px 4px 4px 0px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 5px;
 }
 
 /* Charging (any %) */
-#battery.charging {
-    color: @normal-state;
-}
-
-/* Warning level (<=30%) and not charging */
-#battery.warning:not(.charging) {
-    color: @warning-state;
-}
-
-/* Critical level (<=15%) and not charging */
-#battery.critical:not(.charging) {
-    color: @critical-state;
-}
+#battery.charging { color: @normal-state; }
+#battery.warning:not(.charging) { color: @warning-state; }
+#battery.critical:not(.charging) { color: @critical-state; }
 
 /* CLOCK */
-/* add customizations here */
+#clock {
+    background-color: #1B2430;
+    margin: 4px 4px 4px 0px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 5px;
+}
 
 /* CUSTOM-POWER_BUTTON */
 #custom-power_button {
     color: @critical-state;
     font-weight: bold;
     font-size: 15px;
-    padding-right: 15px;
+    margin: 4px 4px 4px 0px;
+    margin-right: 15px;
 }

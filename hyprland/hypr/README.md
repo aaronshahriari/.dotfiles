@@ -1,17 +1,19 @@
 # Todo
 
 ## Now
+- [ ] setup more waybar clicks for special workspaces
+- [ ] setup some decent animations I like
 - [ ] figure out how kanshi interacts with hyprland config and how to use both
-- [ ] create wayland greeter when reboot/logout etc.
 
 ## Later
-- [?] configure rule to set apps that go to -1338 workspace to specific workspace
 
 ## Testing
-- [ ] confirm 1P CLI rofi setup works without authenitcating every time
+- [?] configure rule to set apps that go to -1338 workspace to specific workspace
 - [?] rofi on main montitor not working
 
 ## Completed
+- [x] mouse cursor hider for wayland
+- [x] create wayland greeter when reboot/logout etc.
 - [x] configure hyprlock some more
     - change time to not 24hr
 - [x] setup wallpaper directory with random wallpapers

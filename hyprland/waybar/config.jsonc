@@ -2,6 +2,10 @@
     "layer": "top",
     "position": "top",
     "spacing": 2,
+    "include": [
+        "$HOME/.config/waybar/modules/media.json",
+        "$HOME/.config/waybar/modules/stats.json",
+    ],
 
     "modules-left": [
         "custom/os_button",
@@ -11,22 +15,11 @@
 
     "modules-right": [
         "custom/media",
-        "custom/media-separator",
-        "wireplumber",
-        "custom/bluetooth",
-        "custom/separator",
-        "cpu",
-        "custom/separator",
-        "memory#ram",
-        "custom/separator",
-        "disk",
-        "custom/separator",
+        "group/media",
+        "group/stats",
         "network",
-        "custom/separator",
         "battery",
-        "custom/separator",
         "clock",
-        "custom/separator",
         "custom/power_button"
     ],
 
@@ -47,64 +40,14 @@
     },
 
     // right
-    "custom/separator": {
-        "format": "|",
-    },
-    "custom/media-separator": {
-        "format": "{} ",
-        "exec": "bash -c \"playerctl status >/dev/null 2>&1 && echo '|' || echo ''\"",
-        "interval": 1,
-        "tooltip": false
-    },
     "custom/media": {
         "on-click": "playerctl play-pause",
         "format": "{} ",
         "interval": 1,
         "return-type": "json",
-        "exec": "$HOME/.config/waybar/modules/currently_playing.sh",
+        "exec": "$HOME/.config/waybar/scripts/currently_playing.sh",
         "exec-if": "pgrep spotify",
         "escape": true
-    },
-    "wireplumber": {
-        "format": "{icon} {volume}%",
-        "format-muted": " ",
-        "on-click": "pgrep pavucontrol && hyprctl dispatch togglespecialworkspace volume || pavucontrol &",
-        "format-icons": ["", "", " "]
-    },
-    "custom/bluetooth": {
-        "format": " {} ",
-        "interval": 5,
-        "exec": "$HOME/.config/waybar/modules/bluetooth.sh",
-        "tooltip": false,
-        "on-click": "pgrep blueman-mana && hyprctl dispatch togglespecialworkspace bluetooth || (blueman-manager &)"
-    },
-    "cpu": {
-        "interval": 5,
-        "format": "  {usage}%",
-        "states": {
-            "warning": 80,
-            "critical": 95
-        }
-    },
-    "memory#ram": {
-        "interval": 5,
-        "format": "  {percentage}%",
-        "states": {
-            "warning": 80,
-            "critical": 95
-        },
-        "tooltip": "{}",
-        "tooltip-format":"{used}/{total} GiB"
-    },
-    "disk":{
-        "interval": 10,
-        "format": "  {free}",
-        "states": {
-            "warning": 50,
-            "critical": 75
-        },
-        "tooltip": "{}",
-        "tooltip-format": "Used: {percentage_used}%"
     },
     "network": {
         "format": "{ifname}",

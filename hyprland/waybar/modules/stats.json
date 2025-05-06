@@ -1,0 +1,38 @@
+{
+    "cpu": {
+        "interval": 5,
+        "format": "  {usage}%",
+        "states": {
+            "warning": 80,
+            "critical": 95
+        }
+    },
+    "memory#ram": {
+        "interval": 5,
+        "format": "  {percentage}%",
+        "states": {
+            "warning": 80,
+            "critical": 95
+        },
+        "tooltip": "{}",
+        "tooltip-format":"{used}/{total} GiB"
+    },
+    "disk":{
+        "interval": 10,
+        "format": "  {free}",
+        "states": {
+            "warning": 50,
+            "critical": 75
+        },
+        "tooltip": "{}",
+        "tooltip-format": "Used: {percentage_used}%"
+    },
+    "group/stats": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "memory#ram",
+            "disk",
+        ]
+    }
+}
