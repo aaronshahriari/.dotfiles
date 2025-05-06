@@ -88,8 +88,8 @@ window#waybar.empty #window {
 
 /* CURRENT SONG */
 #custom-media {
-    background-color: #1B2430;
-    color: #ffffff;
+    background-color: #5a90db;
+    color: #000000;
     margin: 4px 4px 4px 0px;
     padding-left: 7px;
     padding-right: 7px;
@@ -109,7 +109,6 @@ window#waybar.empty #window {
     padding-left: 7px;
     padding-right: 7px;
     border-radius: 5px;
-    font-size: 15px;
 }
 
 #wireplumber.muted {

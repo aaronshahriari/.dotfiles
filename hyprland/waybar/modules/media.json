@@ -15,8 +15,8 @@
     "group/media": {
         "orientation": "horizontal",
         "modules": [
-            "custom/bluetooth",
             "wireplumber",
+            "custom/bluetooth",
         ]
     }
 }
