@@ -1,9 +1,11 @@
 return {
   "neovim/nvim-lspconfig",
+  dependencies = { 'saghen/blink.cmp' },
   config = function()
     local lspconfig = require("lspconfig")
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    local default_capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+    -- local default_capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+    local default_capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 
     -- Default handlers for LSP
     local default_handlers = {
@@ -19,7 +21,6 @@ return {
       filetypes = { "exs", "elixir", "eelixir", "heex", "surface" },
       root_dir = lspconfig.util.root_pattern("mix.exs"),
     })
-
 
     -- PHP
     lspconfig.intelephense.setup({
@@ -52,37 +53,32 @@ return {
     lspconfig.bashls.setup({})
 
     -- TAILWINDCSS
-    local util = require("lspconfig.util")
-
-    lspconfig.tailwindcss.setup({
+    vim.lsp.config('tailwindcss', {
+      cmd = { 'tailwindcss-language-server', '--stdio' },
       handlers = default_handlers,
       capabilities = default_capabilities,
-      init_options = {
-        userLanguages = {
-          elixir = "html-eex",
-          eelixir = "html-eex",
-          heex = "html-eex",
-        },
-      },
+      root_dir = vim.fs.dirname(
+        vim.fs.find({ "tailwind.config.js", "tailwind.config.ts", "postcss.config.js", "package.json", ".git" }, {
+          upward = true,
+          path = vim.api.nvim_buf_get_name(0),
+        })[1]
+      ),
       settings = {
         tailwindCSS = {
+          includeLanguages = {
+            eelixir = "html-eex",
+            elixir = "html-eex",
+            heex = "html-eex",
+          },
           experimental = {
             classRegex = {
-              'class[:]\\s*"([^"]*)"', -- if you use Tailwind like: class: "..."
+              'class[:]\\s*"([^"]*)"',
             },
           },
         },
       },
-      filetypes = {
-        "html",
-        "heex",
-        "eelixir",
-      },
-      root_dir = function(fname)
-        return util.root_pattern("assets/tailwind.config.js", "tailwind.config.ts")(fname)
-            or util.find_git_ancestor(fname)
-      end,
     })
+    vim.lsp.enable('tailwindcss')
 
     -- HTML
     lspconfig.html.setup({
