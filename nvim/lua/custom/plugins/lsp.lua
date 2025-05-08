@@ -13,6 +13,26 @@ return {
       ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
     }
 
+    -- proper context for diagnostics
+    vim.diagnostic.config({
+      virtual_text = {
+        prefix = '■ ', -- Could be '●', '▎', 'x', '■', , 
+      },
+      float = { border = "single" },
+    })
+
+    -- RUST
+    vim.lsp.config('rust_analyzer', {
+      settings = {
+        ['rust-analyzer'] = {
+          diagnostics = {
+            enable = false,
+          }
+        }
+      }
+    })
+    vim.lsp.enable('rust_analyzer')
+
     -- ELIXIR
     lspconfig.elixirls.setup({
       handlers = default_handlers,
