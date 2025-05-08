@@ -3,22 +3,27 @@ return {
   dependencies = { 'saghen/blink.cmp' },
   config = function()
     local lspconfig = require("lspconfig")
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- local default_capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-    local default_capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
-
-    -- Default handlers for LSP
-    local default_handlers = {
-      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
-      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
-    }
 
     -- proper context for diagnostics
     vim.diagnostic.config({
-      virtual_text = {
-        prefix = '■ ', -- Could be '●', '▎', 'x', '■', , 
-      },
+      -- virtual_text = {
+      --   prefix = '■ ', -- Could be '●', '▎', 'x', '■', , 
+      -- },
       float = { border = "single" },
+    })
+
+    -- REMAPS
+    vim.api.nvim_create_autocmd("LspAttach", {
+      callback = function()
+        vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
+
+        vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, { buffer = 0 })
+        vim.keymap.set('n', 'K', function()
+          vim.lsp.buf.hover({
+            border = 'single',
+          })
+        end)
+      end,
     })
 
     -- RUST
@@ -35,29 +40,19 @@ return {
 
     -- ELIXIR
     lspconfig.elixirls.setup({
-      handlers = default_handlers,
-      capabilities = capabilities,
       cmd = { "elixir-ls" },
       filetypes = { "exs", "elixir", "eelixir", "heex", "surface" },
       root_dir = lspconfig.util.root_pattern("mix.exs"),
     })
 
     -- PHP
-    lspconfig.intelephense.setup({
-      handlers = default_handlers,
-      capabilities = default_capabilities,
-    })
+    -- lspconfig.intelephense.setup({})
 
     -- PYTHON
-    lspconfig.pylsp.setup({
-      handlers = default_handlers,
-      capabilities = default_capabilities,
-    })
+    lspconfig.pylsp.setup({})
 
     -- ZIG
     lspconfig.zls.setup({
-      handlers = default_handlers,
-      capabilities = default_capabilities,
       settings = {
         zls = {
           enable_argument_placeholders = false,
@@ -75,8 +70,6 @@ return {
     -- TAILWINDCSS
     vim.lsp.config('tailwindcss', {
       cmd = { 'tailwindcss-language-server', '--stdio' },
-      handlers = default_handlers,
-      capabilities = default_capabilities,
       root_dir = vim.fs.dirname(
         vim.fs.find({ "tailwind.config.js", "tailwind.config.ts", "postcss.config.js", "package.json", ".git" }, {
           upward = true,
@@ -102,8 +95,6 @@ return {
 
     -- HTML
     lspconfig.html.setup({
-      handlers = default_handlers,
-      capabilities = default_capabilities,
       filetypes = { "html", "templ", "heex" },
       init_options = {
         configurationSection = { "html", "css", "javascript", "elixir", "eelixir", "heex", "surface" },
@@ -120,8 +111,6 @@ return {
 
     -- LUA
     lspconfig.lua_ls.setup({
-      handlers = default_handlers,
-      capabilities = default_capabilities,
       settings = {
         Lua = {
           diagnostics = {
@@ -133,8 +122,6 @@ return {
 
     -- NIX
     lspconfig.nil_ls.setup({
-      handlers = default_handlers,
-      capabilities = default_capabilities,
       settings = {
         ['nil'] = {
           formatting = {
