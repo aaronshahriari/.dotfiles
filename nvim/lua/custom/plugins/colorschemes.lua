@@ -18,7 +18,7 @@ return {
           WinSeparator = { fg = colors.flamingo, bg = colors.base },
           TermCursorNC = { fg = "#000000", bg = "#000000" },
           CurSearch = { fg = "#000000", bg = "#F6FF00" },
-          BlinkCmpSignatureHelpActiveParameter = { fg = "#ffffff", bg = colors.base },
+          LspSignatureActiveParameter = { fg = "#ffffff", bg = colors.base },
         }
       end
     },
