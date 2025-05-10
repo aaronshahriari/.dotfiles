@@ -1,7 +1,8 @@
 {
     "cpu": {
         "interval": 5,
-        "format": "  {usage}%",
+        "format": "<span foreground='#5a90db'></span> {usage}%",
+        "markup": "pango",
         "states": {
             "warning": 80,
             "critical": 95
@@ -9,7 +10,8 @@
     },
     "memory#ram": {
         "interval": 5,
-        "format": "  {percentage}%",
+        "format": "<span foreground='#5a90db'></span> {percentage}%",
+        "markup": "pango",
         "states": {
             "warning": 80,
             "critical": 95
@@ -19,7 +21,8 @@
     },
     "disk":{
         "interval": 10,
-        "format": "  {free}",
+        "format": "<span foreground='#5a90db'></span> {free}",
+        "markup": "pango",
         "states": {
             "warning": 50,
             "critical": 75

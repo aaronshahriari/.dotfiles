@@ -97,13 +97,31 @@ window#waybar.empty #window {
 }
 
 /* BLUETOOTH */
+/* #custom-bluetooth { */
+/*     color: #5a90db; */
+/*     font-size: 15px; */
+/* } */
+
 #custom-bluetooth {
-    color: #5a90db;
     font-size: 15px;
+    color: #5a90db;
+    background-color: #1B2430;
+    margin: 4px 4px 4px 0px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 5px;
 }
 
 /* WIREPLUMBER */
-#media {
+/* #media { */
+/*     background-color: #1B2430; */
+/*     margin: 4px 4px 4px 0px; */
+/*     padding-left: 7px; */
+/*     padding-right: 7px; */
+/*     border-radius: 5px; */
+/* } */
+
+#wireplumber {
     background-color: #1B2430;
     margin: 4px 4px 4px 0px;
     padding-left: 7px;
@@ -171,11 +189,24 @@ window#waybar.empty #window {
     border-radius: 5px;
 }
 
+/* TRAY */
+#tray {
+    background-color: #1B2430;
+    margin: 4px 4px 4px 0px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 5px;
+}
+
 /* CUSTOM-POWER_BUTTON */
 #custom-power_button {
     color: @critical-state;
     font-weight: bold;
     font-size: 15px;
+    background-color: #1B2430;
     margin: 4px 4px 4px 0px;
-    margin-right: 15px;
+    margin-right: 12px;
+    padding-left: 7px;
+    padding-right: 10px;
+    border-radius: 5px;
 }

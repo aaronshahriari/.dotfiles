@@ -1,8 +1,7 @@
-[{
+{
     "layer": "top",
     "position": "top",
     "spacing": 2,
-    "output": "DP-6",
     "include": [
         "$HOME/.config/waybar/modules/media.json",
         "$HOME/.config/waybar/modules/stats.json",
@@ -102,43 +101,4 @@
         "tooltip": false,
         "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh",
     }
-},
-{
-    "layer": "top",
-    "position": "top",
-    "spacing": 2,
-    "output": "DP-5",
-
-    "modules-left": [
-        "custom/os_button",
-        "hyprland/workspaces",
-    ],
-
-    "modules-right": [
-        "clock",
-        "custom/power_button"
-    ],
-
-    // left
-    "custom/os_button": {
-        "format": "",
-        "tooltip": false
-    },
-    "hyprland/workspaces": {
-        "active-only": "true",
-        "on-click": "activate",
-        "sort-by": "number",
-        "tooltip": false
-    },
-
-    // right
-    "clock": {
-        "format": "{:%m/%d/%Y %I:%M %p}",
-        "tooltip": false
-    },
-    "custom/power_button": {
-        "format": "⏻",
-        "tooltip": false,
-        "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh",
-    }
-}]
+}

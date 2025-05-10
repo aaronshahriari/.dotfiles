@@ -1,17 +1,19 @@
 # Todo
 
 ## Now
-- [ ] tell waybar to not set second monitor
+- [ ] make audio bar that shows song fill up as the song slowly
+    continues on, then resets on new song
 - [ ] figure out how kanshi interacts with hyprland config and how to use both
 
 ## Later
-- [?] setup some decent animations I like
 
 ## Testing
+- [?] tell waybar to not set second monitor
 - [?] configure rule to set apps that go to -1338 workspace to specific workspace
 - [?] rofi on main montitor not working
 
 ## Completed
+- [x] split memory bar and audio bar with "|" characters maybe?
 - [x] setup more waybar clicks for special workspaces
 - [x] mouse cursor hider for wayland
 - [x] create wayland greeter when reboot/logout etc.

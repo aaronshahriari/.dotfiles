@@ -26,6 +26,9 @@ return {
       end,
     })
 
+    -- GO
+    vim.lsp.enable('gopls')
+
     -- RUST
     vim.lsp.config('rust_analyzer', {
       settings = {
