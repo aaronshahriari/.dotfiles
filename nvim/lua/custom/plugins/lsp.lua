@@ -44,27 +44,24 @@ return {
       root_dir = lspconfig.util.root_pattern("mix.exs"),
     })
 
-    -- PHP
-    -- lspconfig.intelephense.setup({})
-
     -- PYTHON
-    lspconfig.pylsp.setup({})
+    vim.lsp.enable('pylsp')
 
     -- ZIG
-    lspconfig.zls.setup({
-      settings = {
-        zls = {
-          enable_argument_placeholders = false,
-        },
-      },
-    })
+    -- lspconfig.zls.setup({
+    --   settings = {
+    --     zls = {
+    --       enable_argument_placeholders = false,
+    --     },
+    --   },
+    -- })
     -- don't show parse errors in a separate window
-    vim.g.zig_fmt_parse_errors = 0
+    -- vim.g.zig_fmt_parse_errors = 0
     -- disable format-on-save
-    vim.g.zig_fmt_autosave = 0
+    -- vim.g.zig_fmt_autosave = 0
 
     -- BASH
-    lspconfig.bashls.setup({})
+    vim.lsp.enable('bashls')
 
     -- TAILWINDCSS
     vim.lsp.config('tailwindcss', {
@@ -109,29 +106,31 @@ return {
     })
 
     -- LUA
-    lspconfig.lua_ls.setup({
+    vim.lsp.config('lua_ls', {
       settings = {
-        Lua = {
+        ['Lua'] = {
           diagnostics = {
             globals = { 'vim' }
           }
         }
       }
     })
+    vim.lsp.enable('lua_ls')
 
     -- NIX
-    lspconfig.nil_ls.setup({
+    vim.lsp.config('nil_ls', {
       settings = {
         ['nil'] = {
           formatting = {
             command = { "nixfmt" },
           },
         },
-      },
+      }
     })
+    vim.lsp.enable('nil_ls')
 
     -- MD
-    lspconfig.markdown_oxide.setup({})
+    vim.lsp.enable('markdown_oxide')
 
     local allowed_filetypes = { "lua", "nix", "sh" }
     vim.api.nvim_create_autocmd("BufWritePre", {
