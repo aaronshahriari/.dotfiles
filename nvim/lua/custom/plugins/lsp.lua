@@ -14,15 +14,11 @@ return {
 
     -- REMAPS
     vim.api.nvim_create_autocmd("LspAttach", {
-      callback = function()
-        vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
-
-        vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, { buffer = 0 })
-        vim.keymap.set('n', 'K', function()
-          vim.lsp.buf.hover({
-            border = 'single',
-          })
-        end)
+      callback = function(e)
+        local opts = { buffer = e.buf }
+        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+        vim.keymap.set("n", "<leader>cr", function() vim.lsp.buf.rename() end, opts)
+        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover({ border = 'single' }) end, opts)
       end,
     })
 
