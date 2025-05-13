@@ -10,7 +10,7 @@
     },
     "memory#ram": {
         "interval": 5,
-        "format": "<span foreground='#5a90db'></span> {percentage}%",
+        "format": "<span foreground='#5a90db'></span> {percentage}%",
         "markup": "pango",
         "states": {
             "warning": 80,

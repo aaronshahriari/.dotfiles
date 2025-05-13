@@ -50,7 +50,7 @@
     },
     "wireplumber": {
         "format": "{icon} {volume}%",
-        "format-muted": "",
+        "format-muted": " ",
         "on-click": "pgrep pavucontrol && hyprctl dispatch togglespecialworkspace volume || pavucontrol &",
         "format-icons": ["", "", " "]
     },
@@ -62,7 +62,7 @@
         "on-click": "pgrep blueman-mana && hyprctl dispatch togglespecialworkspace bluetooth || (blueman-manager &)"
     },
     "custom/media": {
-        "on-click": "playerctl play-pause",
+        "on-click": "playerctl --player=spotify play-pause",
         "format": "{} ",
         "interval": 1,
         "return-type": "json",
