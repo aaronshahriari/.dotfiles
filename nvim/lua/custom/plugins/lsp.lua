@@ -89,21 +89,17 @@ return {
     })
     vim.lsp.enable('tailwindcss')
 
+    -- HTMX
+    vim.lsp.enable('htmx')
+
     -- HTML
-    lspconfig.html.setup({
-      filetypes = { "html", "templ", "heex" },
-      init_options = {
-        configurationSection = { "html", "css", "javascript", "elixir", "eelixir", "heex", "surface" },
-        embeddedLanguages = {
-          css = true,
-          javascript = true,
-          elixir = true,
-          eelixir = true,
-          heex = true,
-        },
-        provideFormatter = false,
-      },
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    vim.lsp.config('html', {
+      capabilities = capabilities,
     })
+
+    vim.lsp.enable('html')
 
     -- LUA
     vim.lsp.config('lua_ls', {

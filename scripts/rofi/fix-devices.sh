@@ -11,20 +11,15 @@ reset_cam() {
 
 }
 
-case "$(printf "Wallpaper\nLogitech Mouse\nLogitech Camera\nTouchpad\nWireplumber\n" | ~/.config/rofi/launchers/scripts/launcher.sh -g 1 -m 0 -i -l 10 -p "Restart")" in
+case "$(printf "Wallpaper\nLogitech Mouse\nWireplumber\n" | ~/.config/rofi/launchers/scripts/launcher.sh -g 1 -m 0 -i -l 10 -p "Restart")" in
     "Wallpaper")
         "$HOME"/.config/hypr/modules/wallpaper.sh
         ;;
-    "Logitech Mouse")
-        xinput set-prop "pointer:Logitech G502" "libinput Accel Speed" -0.9
-        ;;
+
     "Logitech Camera")
         reset_cam
         ;;
-    "Touchpad")
-        xinput set-prop "pointer:PIXA3854:00 093A:0274 Touchpad" "libinput Scrolling Pixel Distance" 50
-        xinput set-prop "pointer:PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 0
-        ;;
+
     "Wireplumber")
         systemctl --user restart wireplumber.service
         systemctl --user restart pipewire.service
