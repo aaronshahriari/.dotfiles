@@ -27,7 +27,7 @@ else
         selected=$(
         (
             find ~/nixos-config ~/Downloads ~/.config ~/vault_personal -mindepth 0 -maxdepth 0 -type d
-            find ~/github ~/work ~/personal -mindepth 1 -maxdepth 1 -type d
+            find ~/github ~/work ~/personal ~/personal/projects/ ~/personal/learning/ -mindepth 1 -maxdepth 1 -type d
         ) | fzf)
     fi
 fi
