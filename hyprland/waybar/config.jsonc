@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     "spacing": 2,
-    "output": [ "eDP-1", "DP-5" ],
+    "output": [ "eDP-1", "DP-6" ],
     "include": [
         "$HOME/.config/waybar/modules/media.json",
         "$HOME/.config/waybar/modules/stats.json",
@@ -107,7 +107,7 @@
     "layer": "top",
     "position": "top",
     "spacing": 2,
-    "output": "DP-6",
+    "output": "DP-5",
 
     "modules-left": [
         "custom/os_button",
