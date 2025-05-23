@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     "spacing": 2,
-    "output": [ "eDP-1", "DP-5" ],
+    "output": [ "eDP-1", "ASUSTek COMPUTER INC VG279QR R2LMQS075473" ],
     "include": [
         "$HOME/.config/waybar/modules/media.json",
         "$HOME/.config/waybar/modules/stats.json",
@@ -110,7 +110,7 @@
     "layer": "top",
     "position": "top",
     "spacing": 2,
-    "output": "DP-6",
+    "output": "ASUSTek COMPUTER INC VG279 LALMQS182653",
 
     "modules-left": [
         "custom/os_button",
