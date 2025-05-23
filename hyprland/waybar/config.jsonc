@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     "spacing": 2,
-    "output": [ "eDP-1", "DP-6" ],
+    "output": [ "eDP-1", "DP-5" ],
     "include": [
         "$HOME/.config/waybar/modules/media.json",
         "$HOME/.config/waybar/modules/stats.json",
@@ -51,7 +51,10 @@
     "wireplumber": {
         "format": "{icon} {volume}%",
         "format-muted": " ",
-        "on-click": "pgrep pavucontrol && hyprctl dispatch togglespecialworkspace volume || pavucontrol &",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pgrep pavucontrol && hyprctl dispatch togglespecialworkspace volume || pavucontrol &",
+        "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
+        "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
         "format-icons": ["", "", " "]
     },
     "custom/bluetooth": {
@@ -59,7 +62,7 @@
         "interval": 5,
         "exec": "$HOME/.config/waybar/scripts/bluetooth.sh",
         "tooltip": false,
-        "on-click": "pgrep blueman-mana && hyprctl dispatch togglespecialworkspace bluetooth || (blueman-manager &)"
+        "on-click-right": "pgrep blueman-mana && hyprctl dispatch togglespecialworkspace bluetooth || (blueman-manager &)",
     },
     "custom/media": {
         "on-click": "playerctl --player=spotify play-pause",
@@ -107,7 +110,7 @@
     "layer": "top",
     "position": "top",
     "spacing": 2,
-    "output": "DP-5",
+    "output": "DP-6",
 
     "modules-left": [
         "custom/os_button",

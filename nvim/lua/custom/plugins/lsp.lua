@@ -1,6 +1,9 @@
 return {
   "neovim/nvim-lspconfig",
-  dependencies = { 'saghen/blink.cmp' },
+  dependencies = {
+    'saghen/blink.cmp',
+    { "j-hui/fidget.nvim", opts = {} },
+  },
   config = function()
     local lspconfig = require("lspconfig")
 
@@ -127,14 +130,5 @@ return {
 
     -- MD
     vim.lsp.enable('markdown_oxide')
-
-    local allowed_filetypes = { "lua", "nix", "sh" }
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      callback = function()
-        if vim.tbl_contains(allowed_filetypes, vim.bo.filetype) then
-          vim.lsp.buf.format { async = false }
-        end
-      end
-    })
   end
 }
