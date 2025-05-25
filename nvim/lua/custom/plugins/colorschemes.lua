@@ -19,7 +19,8 @@ return {
           TermCursorNC = { fg = "#000000", bg = "#000000" },
           CurSearch = { fg = "#000000", bg = "#F6FF00" },
           LspSignatureActiveParameter = { fg = "#ffffff", bg = colors.base },
-          Cursor = { bg = "#c0c0c0" },
+          Cursor = { bg = "#ffffff" },
+          StatusLine = { bg = "#0e131a" },
         }
       end
     },

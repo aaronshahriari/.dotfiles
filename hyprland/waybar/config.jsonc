@@ -66,7 +66,7 @@
     },
     "custom/media": {
         "on-click": "playerctl --player=spotify play-pause",
-        "format": "{} ",
+        "format": "{}",
         "interval": 1,
         "return-type": "json",
         "exec": "$HOME/.config/waybar/scripts/currently_playing.sh",

@@ -6,7 +6,6 @@ vim.opt.guicursor = {
     "a:blinkon0",
     "n-v-c:block-Cursor/lCursor"
 }
-vim.api.nvim_set_hl(0, "Cursor", { fg = "#000000", bg = "#c0c0c0" })
 
 -- insert thin
 -- vim.opt.guicursor = {
@@ -49,7 +48,7 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.list = true
+vim.opt.list = false
 vim.opt.listchars:append({ tab = '  ', nbsp = ' ', trail = ' ', eol = '↲' })
 
 -- used for obsidian
