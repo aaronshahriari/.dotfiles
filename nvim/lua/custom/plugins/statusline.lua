@@ -4,6 +4,7 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
   config = function()
     vim.opt.laststatus = 3
+    local devicons = require("nvim-web-devicons")
     local builtin = require("el.builtin")
     local extensions = require("el.extensions")
     local sections = require("el.sections")
@@ -99,7 +100,7 @@ return {
         end
       end
 
-      return table.concat(result, " ")
+      return "{" .. table.concat(result, " ") .. "}"
     end
 
     local function mode(_, _)
@@ -138,19 +139,6 @@ return {
       return set_hl(hls, m) or m
     end
 
-    local function filepath(_, _)
-      local cwd = vim.fn.getcwd()
-      local last_dir = cwd:match("^.+/(.+)$") or cwd
-
-      local filename = vim.fn.expand("%f")
-      if filename:sub(1, 6) == "oil://" then
-        filename = filename:sub(7)
-      else
-        filename = last_dir .. "/" .. filename
-      end
-      return filename
-    end
-
     require("el").setup({
       generator = function(_, _)
         local items = {
@@ -158,13 +146,10 @@ return {
           { subscribe.buf_autocmd("el_git_branch_bufenter", "BufEnter", git_branch), },
           { " " },
           { subscribe.buf_autocmd("el_git_branch_writepost", "BufWritePost", git_changes), },
-          { " " },
-          { sections.split },
-          { filepath },
           { subscribe.buf_autocmd("el_buf_diagnostic", "DiagnosticChanged", diagnostics), },
           { sections.split },
-          -- spacer lol
-          { "                     " },
+          { "%f" },
+          { sections.split },
           {
             sections.collapse_builtin({
               "[",
@@ -173,7 +158,13 @@ return {
               "]",
             }),
           },
-          { builtin.filetype },
+          {
+            function()
+              local ft = vim.bo.filetype
+              local icon, _ = devicons.get_icon_by_filetype(ft) or ""
+              return icon .. " " .. ft
+            end,
+          }
         }
 
         local result = {}
