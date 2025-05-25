@@ -58,44 +58,33 @@ return {
       return fmt:format(contents)
     end
 
-    local function git(_, _)
+    local function git_branch()
       local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
-      if not git_root or git_root == "" then
-        return ""
+      if not git_root or git_root == "" then return "" end
+
+      local branch = vim.fn.systemlist("git rev-parse --abbrev-ref HEAD", git_root)[1] or ""
+      if branch ~= "" then
+        return set_hl("@constant", "[" .. branch .. "]")
       end
+      return ""
+    end
+
+    local function git_changes()
+      local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+      if not git_root or git_root == "" then return "" end
 
       local function run_git(cmd)
         return vim.fn.systemlist(cmd, git_root)[1] or ""
       end
 
-      -- Get current branch name
-      local branch = run_git("git rev-parse --abbrev-ref HEAD")
-      local res = ""
-      if branch and branch ~= "" then
-        res = res .. set_hl("@constant", " " .. branch)
-      end
-
-      -- Get unstaged + staged changes
       local diff = run_git("git diff --shortstat")
       local staged = run_git("git diff --cached --shortstat")
       local combined = (diff or "") .. "\n" .. (staged or "")
 
       local specs = {
-        insert = {
-          regex = "(%d+) insertion",
-          icon = "+",
-          hl = "diffAdded",
-        },
-        delete = {
-          regex = "(%d+) deletion",
-          icon = "-",
-          hl = "diffRemoved",
-        },
-        change = {
-          regex = "(%d+) file changed",
-          icon = "~",
-          hl = "diffChanged",
-        },
+        insert = { regex = "(%d+) insertion", icon = "+", hl = "diffAdded" },
+        delete = { regex = "(%d+) deletion", icon = "-", hl = "diffRemoved" },
+        change = { regex = "(%d+) file changed", icon = "~", hl = "diffChanged" },
       }
 
       local result = {}
@@ -110,11 +99,7 @@ return {
         end
       end
 
-      if #result > 0 then
-        res = res .. " " .. table.concat(result, " ")
-      end
-
-      return res
+      return table.concat(result, " ")
     end
 
     local function mode(_, _)
@@ -169,22 +154,17 @@ return {
     require("el").setup({
       generator = function(_, _)
         local items = {
-          {
-            mode,
-          },
-          {
-            filepath
-          },
-          -- { sections.collapse_builtin({ { " " }, { builtin.modified_flag } }) },
-          -- diagnostics
-          {
-            subscribe.buf_autocmd("el_buf_diagnostic", "DiagnosticChanged", diagnostics),
-          },
-          { sections.split, required = true },
-          {
-            subscribe.buf_autocmd("el_git_branch", "BufEnter", git),
-          },
+          { mode, },
+          { subscribe.buf_autocmd("el_git_branch_bufenter", "BufEnter", git_branch), },
           { " " },
+          { subscribe.buf_autocmd("el_git_branch_writepost", "BufWritePost", git_changes), },
+          { " " },
+          { sections.split },
+          { filepath },
+          { subscribe.buf_autocmd("el_buf_diagnostic", "DiagnosticChanged", diagnostics), },
+          { sections.split },
+          -- spacer lol
+          { "                     " },
           {
             sections.collapse_builtin({
               "[",
