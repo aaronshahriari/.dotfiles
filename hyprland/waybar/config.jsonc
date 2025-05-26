@@ -110,7 +110,7 @@
     "layer": "top",
     "position": "top",
     "spacing": 2,
-    "output": "ASUSTek COMPUTER INC VG279 LALMQS182653",
+    "output": [ "ASUSTek COMPUTER INC VG279 LALMQS182653", "DZX KYY 0000000000000" ],
 
     "modules-left": [
         "custom/os_button",
