@@ -6,7 +6,8 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         go = { "gofmt" },
-        nix = { "nixfmt" }
+        nix = { "nixfmt" },
+        sql = { "sql_formatter" },
       }
     })
 

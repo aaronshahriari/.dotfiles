@@ -1,4 +1,6 @@
 set recolor true
 set recolor-keephue true
-set recolor-lightcolor "#1e1e2e"  # background
+set recolor-lightcolor "#000000"  # background
 set recolor-darkcolor  "#ffffff"  # text
+set smooth-scroll true           # Enable smooth scrolling
+set scroll-step 80               # Scrolling distance for j/k (pixels)

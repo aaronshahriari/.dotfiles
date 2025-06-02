@@ -15,10 +15,14 @@ return {
       float = { border = "single" },
     })
 
+
     -- REMAPS
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(e)
         local opts = { buffer = e.buf }
+        local builtin = require "telescope.builtin"
+        vim.keymap.set("n", "gr", builtin.lsp_references, opts)
+        vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, opts)
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
         vim.keymap.set("n", "<leader>cr", function() vim.lsp.buf.rename() end, opts)
         vim.keymap.set('n', 'K', function() vim.lsp.buf.hover({ border = 'single' }) end, opts)
@@ -26,7 +30,10 @@ return {
     })
 
     -- GO
-    vim.lsp.enable('gopls')
+    vim.lsp.enable("gopls")
+
+    -- SQL
+    vim.lsp.enable("sqls")
 
     -- RUST
     vim.lsp.config('rust_analyzer', {
@@ -51,17 +58,18 @@ return {
     vim.lsp.enable('pylsp')
 
     -- ZIG
-    -- lspconfig.zls.setup({
-    --   settings = {
-    --     zls = {
-    --       enable_argument_placeholders = false,
-    --     },
-    --   },
-    -- })
+    vim.lsp.config('zls', {
+      settings = {
+        zls = {
+          enable_argument_placeholders = false,
+        },
+      }
+    })
+    vim.lsp.enable('zls')
     -- don't show parse errors in a separate window
-    -- vim.g.zig_fmt_parse_errors = 0
+    vim.g.zig_fmt_parse_errors = 0
     -- disable format-on-save
-    -- vim.g.zig_fmt_autosave = 0
+    vim.g.zig_fmt_autosave = 0
 
     -- BASH
     vim.lsp.enable('bashls')
