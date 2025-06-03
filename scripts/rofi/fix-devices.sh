@@ -12,8 +12,8 @@ reset_cam() {
 }
 
 case "$(printf "Red Light Off\nWallpaper\nLogitech Mouse\nWireplumber\n" | ~/.config/rofi/launchers/scripts/launcher.sh -g 1 -m 0 -i -l 10 -p "Run")" in
-    "Red Light Off")
-        hyprctl hyprsunset identity
+    "Hyprsunset")
+        hyprsunset &
         ;;
 
     "Wallpaper")
