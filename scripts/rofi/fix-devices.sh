@@ -11,9 +11,36 @@ reset_cam() {
 
 }
 
+bluelight_on() {
+    hyprsunset=$(pgrep hyprsunset)
+    if [ -z "$hyprsunset" ]; then
+        hyprsunset &
+        hyprctl hyprsunset temperature 2500
+    else
+        hyprctl hyprsunset temperature 2500
+    fi
+}
+
+bluelight_off() {
+    hyprsunset=$(pgrep hyprsunset)
+    if [ -z "$hyprsunset" ]; then
+        hyprsunset &
+        hyprctl hyprsunset identity
+    else
+        hyprctl hyprsunset identity
+    fi
+}
+
 case "$(printf "Hyprsunset\nWallpaper\nLogitech Mouse\nWireplumber\n" | ~/.config/rofi/launchers/scripts/launcher.sh -g 1 -m 0 -i -l 10 -p "Run")" in
     "Hyprsunset")
-        hyprsunset &
+        case "$(printf "On\nOff\n" | ~/.config/rofi/launchers/scripts/launcher.sh -g 1 -m 0 -i -l 10)" in
+            "On")
+                bluelight_on
+                ;;
+            "Off")
+                bluelight_off
+                ;;
+        esac
         ;;
 
     "Wallpaper")
