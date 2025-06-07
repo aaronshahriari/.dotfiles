@@ -8,6 +8,7 @@ return {
         go = { "gofmt" },
         nix = { "nixfmt" },
         sql = { "sql_formatter" },
+        zig = {},
       }
     })
 

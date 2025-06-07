@@ -59,6 +59,9 @@ return {
 
     -- ZIG
     vim.lsp.config('zls', {
+      on_attach = function(client, bufnr)
+        client.server_capabilities.documentFormattingProvider = false
+      end,
       settings = {
         zls = {
           enable_argument_placeholders = false,
