@@ -56,7 +56,7 @@ sanity_check
 
 # if TS_SEARCH_PATHS is not set use default
 [[ -n "$TS_SEARCH_PATHS" ]] || TS_SEARCH_PATHS=(~/github ~/work ~/personal ~/personal/projects/ ~/personal/learning/)
-TS_EXTRA_SEARCH_PATHS=(~/github:0 ~/work:0 ~/personal:0 ~/personal/projects:0 ~/personal/learning:0)
+TS_EXTRA_SEARCH_PATHS=(~/nixos-config:0 ~/Downloads:0 ~/.config:0 ~/vault_personal:0)
 
 # Add any extra search paths to the TS_SEARCH_PATHS array
 # e.g : EXTRA_SEARCH_PATHS=("$HOME/extra1:4" "$HOME/extra2")
