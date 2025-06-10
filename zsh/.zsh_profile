@@ -7,4 +7,4 @@ alias gs="git status"
 set -o vi
 
 # tmux sessionizer
-bindkey -s ^f ". ~/.local/bin/scripts/tmux-sessionizer.sh\n"
+bindkey -s ^f "~/.local/bin/scripts/tmux-sessionizer.sh\n"
