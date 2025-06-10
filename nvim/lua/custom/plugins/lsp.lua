@@ -80,26 +80,6 @@ return {
     -- TAILWINDCSS
     vim.lsp.config('tailwindcss', {
       cmd = { 'tailwindcss-language-server', '--stdio' },
-      root_dir = vim.fs.dirname(
-        vim.fs.find({ "tailwind.config.js", "tailwind.config.ts", "postcss.config.js", "package.json", ".git" }, {
-          upward = true,
-          path = vim.api.nvim_buf_get_name(0),
-        })[1]
-      ),
-      settings = {
-        tailwindCSS = {
-          includeLanguages = {
-            eelixir = "html-eex",
-            elixir = "html-eex",
-            heex = "html-eex",
-          },
-          experimental = {
-            classRegex = {
-              'class[:]\\s*"([^"]*)"',
-            },
-          },
-        },
-      },
     })
     vim.lsp.enable('tailwindcss')
 

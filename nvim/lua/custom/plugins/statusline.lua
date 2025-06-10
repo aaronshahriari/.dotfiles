@@ -6,7 +6,7 @@ return {
     vim.opt.laststatus = 3
     local devicons = require("nvim-web-devicons")
     local builtin = require("el.builtin")
-    local extensions = require("el.extensions")
+    -- local extensions = require("el.extensions")
     local sections = require("el.sections")
     local subscribe = require("el.subscribe")
 
@@ -41,14 +41,14 @@ return {
       }
       local items = {}
       local icons = {
-        ["errors"] = { "", "DiagnosticError" },
-        ["warnings"] = { "", "DiagnosticWarn" },
-        ["infos"] = { "", "DiagnosticInfo" },
-        ["hints"] = { "󰟶", "DiagnosticHint" },
+        ["errors"] = { "X", "DiagnosticError" },
+        ["warnings"] = { "W", "DiagnosticWarn" },
+        ["infos"] = { "I", "DiagnosticInfo" },
+        ["hints"] = { "H", "DiagnosticHint" },
       }
       for _, k in ipairs({ "errors", "warnings", "infos", "hints" }) do
         if counts[k] > 0 then
-          table.insert(items, set_hl(icons[k][2], ("%s%s"):format(icons[k][1], counts[k])))
+          table.insert(items, set_hl(icons[k][2], ("%s(%s)"):format(icons[k][1], counts[k])))
         end
       end
       local fmt = " %s"
@@ -144,7 +144,7 @@ return {
         local items = {
           { mode, },
           { subscribe.buf_autocmd("el_git_branch_writepost", "BufWritePost", git_changes), },
-          { subscribe.buf_autocmd("el_buf_diagnostic", "DiagnosticChanged", diagnostics), },
+          -- { subscribe.buf_autocmd("el_buf_diagnostic", "DiagnosticChanged", diagnostics), },
           { sections.split },
           { subscribe.buf_autocmd("el_git_branch_bufenter", "BufEnter", git_branch), },
           { " " },
@@ -162,7 +162,7 @@ return {
             function()
               local ft = vim.bo.filetype
               local icon, _ = devicons.get_icon_by_filetype(ft) or ""
-              return "[" .. ft .. "]"
+              return icon .. " " .. ft
             end,
           }
         }

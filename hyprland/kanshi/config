@@ -5,6 +5,14 @@ output eDP-1 {
     alias $laptop
 }
 
+output "DZX KYY 0000000000000" {
+  mode 1920x1080@60
+  position 1440,0
+  scale 1
+  transform normal
+  alias $portable_mon
+}
+
 output "ASUSTek COMPUTER INC VG279QR R2LMQS075473" {
   mode 1920x1080@165
   position 0,700
@@ -25,8 +33,15 @@ profile docked {
     output $laptop disable
     output $main enable
     output $vertical enable
+    exec ~/.config/hypr/scripts/switch_config.sh docked
 }
 
 profile undocked {
     output $laptop enable
+}
+
+profile portable_docked {
+    output $laptop enable
+    output $portable_mon enable
+    exec ~/.config/hypr/scripts/switch_config.sh portable_docked
 }
