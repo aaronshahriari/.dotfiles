@@ -2,8 +2,9 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    priority = 1000,
     opts = {
-      integrations = { blink_cmp = true },
+      no_italic = false,
       term_colors = true,
       transparent_background = false,
       color_overrides = {

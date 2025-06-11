@@ -12,8 +12,8 @@ return {
     obs.setup({
       workspaces = {
         {
-          name = "Personal",
-          path = "~/vault_personal/",
+          name = "BrundageGroup",
+          path = "/mnt/c/Users/AaronShahriari/BrundageGroup/",
         },
       },
       disable_frontmatter = true,
@@ -22,9 +22,10 @@ return {
         update_debounce = 200, -- update delay after a text change (in milliseconds)
         -- Define how various check-boxes are displayed
         checkboxes = {
-          [" "] = { char = "", hl_group = "ObsidianTodo" },
-          ["x"] = { char = "", hl_group = "ObsidianDone" },
-          ["~"] = { char = "󰰰", hl_group = "ObsidianTilde" },
+          [" "] = { char = "", hl_group = "obsidianTodo" },
+          ["x"] = { char = "", hl_group = "obsidianCheck" },
+          ["!"] = { char = "", hl_group = "obsidianCanceled" },
+          ["?"] = { char = "", hl_group = "obsidianQuestion" },
         },
       },
       open_app_foreground = false,

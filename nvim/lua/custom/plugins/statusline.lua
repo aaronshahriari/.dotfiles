@@ -1,12 +1,11 @@
 return {
-  "express_line.nvim",
-  dev = true,
+  "tjdevries/express_line.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
   config = function()
     vim.opt.laststatus = 3
     local devicons = require("nvim-web-devicons")
     local builtin = require("el.builtin")
-    -- local extensions = require("el.extensions")
+    local extensions = require("el.extensions")
     local sections = require("el.sections")
     local subscribe = require("el.subscribe")
 
@@ -48,7 +47,7 @@ return {
       }
       for _, k in ipairs({ "errors", "warnings", "infos", "hints" }) do
         if counts[k] > 0 then
-          table.insert(items, set_hl(icons[k][2], ("%s(%s)"):format(icons[k][1], counts[k])))
+          table.insert(items, set_hl(icons[k][2], ("%s%s"):format(icons[k][1], counts[k])))
         end
       end
       local fmt = " %s"
@@ -59,20 +58,32 @@ return {
       return fmt:format(contents)
     end
 
+    -- old
+    -- local function git_branch()
+    --   local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+    --   if not git_root or git_root == "" then return "" end
+    --
+    --   local branch = vim.fn.systemlist("git rev-parse --abbrev-ref HEAD", git_root)[1] or ""
+    --   if branch ~= "" then
+    --     return set_hl("@constant", "[" .. branch .. "]")
+    --   end
+    --   return ""
+    -- end
+
     local function git_branch()
       local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
-      if not git_root or git_root == "" or git_root:match("fatal") then
+
+      -- If not inside a Git repo
+      if not git_root or git_root == "" or git_root:find("fatal") then
         return set_hl("@constant", "[]")
       end
 
-      local cmd = "cd " .. vim.fn.shellescape(git_root) .. " && git rev-parse --abbrev-ref HEAD"
-      local branch = vim.fn.systemlist(cmd)[1] or ""
-
-      if not branch or branch == "" or branch:match("fatal") then
-        return set_hl("@constant", "[]")
+      local branch = vim.fn.systemlist("git rev-parse --abbrev-ref HEAD", git_root)[1] or ""
+      if branch ~= "" then
+        return set_hl("@constant", "[" .. branch .. "]")
       end
 
-      return set_hl("@constant", "[" .. branch .. "]")
+      return ""
     end
 
     local function git_changes()
@@ -155,19 +166,19 @@ return {
           { " " },
           { "%f" },
           { sections.split },
-          {
-            sections.collapse_builtin({
-              "[",
-              builtin.help_list,
-              builtin.readonly_list,
-              "]",
-            }),
-          },
+          -- {
+          --   sections.collapse_builtin({
+          --     "[",
+          --     builtin.help_list,
+          --     builtin.readonly_list,
+          --     "]",
+          --   }),
+          -- },
           {
             function()
               local ft = vim.bo.filetype
               local icon, _ = devicons.get_icon_by_filetype(ft) or ""
-              return icon .. " " .. ft
+              return "[" .. ft .. "]"
             end,
           }
         }

@@ -1,5 +1,5 @@
 return {
-  "nvimdev/hlsearch.nvim",
+  'nvimdev/hlsearch.nvim',
   config = function()
     require('hlsearch').setup()
   end

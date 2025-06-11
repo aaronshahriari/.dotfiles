@@ -34,6 +34,12 @@ Group.new("markdownh1", c.green)
 Group.new("markdownh2", c.orange)
 Group.new("markdownh3", c.purple)
 
+-- MARKDOWN
+Group.new("obsidianCheck", c.green)
+Group.new("obsidianTodo", c.orange)
+Group.new("obsidianCanceled", c.red)
+Group.new("obsidianQuestion", c.blue)
+
 -- COMPLETION
 Group.new("PmenuSel", c.black, c.white)
 Group.new("Pmenu", c.none, c.dark_grey)

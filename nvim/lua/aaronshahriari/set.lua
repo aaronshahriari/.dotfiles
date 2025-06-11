@@ -1,18 +1,11 @@
 -- not allow the mouse
 -- vim.o.mouse = ""
+vim.o.mouse = "a"
 
--- insert block
+-- vim.opt.guicursor = "a:blinkon0"
 vim.opt.guicursor = {
-  "a:blinkon0",
-  "n-v-c:block-Cursor/lCursor"
+    "n:block",
 }
-
--- insert thin
--- vim.opt.guicursor = {
---   "a:blinkon0",
---   "i:ver25",
---   "o:hor25"
--- }
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -41,7 +34,7 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scroll = 25
+-- vim.opt.scroll = 25
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
@@ -58,12 +51,12 @@ vim.opt.cursorline = false
 
 -- create terminal config
 vim.api.nvim_create_autocmd("TermOpen", {
-  group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
-  callback = function()
-    vim.opt_local.number = true
-    vim.opt_local.relativenumber = true
-    vim.opt_local.scrolloff = 0
-  end,
+    group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
+    callback = function()
+        vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
+        vim.opt_local.scrolloff = 0
+    end,
 })
 
 -- set tabnames
@@ -72,26 +65,26 @@ vim.o.tabline = '%!v:lua.MyTabline()'
 
 -- custom tabline function
 function MyTabline()
-  local s = ''
-  for i = 1, vim.fn.tabpagenr('$') do
-    local winnr = vim.fn.tabpagewinnr(i)               -- get the window number for the tab
-    local bufnr = vim.fn.tabpagebuflist(i)[winnr]      -- get the buffer for the window
-    local bufname = vim.fn.bufname(bufnr)              -- get the buffer name
-    local file = vim.fn.fnamemodify(bufname, ':t')     -- extract only the file name
+    local s = ''
+    for i = 1, vim.fn.tabpagenr('$') do
+        local winnr = vim.fn.tabpagewinnr(i)           -- get the window number for the tab
+        local bufnr = vim.fn.tabpagebuflist(i)[winnr]  -- get the buffer for the window
+        local bufname = vim.fn.bufname(bufnr)          -- get the buffer name
+        local file = vim.fn.fnamemodify(bufname, ':t') -- extract only the file name
 
-    -- -- handle [No Name] as oil tree
-    if file == '' then
-      file = 'Oil'
-    end
+        -- -- handle [No Name] as oil tree
+        if file == '' then
+            file = 'Oil'
+        end
 
-    -- highlight the current tab
-    if i == vim.fn.tabpagenr() then
-      s = s .. '%#TabLineSel# ' .. (file ~= '' and file or '[No Name]') .. ' %#TabLine#'
-    else
-      s = s .. '%#TabLine# ' .. (file ~= '' and file or '[No Name]') .. ' '
+        -- highlight the current tab
+        if i == vim.fn.tabpagenr() then
+            s = s .. '%#TabLineSel# ' .. (file ~= '' and file or '[No Name]') .. ' %#TabLine#'
+        else
+            s = s .. '%#TabLine# ' .. (file ~= '' and file or '[No Name]') .. ' '
+        end
     end
-  end
-  return s
+    return s
 end
 
 -- removing next line comments automatically
@@ -99,23 +92,25 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local FormatOptions = augroup("FormatOptions", { clear = true })
 autocmd("BufEnter", {
-  group = FormatOptions,
-  pattern = "*",
-  callback = function()
-    vim.opt_local.formatoptions:remove({ "r", "o", })
-  end,
+    group = FormatOptions,
+    pattern = "*",
+    callback = function()
+        vim.opt_local.formatoptions:remove({ "r", "o", })
+    end,
 })
 
--- clipboard config
-vim.g.clipboard = {
-  name = "wl-clipboard",
-  copy = {
-    ["+"] = "wl-copy",
-    ["*"] = "wl-copy",
-  },
-  paste = {
-    ["+"] = "wl-paste",
-    ["*"] = "wl-paste",
-  },
-  cache_enabled = 0,
-}
+vim.filetype.add({
+    extension = {
+        cls = "apex",
+        apex = "apex",
+        soql = "soql",
+    },
+})
+
+-- setting comments
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "apex", "cls" },
+    callback = function()
+        vim.bo.commentstring = "// %s"
+    end,
+})

@@ -34,10 +34,10 @@ vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
 vim.keymap.set("n", "<C-x>", ":Telescope diagnostics<CR>")
 
 -- Map to change split size
-vim.keymap.set("n", "<C-Left>", "<C-w>10<")
-vim.keymap.set("n", "<C-Right>", "<C-w>10>")
-vim.keymap.set("n", "<C-Down>", "<C-w>10+")
-vim.keymap.set("n", "<C-Up>", "<C-w>10-")
+vim.keymap.set("n", "<C-Left>", "<C-w>5<")
+vim.keymap.set("n", "<C-Right>", "<C-w>5>")
+vim.keymap.set("n", "<C-Down>", "<C-w>5+")
+vim.keymap.set("n", "<C-Up>", "<C-w>5-")
 
 -- create splits
 vim.keymap.set("n", "<leader>1", "<C-w>v<C-w>l")
@@ -76,7 +76,7 @@ vim.keymap.set("n", "<leader>st", function()
   vim.cmd.new()
   vim.cmd.term()
   vim.cmd.wincmd("J")
-  vim.api.nvim_win_set_height(0, 12)
+  vim.api.nvim_win_set_height(0, 14)
 end)
 
 -- Define a function for creating a split terminal

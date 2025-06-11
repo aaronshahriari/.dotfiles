@@ -19,8 +19,4 @@ require("lazy").setup({ import = "custom/plugins" }, {
   change_detection = {
     notify = false,
   },
-  dev = {
-    path = "custom/imported",
-    fallback = true,
-  },
 })

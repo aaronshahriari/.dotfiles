@@ -1,125 +1,80 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    'saghen/blink.cmp',
-    { "j-hui/fidget.nvim", opts = {} },
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   config = function()
     local lspconfig = require("lspconfig")
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- local default_capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-    -- proper context for diagnostics
-    vim.diagnostic.config({
-      -- virtual_text = {
-      --   prefix = '■ ', -- Could be '●', '▎', 'x', '■', , 
-      -- },
-      float = { border = "single" },
-    })
+    -- Default handlers for LSP
+    local default_handlers = {
+      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
+      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
+    }
 
+    -- SETUP FOR APEX
+    -- vim.lsp.config.apex_ls = {
+    --   cmd = {
+    --     "java",
+    --     "-jar",
+    --     vim.fn.expand('$HOME/lsp/apex-jorje-lsp.jar'),
+    --   },
+    --   root_markers = { 'sfdx-project.json' },
+    --   filetypes = { 'apex' },
+    -- }
+    -- vim.lsp.enable({ 'apex_ls' })
 
-    -- REMAPS
-    vim.api.nvim_create_autocmd("LspAttach", {
-      callback = function(e)
-        local opts = { buffer = e.buf }
-        local builtin = require "telescope.builtin"
-        vim.keymap.set("n", "gr", builtin.lsp_references, opts)
-        vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, opts)
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set("n", "<leader>cr", function() vim.lsp.buf.rename() end, opts)
-        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover({ border = 'single' }) end, opts)
-      end,
-    })
-
-    -- GO
-    vim.lsp.enable("gopls")
-
-    -- SQL
+    vim.lsp.config.sqls = {
+      filetypes = { "sql", "mysql", "soql" },
+    }
     vim.lsp.enable("sqls")
 
-    -- RUST
-    vim.lsp.config('rust_analyzer', {
+
+    lspconfig.apex_ls.setup({
+      cmd = {
+        "java",
+        "-jar",
+        vim.fn.expand('$HOME/lsp/apex-jorje-lsp.jar'),
+      },
+      filetypes = { 'apex' },
+      apex_enable_semantic_errors = false,
+      apex_enable_completion_statistics = false,
+    })
+
+    -- SETUP FOR LUA
+    lspconfig.lua_ls.setup({
+      handlers = default_handlers,
+      capabilities = default_capabilities,
       settings = {
-        ['rust-analyzer'] = {
-          diagnostics = {
-            enable = false,
-          }
-        }
-      }
-    })
-    vim.lsp.enable('rust_analyzer')
-
-    -- ELIXIR
-    lspconfig.elixirls.setup({
-      cmd = { "elixir-ls" },
-      filetypes = { "exs", "elixir", "eelixir", "heex", "surface" },
-      root_dir = lspconfig.util.root_pattern("mix.exs"),
-    })
-
-    -- PYTHON
-    vim.lsp.enable('pylsp')
-
-    -- ZIG
-    vim.lsp.config('zls', {
-      on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = false
-      end,
-      settings = {
-        zls = {
-          enable_argument_placeholders = false,
-        },
-      }
-    })
-    vim.lsp.enable('zls')
-    -- don't show parse errors in a separate window
-    vim.g.zig_fmt_parse_errors = 0
-    -- disable format-on-save
-    vim.g.zig_fmt_autosave = 0
-
-    -- BASH
-    vim.lsp.enable('bashls')
-
-    -- TAILWINDCSS
-    vim.lsp.config('tailwindcss', {
-      cmd = { 'tailwindcss-language-server', '--stdio' },
-    })
-    vim.lsp.enable('tailwindcss')
-
-    -- HTMX
-    vim.lsp.enable('htmx')
-
-    -- HTML
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-    vim.lsp.config('html', {
-      capabilities = capabilities,
-    })
-
-    vim.lsp.enable('html')
-
-    -- LUA
-    vim.lsp.config('lua_ls', {
-      settings = {
-        ['Lua'] = {
+        Lua = {
           diagnostics = {
             globals = { 'vim' }
           }
         }
       }
     })
-    vim.lsp.enable('lua_ls')
 
-    -- NIX
-    vim.lsp.config('nil_ls', {
-      settings = {
-        ['nil'] = {
-          formatting = {
-            command = { "nixfmt" },
-          },
-        },
-      }
+    -- SETUP FOR MD
+    lspconfig.markdown_oxide.setup({})
+
+    require("mason").setup()
+    local ensure_installed = {
+      "stylua",
+      "lua_ls",
+    }
+    require("mason-tool-installer").setup { ensure_installed = ensure_installed }
+
+    local allowed_filetypes = { "lua", "nix", "sh" }
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      callback = function()
+        if vim.tbl_contains(allowed_filetypes, vim.bo.filetype) then
+          vim.lsp.buf.format { async = false }
+        end
+      end
     })
-    vim.lsp.enable('nil_ls')
-
-    -- MD
-    vim.lsp.enable('markdown_oxide')
   end
 }

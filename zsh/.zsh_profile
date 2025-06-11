@@ -1,10 +1,24 @@
 export XDG_CONFIG_HOME=$HOME/.config
 export PATH="$HOME/.local/bin/scripts/:$PATH"
+export SHELL=/usr/bin/zsh
 
 alias vim="nvim"
 alias gs="git status"
 
 set -o vi
 
+LS_COLORS+=':ow=01;33'
+
 # tmux sessionizer
-bindkey -s ^f "~/.local/bin/scripts/tmux-sessionizer.sh\n"
+bindkey -s ^f "$HOME/.local/bin/scripts/tmux-sessionizer.sh\n"
+bindkey -s ^a "source $HOME/.local/bin/scripts/sf-sessionizer.sh\n"
+
+if [[ "$PROMPT_SUFFIX" == "(nix)" ]]; then
+  PROMPT="%F{green}NIX%f $PROMPT"
+fi
+
+# auto-mount files.com if not already mounted
+# if ! mountpoint -q ~/sftp_files; then
+#     [ -d ~/sftp_files ] || mkdir -p ~/sftp_files
+#     sshfs -o reconnect sftp:/ ~/sftp_files
+# fi
