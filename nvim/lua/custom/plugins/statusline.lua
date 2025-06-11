@@ -1,6 +1,6 @@
--- https://github.com/ibhagwan/nvim-lua/blob/e30e10d900c7744e796bdfce47678244e70fe4f6/lua/plugins/statusline/init.lua
 return {
-  "tjdevries/express_line.nvim",
+  "express_line.nvim",
+  dev = true,
   dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
   config = function()
     vim.opt.laststatus = 3
@@ -61,13 +61,18 @@ return {
 
     local function git_branch()
       local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
-      if not git_root or git_root == "" then return "" end
-
-      local branch = vim.fn.systemlist("git rev-parse --abbrev-ref HEAD", git_root)[1] or ""
-      if branch ~= "" then
-        return set_hl("@constant", "[" .. branch .. "]")
+      if not git_root or git_root == "" or git_root:match("fatal") then
+        return set_hl("@constant", "[]")
       end
-      return ""
+
+      local cmd = "cd " .. vim.fn.shellescape(git_root) .. " && git rev-parse --abbrev-ref HEAD"
+      local branch = vim.fn.systemlist(cmd)[1] or ""
+
+      if not branch or branch == "" or branch:match("fatal") then
+        return set_hl("@constant", "[]")
+      end
+
+      return set_hl("@constant", "[" .. branch .. "]")
     end
 
     local function git_changes()
@@ -144,7 +149,7 @@ return {
         local items = {
           { mode, },
           { subscribe.buf_autocmd("el_git_branch_writepost", "BufWritePost", git_changes), },
-          -- { subscribe.buf_autocmd("el_buf_diagnostic", "DiagnosticChanged", diagnostics), },
+          { subscribe.buf_autocmd("el_buf_diagnostic", "DiagnosticChanged", diagnostics), },
           { sections.split },
           { subscribe.buf_autocmd("el_git_branch_bufenter", "BufEnter", git_branch), },
           { " " },

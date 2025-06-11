@@ -1,0 +1,3 @@
+[submodule "nvim/nvim/lua/custom/imported/express_line.nvim"]
+	path = nvim/nvim/lua/custom/imported/express_line.nvim
+	url = https://github.com/aaronshahriari/express_line.nvim
