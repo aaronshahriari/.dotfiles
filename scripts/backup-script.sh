@@ -8,7 +8,6 @@ SOURCE=(
   "$HOME/gimp"
   "$HOME/.zshrc"
   "$HOME/github"
-  "$HOME/.config"
   "$HOME/.ssh"
   "$HOME/backup_logs"
   "$HOME/personal"

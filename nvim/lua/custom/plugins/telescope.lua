@@ -10,6 +10,15 @@ return {
         }
       },
       defaults = {
+        file_ignore_patterns = {
+          "^tmp/",
+          "/tmp/",
+          "tmp/.*",
+          "%.lock",
+          "^node_modules/",
+          "%.git/",
+          "%.jpg", "%.png",
+        },
         preview = {
           treesitter = true,
         },
