@@ -10,6 +10,10 @@ vim.api.nvim_create_user_command('ProdSOQL', function()
   require('salesforce').run_soql_query('bgMain')
 end, { nargs = 0 })
 
+vim.keymap.set('n', '<C-a>', function()
+  require('salesforce').run_apex_command('bgTest')
+end)
+
 vim.g.netrw_bufsettings = "noma nomod nu nowrap ro nobl"
 vim.cmd("autocmd FileType netrw set nu")
 
