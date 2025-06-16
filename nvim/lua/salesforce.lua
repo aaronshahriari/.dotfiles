@@ -14,6 +14,7 @@ local function create_or_replace_result_window(name)
 
   -- Create a new split window and buffer
   vim.cmd("botright 20split")
+  vim.wo.colorcolumn = ""
   local win = vim.api.nvim_get_current_win()
   vim.cmd("enew")
 
