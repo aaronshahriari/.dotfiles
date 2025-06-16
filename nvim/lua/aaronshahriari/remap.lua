@@ -14,6 +14,10 @@ vim.keymap.set('n', '<C-a>', function()
   require('salesforce').run_apex_command('bgTest')
 end)
 
+vim.api.nvim_create_user_command('ProdApex', function()
+  require('salesforce').run_apex_command('bgMain')
+end, { nargs = 0 })
+
 vim.g.netrw_bufsettings = "noma nomod nu nowrap ro nobl"
 vim.cmd("autocmd FileType netrw set nu")
 

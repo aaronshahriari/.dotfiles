@@ -3,30 +3,29 @@ local M = {}
 local result_bufnr = nil
 
 local function create_or_replace_result_window(name)
-  -- If result buffer exists and is valid
+  -- Reuse valid existing buffer
   if result_bufnr and vim.api.nvim_buf_is_valid(result_bufnr) then
-    -- Try to find the window showing this buffer
-    for _, win in ipairs(vim.api.nvim_list_wins()) do
-      if vim.api.nvim_win_get_buf(win) == result_bufnr then
-        -- Clear the buffer content
-        vim.api.nvim_buf_set_lines(result_bufnr, 0, -1, false, {})
-        -- Focus the window
-        vim.api.nvim_set_current_win(win)
-        return result_bufnr
-      end
-    end
+    vim.api.nvim_buf_set_lines(result_bufnr, 0, -1, false, {})
+    return result_bufnr
   end
 
-  -- Otherwise, create a new split + buffer
+  -- Save current window so we can restore it later
+  local current_win = vim.api.nvim_get_current_win()
+
+  -- Create a new split window and buffer
   vim.cmd("botright 20split")
+  local win = vim.api.nvim_get_current_win()
   vim.cmd("enew")
+
   result_bufnr = vim.api.nvim_get_current_buf()
   vim.bo[result_bufnr].buftype = 'nofile'
   vim.bo[result_bufnr].bufhidden = 'wipe'
   vim.bo[result_bufnr].swapfile = false
   vim.bo[result_bufnr].modifiable = true
-  vim.api.nvim_buf_set_name(result_bufnr, "")
   vim.api.nvim_buf_set_name(result_bufnr, name or "Command Results")
+
+  -- Move cursor back to where it was
+  vim.api.nvim_set_current_win(current_win)
 
   return result_bufnr
 end
