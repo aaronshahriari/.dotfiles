@@ -1,6 +1,11 @@
 vim.g.mapleader = " "
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+-- TESTING:
+vim.keymap.set('n', '<leader>qr', function()
+  require('soql_runner').run_soql_query()
+end, { desc = "Run SOQL query in current buffer" })
+
 vim.g.netrw_bufsettings = "noma nomod nu nowrap ro nobl"
 vim.cmd("autocmd FileType netrw set nu")
 
