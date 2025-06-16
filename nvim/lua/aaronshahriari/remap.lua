@@ -1,10 +1,14 @@
 vim.g.mapleader = " "
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
--- TESTING:
-vim.keymap.set('n', '<leader>qr', function()
-  require('soql_runner').run_soql_query()
-end, { desc = "Run SOQL query in current buffer" })
+-- Salesforce Commands
+vim.keymap.set('n', '<C-q>', function()
+  require('salesforce').run_soql_query('bgTest')
+end)
+
+vim.api.nvim_create_user_command('ProdSOQL', function()
+  require('salesforce').run_soql_query('bgMain')
+end, { nargs = 0 })
 
 vim.g.netrw_bufsettings = "noma nomod nu nowrap ro nobl"
 vim.cmd("autocmd FileType netrw set nu")

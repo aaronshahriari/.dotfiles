@@ -6,6 +6,7 @@ return {
       parser = { comments = { "#", "//" } },
       view = {
         header_lnum = 1,
+        display_mode = "border",
       },
       keymaps = {
         textobject_field_inner = { "if", mode = { "o", "x" } },
