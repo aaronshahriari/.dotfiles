@@ -18,7 +18,7 @@ local function create_or_replace_result_window(name)
   end
 
   -- Otherwise, create a new split + buffer
-  vim.cmd("botright 25split")
+  vim.cmd("botright 20split")
   vim.cmd("enew")
   result_bufnr = vim.api.nvim_get_current_buf()
   vim.bo[result_bufnr].buftype = 'nofile'
@@ -97,7 +97,25 @@ function M.run_apex_command(target_org)
     return
   end
   local cmd = { "sf", "apex", "run", "--target-org", target_org, "--file", filepath }
-  M.run_cmd(cmd, "Apex Results", "txt")
+
+  local function post_process(bufnr)
+    local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+    local debug_output = {}
+
+    for _, line in ipairs(lines) do
+      local msg = line:match("|USER_DEBUG|.-|DEBUG|(.*)")
+      if msg then
+        table.insert(debug_output, msg)
+      end
+    end
+
+    if #debug_output > 0 then
+      vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, debug_output)
+    end
+    -- else: keep original buffer as-is
+  end
+
+  M.run_cmd(cmd, "Apex Results", "txt", post_process)
 end
 
 return M
