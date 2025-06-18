@@ -26,6 +26,8 @@ return {
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
         vim.keymap.set("n", "<leader>cr", function() vim.lsp.buf.rename() end, opts)
         vim.keymap.set('n', 'K', function() vim.lsp.buf.hover({ border = 'single' }) end, opts)
+        vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+        vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
       end,
     })
 
@@ -33,7 +35,7 @@ return {
     vim.lsp.enable("gopls")
 
     -- SQL
-    vim.lsp.enable("sqls")
+    -- vim.lsp.enable("sqls")
 
     -- RUST
     vim.lsp.config('rust_analyzer', {
@@ -56,6 +58,9 @@ return {
 
     -- PYTHON
     vim.lsp.enable('pylsp')
+
+    -- TYPESCRIPT
+    vim.lsp.enable('ts_ls')
 
     -- ZIG
     vim.lsp.config('zls', {

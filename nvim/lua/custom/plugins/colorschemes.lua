@@ -20,7 +20,7 @@ return {
           CurSearch = { fg = "#000000", bg = "#F6FF00" },
           LspSignatureActiveParameter = { fg = "#ffffff", bg = colors.base },
           Cursor = { bg = "#ffffff" },
-          StatusLine = { bg = "#0e131a" },
+          StatusLine = { bg = "#424242" },
         }
       end
     },

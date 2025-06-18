@@ -27,11 +27,14 @@ vim.keymap.set("n", "<Right>", "gt")
 vim.keymap.set("n", "<S-Left>", function() vim.cmd("tabmove -1") end)
 vim.keymap.set("n", "<S-Right>", function() vim.cmd("tabmove +1") end)
 
+-- close entire tab
+vim.keymap.set("n", "dby", ":tabnew | DBUI<CR>", { noremap = true, silent = true })
+
 -- used to see diagnostics
 vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
 
 -- used to single file diagnostics in qflist
-vim.keymap.set("n", "<C-x>", ":Telescope diagnostics<CR>")
+-- vim.keymap.set("n", "<C-x>", ":Telescope diagnostics<CR>")
 
 -- Map to change split size
 vim.keymap.set("n", "<C-Left>", "<C-w>10<")
