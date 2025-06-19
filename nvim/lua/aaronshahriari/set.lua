@@ -114,3 +114,12 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.bo.commentstring = "// %s"
     end,
 })
+
+vim.api.nvim_set_hl(0, "FixmeComment", { fg = "black", bg = "#cfa942", bold = true })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*",
+    callback = function()
+        vim.fn.matchadd("FixmeComment", [[\v(\/\/|\#|\-\-|\*)[^\n]*\zsFIXME:]])
+    end,
+})

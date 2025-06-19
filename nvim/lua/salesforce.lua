@@ -1,6 +1,7 @@
 local M = {}
 
 local result_bufnr = nil
+local csvview = require("csvview")
 
 local function create_or_replace_result_window(name)
   -- Reuse valid existing buffer
@@ -15,7 +16,7 @@ local function create_or_replace_result_window(name)
   -- Create a new split window and buffer
   vim.cmd("botright 20split")
   vim.wo.colorcolumn = ""
-  local win = vim.api.nvim_get_current_win()
+  -- local win = vim.api.nvim_get_current_win()
   vim.cmd("enew")
 
   result_bufnr = vim.api.nvim_get_current_buf()
@@ -36,7 +37,7 @@ local function strip_ansi(str)
   return str:gsub("\27%[[0-9;]*m", "")
 end
 
-function M.run_cmd(cmd_tbl, buf_name, filetype, post_process, filter)
+function M.run_cmd(cmd_tbl, buf_name, filetype, post_process, filter, pre_set_lines)
   local output_lines = {}
 
   local function handle_output(_, data)
@@ -54,10 +55,17 @@ function M.run_cmd(cmd_tbl, buf_name, filetype, post_process, filter)
 
   local function on_exit()
     local bufnr = create_or_replace_result_window(buf_name)
+
+    if pre_set_lines then
+      pre_set_lines(bufnr)
+    end
+
     vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, output_lines)
+
     if filetype then
       vim.api.nvim_buf_set_option(bufnr, 'filetype', filetype)
     end
+
     if post_process then
       post_process(bufnr)
     end
@@ -85,8 +93,13 @@ function M.run_soql_query(target_org)
       line:match("^Querying Data%.%.%. done$")
     )
   end
-  M.run_cmd(cmd, "SOQL Results", "csv", function()
-    require("csvview").enable()
+  M.run_cmd(cmd, "SOQL Results", "csv", function(bufnr)
+    local prev_buf = vim.api.nvim_get_current_buf()
+    vim.api.nvim_set_current_buf(bufnr)
+    vim.api.nvim_set_current_buf(prev_buf)
+    if csvview and csvview.enable then
+      csvview.enable(bufnr)
+    end
   end, filter)
 end
 
@@ -113,9 +126,17 @@ function M.run_apex_command(target_org)
       vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, debug_output)
     end
     -- else: keep original buffer as-is
+
+    if csvview and csvview.is_enabled and csvview.disable and csvview.is_enabled(bufnr) then
+      csvview.disable(bufnr)
+    end
   end
 
-  M.run_cmd(cmd, "Apex Results", "txt", post_process)
+  M.run_cmd(cmd, "Apex Results", "txt", post_process, nil, function(bufnr)
+    if csvview and csvview.is_enabled and csvview.disable and csvview.is_enabled(bufnr) then
+      csvview.disable(bufnr)
+    end
+  end)
 end
 
 return M

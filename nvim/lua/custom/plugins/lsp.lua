@@ -28,10 +28,10 @@ return {
     -- }
     -- vim.lsp.enable({ 'apex_ls' })
 
-    vim.lsp.config.sqls = {
-      filetypes = { "sql", "mysql", "soql" },
-    }
-    vim.lsp.enable("sqls")
+    -- vim.lsp.config.sqls = {
+    --   filetypes = { "sql", "mysql", "soql" },
+    -- }
+    -- vim.lsp.enable("sqls")
 
 
     lspconfig.apex_ls.setup({
