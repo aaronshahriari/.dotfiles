@@ -17,7 +17,7 @@
         "custom/media",
         // "group/media",
         "wireplumber",
-        "custom/bluetooth",
+        // "custom/bluetooth",
         "group/stats",
         "network",
         "battery",
@@ -53,13 +53,13 @@
         "on-click": "pgrep pavucontrol && hyprctl dispatch togglespecialworkspace volume || pavucontrol &",
         "format-icons": ["", "", " "]
     },
-    "custom/bluetooth": {
-        "format": "{}",
-        "interval": 5,
-        "exec": "$HOME/.config/waybar/scripts/bluetooth.sh",
-        "tooltip": false,
-        "on-click": "pgrep blueman-mana && hyprctl dispatch togglespecialworkspace bluetooth || (blueman-manager &)"
-    },
+    // "custom/bluetooth": {
+    //     "format": "{}",
+    //     "interval": 5,
+    //     "exec": "$HOME/.config/waybar/scripts/bluetooth.sh",
+    //     "tooltip": false,
+    //     "on-click": "pgrep blueman-mana && hyprctl dispatch togglespecialworkspace bluetooth || (blueman-manager &)"
+    // },
     "custom/media": {
         "on-click": "playerctl play-pause",
         "format": "{} ",

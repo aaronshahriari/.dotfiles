@@ -6,6 +6,7 @@
     "include": [
         "$HOME/.config/waybar/modules/media.json",
         "$HOME/.config/waybar/modules/stats.json",
+        "$HOME/.config/waybar/modules/audio.json",
     ],
 
     "modules-left": [
@@ -18,7 +19,7 @@
         "custom/media",
         // "group/media",
         "wireplumber",
-        "custom/bluetooth",
+        "group/audio",
         "group/stats",
         "network",
         "battery",
@@ -56,13 +57,6 @@
         "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
         "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
         "format-icons": ["", "", " "]
-    },
-    "custom/bluetooth": {
-        "format": "{}",
-        "interval": 5,
-        "exec": "$HOME/.config/waybar/scripts/bluetooth.sh",
-        "tooltip": false,
-        "on-click-right": "pgrep blueman-mana && hyprctl dispatch togglespecialworkspace bluetooth || (blueman-manager &)",
     },
     "custom/media": {
         "on-click": "playerctl --player=spotify play-pause",
@@ -128,7 +122,7 @@
         "tooltip": false
     },
     "hyprland/workspaces": {
-        "active-only": "true",
+        "active-only": "false",
         "on-click": "activate",
         "sort-by": "number",
         "tooltip": false

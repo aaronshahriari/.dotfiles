@@ -96,20 +96,34 @@ window#waybar.empty #window {
     border-radius: 5px;
 }
 
-/* BLUETOOTH */
-/* #custom-bluetooth { */
-/*     color: #5a90db; */
-/*     font-size: 15px; */
-/* } */
-
-#custom-bluetooth {
-    font-size: 15px;
-    color: #5a90db;
+/* AUDIO */
+#audio {
     background-color: #1B2430;
     margin: 4px 4px 4px 0px;
     padding-left: 7px;
     padding-right: 7px;
     border-radius: 5px;
+}
+
+/* VOICE */
+#custom-voice {
+    font-size: 15px;
+    background-color: #1B2430;
+    /* margin: 4px 4px 4px 0px; */
+    margin-right: 3px;
+    margin-left: 7px;
+    /* border-radius: 5px; */
+}
+
+/* BLUETOOTH */
+#custom-bluetooth {
+    font-size: 17px;
+    color: #5a90db;
+    background-color: #1B2430;
+    /* margin: 4px 4px 4px 0px; */
+    margin-left: 3px;
+    margin-right: 7px;
+    /* border-radius: 5px; */
 }
 
 /* WIREPLUMBER */
