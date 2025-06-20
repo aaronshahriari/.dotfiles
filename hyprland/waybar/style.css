@@ -117,7 +117,7 @@ window#waybar.empty #window {
 
 /* BLUETOOTH */
 #custom-bluetooth {
-    font-size: 17px;
+    font-size: 15px;
     color: #5a90db;
     background-color: #1B2430;
     /* margin: 4px 4px 4px 0px; */
