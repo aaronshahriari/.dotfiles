@@ -11,6 +11,7 @@ return {
       },
       defaults = {
         file_ignore_patterns = {
+          "__pycache__",
           "^tmp/",
           "/tmp/",
           "tmp/.*",
