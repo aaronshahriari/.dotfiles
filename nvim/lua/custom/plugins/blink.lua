@@ -35,15 +35,15 @@ return {
         },
       },
 
-      signature = {
-        enabled = true,
-        window = {
-          min_width = 1,
-          max_width = 100,
-          max_height = 10,
-          border = "single",
-        },
-      },
+      -- signature = {
+      --   enabled = true,
+      --   window = {
+      --     min_width = 1,
+      --     max_width = 100,
+      --     max_height = 10,
+      --     border = "single",
+      --   },
+      -- },
     },
     opts_extend = { "sources.default" }
   },
