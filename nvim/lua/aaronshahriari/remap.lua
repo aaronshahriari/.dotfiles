@@ -12,6 +12,9 @@ vim.keymap.set('n', '<C-]>', ':cn<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-ScrollWheelUp>', '10zh', { silent = true })
 vim.keymap.set('n', '<S-ScrollWheelDown>', '10zl', { silent = true })
 
+-- I just need this fr
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
 -- Map these to move through splits
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
@@ -79,13 +82,15 @@ vim.keymap.set("n", "<leader>st", function()
   vim.cmd.new()
   vim.cmd.term()
   vim.cmd.wincmd("J")
-  vim.api.nvim_win_set_height(0, 12)
+  local total_height = vim.api.nvim_list_uis()[1].height
+  vim.api.nvim_win_set_height(0, math.floor(total_height * 0.3))
 end)
 
--- Define a function for creating a split terminal
+-- define a function for creating a split terminal
 vim.keymap.set("n", "<leader>t", function()
   vim.cmd.new()
   vim.cmd.term()
   vim.cmd.wincmd("L")
-  vim.api.nvim_win_set_width(0, 80)
+  local total_width = vim.api.nvim_list_uis()[1].width
+  vim.api.nvim_win_set_width(0, math.floor(total_width * 0.4))
 end)
