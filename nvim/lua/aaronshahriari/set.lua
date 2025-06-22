@@ -74,10 +74,10 @@ vim.o.tabline = '%!v:lua.MyTabline()'
 function MyTabline()
   local s = ''
   for i = 1, vim.fn.tabpagenr('$') do
-    local winnr = vim.fn.tabpagewinnr(i)               -- get the window number for the tab
-    local bufnr = vim.fn.tabpagebuflist(i)[winnr]      -- get the buffer for the window
-    local bufname = vim.fn.bufname(bufnr)              -- get the buffer name
-    local file = vim.fn.fnamemodify(bufname, ':t')     -- extract only the file name
+    local winnr = vim.fn.tabpagewinnr(i)           -- get the window number for the tab
+    local bufnr = vim.fn.tabpagebuflist(i)[winnr]  -- get the buffer for the window
+    local bufname = vim.fn.bufname(bufnr)          -- get the buffer name
+    local file = vim.fn.fnamemodify(bufname, ':t') -- extract only the file name
 
     -- -- handle [No Name] as oil tree
     if file == '' then
@@ -119,3 +119,12 @@ vim.g.clipboard = {
   },
   cache_enabled = 0,
 }
+
+vim.api.nvim_set_hl(0, "FixmeComment", { fg = "black", bg = "#cfa942", bold = true })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  callback = function()
+    vim.fn.matchadd("FixmeComment", [[\v(\/\/|\#|\-\-|\*)[^\n]*\zsFIXME:]])
+  end,
+})
