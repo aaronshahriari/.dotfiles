@@ -31,6 +31,9 @@ return {
       end,
     })
 
+    -- TYPST
+    vim.lsp.enable('typst_lsp')
+
     -- GO
     vim.lsp.enable("gopls")
 
