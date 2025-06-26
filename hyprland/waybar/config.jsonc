@@ -6,7 +6,7 @@
     "include": [
         "$HOME/.config/waybar/modules/media.json",
         "$HOME/.config/waybar/modules/stats.json",
-        "$HOME/.config/waybar/modules/audio.json",
+        "$HOME/.config/waybar/modules/audio.json"
     ],
 
     "modules-left": [
@@ -105,6 +105,9 @@
     "position": "top",
     "spacing": 2,
     "output": [ "ASUSTek COMPUTER INC VG279 LALMQS182653", "DZX KYY 0000000000000" ],
+    "include": [
+        "$HOME/.config/waybar/modules/audio.json"
+    ],
 
     "modules-left": [
         "custom/os_button",
@@ -112,6 +115,10 @@
     ],
 
     "modules-right": [
+        "wireplumber",
+        "group/audio",
+        "battery",
+        "network",
         "clock",
         "custom/power_button"
     ],
@@ -129,6 +136,38 @@
     },
 
     // right
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": " ",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pgrep pavucontrol && hyprctl dispatch togglespecialworkspace volume || pavucontrol &",
+        "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
+        "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
+        "format-icons": ["", "", " "]
+    },
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "{icon} {essid}",
+        "format-ethernet": "󱘖 {ifname}",
+        "format-disconnected": "󰌙 Disconnected ⚠",
+        "tooltip-format-wifi": "{frequency} MHz ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ipaddr}/{cidr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+        "tooltip-format-disconnected": "Disconnected ⚠",
+        "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤢 ", "󰤨 "],
+        "on-click": "hyprctl dispatch togglespecialworkspace wifi"
+    },
+    "battery": {
+        "bat": "BAT1",
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format-icons": ["󰂎", "󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰚥 {capacity}%",
+        "format-not charging": "󰚦 {capacity}%",
+    },
     "clock": {
         "format": "{:%m/%d/%Y %I:%M %p}",
         "tooltip": false
