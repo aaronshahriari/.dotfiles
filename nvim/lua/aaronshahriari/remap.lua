@@ -46,8 +46,8 @@ vim.keymap.set("n", "<C-Down>", "<C-w>10+")
 vim.keymap.set("n", "<C-Up>", "<C-w>10-")
 
 -- create splits
-vim.keymap.set("n", "<leader>1", "<C-w>v<C-w>l")
-vim.keymap.set("n", "<leader>2", "<C-w>s<C-w>j")
+vim.keymap.set("n", "<leader>1", "<C-w>v")
+vim.keymap.set("n", "<leader>2", "<C-w>s")
 
 -- map all splits set equal
 vim.keymap.set("n", "<leader>=", "<C-w>=")
