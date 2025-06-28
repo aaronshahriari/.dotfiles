@@ -92,7 +92,8 @@
     },
     "clock": {
         "format": "{:%m/%d/%Y %I:%M %p}",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "brave --app=https://calendar.google.com/calendar/",
     },
     "custom/power_button": {
         "format": "⏻",

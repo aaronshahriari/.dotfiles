@@ -3,14 +3,14 @@
         "format": "{}",
         "signal": 8,
         "exec": "$HOME/.config/waybar/scripts/bluetooth.sh",
-        "tooltip": false,
+        "tooltip": true,
         "on-click": "$HOME/.config/waybar/scripts/bluetooth-toggle.sh",
     },
     "custom/voice": {
         "format": "{}",
         "signal": 9,
         "exec": "$HOME/.config/waybar/scripts/voice.sh",
-        "tooltip": false,
+        "tooltip": true,
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && pkill -RTMIN+9 waybar",
 
     },
