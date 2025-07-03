@@ -31,6 +31,19 @@ return {
       end,
     })
 
+    -- RUBY
+    vim.lsp.config("solargraph", {
+      init_options = {
+        formatting = false,
+      },
+      settings = {
+        solargraph = {
+          diagnostics = false,
+        },
+      },
+    })
+    vim.lsp.enable("solargraph")
+
     -- TYPST
     vim.lsp.enable('typst_lsp')
 

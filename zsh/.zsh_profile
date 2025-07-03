@@ -8,4 +8,5 @@ set -o vi
 
 # tmux sessionizer
 bindkey -s ^f "~/.local/bin/scripts/tmux-sessionizer.sh\n"
-bindkey -s ^o "~/.local/bin/scripts/tmux-sessionizer.sh  -s 0 --vsplit\n"
+bindkey -s ^o "~/.local/bin/scripts/ai-sessionizer.sh"
+# bindkey -s ^o "~/.local/bin/scripts/tmux-sessionizer.sh  -s 0 --vsplit\n"
