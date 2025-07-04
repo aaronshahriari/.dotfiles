@@ -8,4 +8,4 @@ set -o vi
 
 # tmux sessionizer
 bindkey -s ^f "~/.local/bin/scripts/tmux-sessionizer.sh\n"
-bindkey -s ^m "~/.local/bin/scripts/tmux-sessionizer.sh -s 0\n\n"
+bindkey -s ^m "~/.local/bin/scripts/tmux-sessionizer.sh -s 0\n"
