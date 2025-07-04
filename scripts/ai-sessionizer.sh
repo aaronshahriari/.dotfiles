@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# Defaults
+# defaults
 COMMAND="opencode ."
 AI_WINDOW="ai-assistant"
 
-# Parse arguments
+# parse arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
         -c|--command)
@@ -21,17 +21,17 @@ done
 
 CURRENT_WINDOW=$(tmux display-message -p '#W')
 
-# If already in ai-assistant window, go back and kill it
+# if already in ai-assistant window, go back and kill it
 if [[ "$CURRENT_WINDOW" == "$AI_WINDOW" ]]; then
     tmux last-window
     tmux kill-window -t "$AI_WINDOW"
     exit 0
 fi
 
-# If window exists, switch to it
+# if window exists, switch to it
 if tmux list-windows -F '#W' | grep -Fxq "$AI_WINDOW"; then
     tmux select-window -t "$AI_WINDOW"
 else
-    # Otherwise create the window and run the command
+    # otherwise create the window and run the command
     tmux new-window -n "$AI_WINDOW" "$COMMAND"
 fi
