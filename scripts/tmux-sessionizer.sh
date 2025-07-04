@@ -61,6 +61,7 @@ session_idx=""
 session_cmd=""
 user_selected=""
 split_type=""
+split_size=""
 VERSION="0.1.0"
 
 while [[ "$#" -gt 0 ]]; do
@@ -72,6 +73,7 @@ while [[ "$#" -gt 0 ]]; do
         echo "  -s, --session <name>   session command index."
         echo "  --vsplit               Create vertical split (horizontal layout) for session command"
         echo "  --hsplit               Create horizontal split (vertical layout) for session command"
+        echo "  --split-size <size>    Set split size (percentage 1-99 or lines/columns)"
         exit 0
         ;;
     -s | --session)
@@ -101,6 +103,14 @@ while [[ "$#" -gt 0 ]]; do
     --hsplit)
         split_type="hsplit"
         ;;
+    --split-size)
+        split_size="$2"
+        if [[ -z $split_size ]]; then
+            echo "Split size cannot be empty"
+            exit 1
+        fi
+        shift
+        ;;
     -v | --version)
         echo "tmux-sessionizer version $VERSION"
         exit 0
@@ -112,11 +122,17 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
-log "tmux-sessionizer($VERSION): idx=$session_idx cmd=$session_cmd user_selected=$user_selected split_type=$split_type log=$TS_LOG log_file=$TS_LOG_FILE"
+log "tmux-sessionizer($VERSION): idx=$session_idx cmd=$session_cmd user_selected=$user_selected split_type=$split_type split_size=$split_size log=$TS_LOG log_file=$TS_LOG_FILE"
 
 # Validate split options are only used with session commands
 if [[ -n "$split_type" && -z "$session_idx" ]]; then
     echo "Error: --vsplit and --hsplit can only be used with -s/--session option"
+    exit 1
+fi
+
+# Validate split size is only used with split options
+if [[ -n "$split_size" && -z "$split_type" ]]; then
+    echo "Error: --split-size can only be used with --vsplit or --hsplit option"
     exit 1
 fi
 
@@ -305,8 +321,17 @@ handle_split_session_cmd() {
             split_flag="-v"  # vertical layout (horizontal split)
         fi
 
-        log "creating new split: tmux split-window $split_flag -c $(pwd) $session_cmd"
-        local new_pane_id=$(tmux split-window $split_flag -c "$(pwd)" -P -F "#{pane_id}" "$session_cmd")
+        local size_flag=""
+        if [[ -n "$split_size" ]]; then
+            if [[ "$split_size" =~ ^[0-9]+$ ]] && [[ "$split_size" -ge 1 ]] && [[ "$split_size" -le 99 ]]; then
+                size_flag="-p $split_size"
+            else
+                size_flag="-l $split_size"
+            fi
+        fi
+
+        log "creating new split: tmux split-window $split_flag $size_flag -c $(pwd) $session_cmd"
+        local new_pane_id=$(tmux split-window $split_flag $size_flag -c "$(pwd)" -P -F "#{pane_id}" "$session_cmd")
 
         if [[ -n "$new_pane_id" ]]; then
             set_pane_id "$session_idx" "$split_type" "$new_pane_id"
