@@ -9,3 +9,4 @@ set -o vi
 # tmux sessionizer
 bindkey -s ^f "~/.local/bin/scripts/tmux-sessionizer.sh\n"
 bindkey -s ^g "~/.local/bin/scripts/tmux-sessionizer.sh -s 0\n"
+bindkey -s ^a "~/.local/bin/scripts/tmux-sessionizer.sh -s 0 --vsplit\n"
