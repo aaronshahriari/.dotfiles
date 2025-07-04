@@ -71,7 +71,7 @@ vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]])
 
 -- run tmux inside of vim
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/bin/scripts/tmux-sessionizer.sh<CR>")
-vim.keymap.set("n", "<C-m>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>")
+vim.keymap.set("n", "<C-g>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>")
 
 -- source lua file
 vim.keymap.set("n", "<leader><leader>", function()
