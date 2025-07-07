@@ -66,11 +66,11 @@ return {
     vim.lsp.enable('rust_analyzer')
 
     -- ELIXIR
-    lspconfig.elixirls.setup({
+    vim.lsp.config('elixirls', {
       cmd = { "elixir-ls" },
       filetypes = { "exs", "elixir", "eelixir", "heex", "surface" },
-      root_dir = lspconfig.util.root_pattern("mix.exs"),
     })
+    vim.lsp.enable('elixirls')
 
     -- PYTHON
     vim.lsp.enable('pylsp')

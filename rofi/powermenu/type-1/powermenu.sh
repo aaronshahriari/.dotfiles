@@ -14,7 +14,7 @@ dir="$HOME/.config/rofi/powermenu/type-1"
 theme='style-1'
 
 # CMDs
-uptime="`uptime -p | sed -e 's/up //g'`"
+uptime="$(awk '{print int($1/86400)" days "int($1%86400/3600)" hours "int($1%3600/60)" minutes "int($1%60)" seconds"}' /proc/uptime)"
 host=`hostname`
 
 # Options
@@ -30,7 +30,7 @@ no=' No'
 rofi_cmd() {
 	rofi -dmenu \
 		-p "$host" \
-		-mesg "Uptime: $uptime" \
+		-mesg "$uptime" \
 		-theme ${dir}/${theme}.rasi
 }
 
@@ -95,11 +95,7 @@ case ${chosen} in
 		run_cmd --reboot
         ;;
     $lock)
-		if [[ -x '/usr/bin/betterlockscreen' ]]; then
-			betterlockscreen -l
-		elif [[ -x '/usr/bin/i3lock' ]]; then
-			i3lock
-		fi
+        hyprlock
         ;;
     $suspend)
 		run_cmd --suspend
