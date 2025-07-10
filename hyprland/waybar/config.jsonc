@@ -69,14 +69,14 @@
     },
     "network": {
         "format": "{ifname}",
-        "format-wifi": "{icon} {essid}",
+        "format-wifi": "{icon}{essid}",
         "format-ethernet": "󱘖 {ifname}",
         "format-disconnected": "󰌙 Disconnected ⚠",
         "tooltip-format-wifi": "{frequency} MHz ({signalStrength}%)",
         "tooltip-format-ethernet": "{ipaddr}/{cidr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
         "tooltip-format-disconnected": "Disconnected ⚠",
         "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤢 ", "󰤨 "],
-        "on-click": "hyprctl dispatch togglespecialworkspace wifi"
+        "on-click": "hyprctl dispatch exec '[float] ghostty -e $HOME/.config/waybar/scripts/nmtui.sh'"
     },
     "battery": {
         "bat": "BAT1",
@@ -148,14 +148,14 @@
     },
     "network": {
         "format": "{ifname}",
-        "format-wifi": "{icon} {essid}",
+        "format-wifi": "{icon}{essid}",
         "format-ethernet": "󱘖 {ifname}",
         "format-disconnected": "󰌙 Disconnected ⚠",
         "tooltip-format-wifi": "{frequency} MHz ({signalStrength}%)",
         "tooltip-format-ethernet": "{ipaddr}/{cidr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
         "tooltip-format-disconnected": "Disconnected ⚠",
         "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤢 ", "󰤨 "],
-        "on-click": "hyprctl dispatch togglespecialworkspace wifi"
+        "on-click": "hyprctl dispatch exec '[float] ghostty -e $HOME/.config/waybar/scripts/nmtui.sh'"
     },
     "battery": {
         "bat": "BAT1",
