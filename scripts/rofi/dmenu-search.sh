@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+app_mode_names=("ChatGPT")
+
 icon_for_name() {
     case "$1" in
         *Twitch*) echo "" ;;
@@ -71,7 +73,18 @@ else
 fi
 
 url="${url_map["$selected_input"]}"
-if [[ -n "$url" ]]; then
+
+launch_in_app_mode=false
+for name in "${app_mode_names[@]}"; do
+  if [[ "$selected_input" == *"$name"* ]]; then
+    launch_in_app_mode=true
+    break
+  fi
+done
+
+if [[ "$launch_in_app_mode" == true && -n "$url" ]]; then
+  $browser --app="$url"
+elif [[ -n "$url" ]]; then
   $brave_command "$url"
 else
   query=$(printf "$engine" "$selected_input")
