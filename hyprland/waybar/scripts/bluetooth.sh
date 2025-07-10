@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
 
-bt_powered=$(bluetoothctl show 2>/dev/null | grep "Powered:" | awk '{print $2}')
+bt_status=$(bluetoothctl show 2>/dev/null)
+bt_powered=$(echo "$bt_status" | grep "Powered:" | awk '{print $2}')
 
 if [[ "$bt_powered" == "yes" ]]; then
     device=$(bluetoothctl devices Connected | cut -d ' ' -f3- | head -n 1)
-    echo "󰂯"
-    echo "$device"
+    icon="󰂯"
+    tooltip=${device:-"No device connected"}
 elif [[ "$bt_powered" == "no" ]]; then
-    echo ""
+    icon=""
+    tooltip="Bluetooth off"
 else
-    echo "Bluetooth unavailable"
+    icon="󰂜"
+    tooltip="Bluetooth unavailable"
 fi
+
+echo "$icon"
+echo "$tooltip"
