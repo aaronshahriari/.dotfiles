@@ -19,10 +19,26 @@ icon_for_name() {
     esac
 }
 
-# browser="google-chrome-stable"
-# bookmarks_json="$HOME/.config/google-chrome/Default/Bookmarks"
-browser="brave"
-bookmarks_json="$HOME/.config/BraveSoftware/Brave-Browser/Default/Bookmarks"
+# configuration - change this to switch browsers
+browser="brave"  # Options: "brave", "chrome"
+
+# browser-specific configuration - add new browsers here
+case "$browser" in
+    "brave")
+        browser_command="brave"
+        browser_class="brave-browser"
+        bookmarks_json="$HOME/.config/BraveSoftware/Brave-Browser/Default/Bookmarks"
+        focus_function="is_brave_focused"
+        ;;
+    "chrome")
+        browser_command="google-chrome-stable"
+        browser_class="google-chrome"
+        bookmarks_json="$HOME/.config/google-chrome/Default/Bookmarks"
+        focus_function="is_chrome_focused"
+        ;;
+esac
+
+# Other configuration
 engine="https://duckduckgo.com/?q=%s"
 
 # Use a recursive jq query to find all bookmarks, including those in nested folders
@@ -54,37 +70,28 @@ if [[ -z "$selected_input" ]]; then
   exit 0
 fi
 
-# Function to check if the currently focused window is a Chrome window
-# is_chrome_focused() {
-#   focused_class=$(xprop -id "$(xdotool getwindowfocus)" WM_CLASS 2>/dev/null)
-#   [[ "$focused_class" == *"google-chrome"* ]]
-# }
-# is_chrome_focused() {
-#   [[ $(hyprctl activewindow -j | jq -r ".class") == "google-chrome" ]]
-# }
+is_chrome_focused() {
+  [[ $(hyprctl activewindow -j | jq -r ".class") == "google-chrome" ]]
+}
+
 is_brave_focused() {
   [[ $(hyprctl activewindow -j | jq -r ".class") == "brave-browser" ]]
 }
 
 # Determine browser command based on focus
-if is_brave_focused; then
-  brave_command="$browser"
+if $focus_function; then
+    browser_cmd="$browser_command"
 else
-  brave_command="$browser --new-window"
+    browser_cmd="$browser_command --new-window"
 fi
 
 url="${url_map["$selected_input"]}"
 
 if [[ $rofi_exit -eq 10 && -n "$url" ]]; then
-  $browser --app="$url"
+  $browser_command --app="$url"
 elif [[ -n "$url" ]]; then
-  $brave_command "$url"
+  $browser_cmd "$url"
 else
   query=$(printf "$engine" "$selected_input")
-  $brave_command "$query"
-fi
-
-if [[ "$url_found" == false ]]; then
-  query=$(printf "$engine" "$selected_input")
-  $brave_command "$query"
+  $browser_cmd "$query"
 fi
