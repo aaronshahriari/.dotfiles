@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-app_mode_names=("ChatGPT")
-
 icon_for_name() {
     case "$1" in
         *Twitch*) echo "" ;;
@@ -47,7 +45,10 @@ for entry in "${bookmarks[@]}"; do
   url_map["$display"]="$url"
 done
 
-selected_input=$(printf "%s\n" "${entries[@]}" | ~/.config/rofi/launchers/scripts/launcher.sh -i -g 1 -p "Go")
+# selected_input=$(printf "%s\n" "${entries[@]}" | ~/.config/rofi/launchers/scripts/launcher.sh -i -g 1 -p "Go")
+rofi_output=$(printf "%s\n" "${entries[@]}" | ~/.config/rofi/launchers/scripts/launcher.sh -i -g 1 -p "Go")
+rofi_exit=$?
+selected_input="$rofi_output"
 
 if [[ -z "$selected_input" ]]; then
   exit 0
@@ -74,15 +75,7 @@ fi
 
 url="${url_map["$selected_input"]}"
 
-launch_in_app_mode=false
-for name in "${app_mode_names[@]}"; do
-  if [[ "$selected_input" == *"$name"* ]]; then
-    launch_in_app_mode=true
-    break
-  fi
-done
-
-if [[ "$launch_in_app_mode" == true && -n "$url" ]]; then
+if [[ $rofi_exit -eq 10 && -n "$url" ]]; then
   $browser --app="$url"
 elif [[ -n "$url" ]]; then
   $brave_command "$url"
