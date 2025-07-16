@@ -5,7 +5,7 @@ SCRIPT_DIR="$HOME/.local/bin/scripts"
 
 options="Wallpaper\nBackup"
 
-choice=$(printf "$options" | $ROFI_LAUNCHER -g 1 -m 0 -i -l 10 -p "Run")
+choice=$(printf "$options" | $ROFI_LAUNCHER "Run:")
 
 case "$choice" in
     "Wallpaper")

@@ -62,7 +62,7 @@ for entry in "${bookmarks[@]}"; do
 done
 
 # selected_input=$(printf "%s\n" "${entries[@]}" | ~/.config/rofi/launchers/scripts/launcher.sh -i -g 1 -p "Go")
-rofi_output=$(printf "%s\n" "${entries[@]}" | ~/.config/rofi/launchers/scripts/launcher.sh -i -g 1 -p "Go")
+rofi_output=$(printf "%s\n" "${entries[@]}" | ~/.config/rofi/launchers/scripts/launcher.sh "Search:")
 rofi_exit=$?
 selected_input="$rofi_output"
 
