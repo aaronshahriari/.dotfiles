@@ -15,7 +15,7 @@ theme='style-2'
 
 ## Run
 rofi \
-    -dmenu -i "$1" \
+    -dmenu -i -p "$1" \
     -kb-accept-custom "" \
     -kb-custom-1 "Control+Return" \
     -theme ${dir}/${theme}.rasi
