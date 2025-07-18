@@ -1,17 +1,12 @@
 #!/usr/bin/env bash
 
-# Cache wpctl output once to avoid race conditions across monitors
 inspect_output=$(wpctl inspect @DEFAULT_AUDIO_SOURCE@)
 volume_output=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
-
-# Extract description once
 device=$(echo "$inspect_output" | grep 'node.description' | cut -d '"' -f2)
 
-# Check mute state
 if echo "$volume_output" | grep -q '\[MUTED\]'; then
-    echo ""
+    echo '{"text": "", "tooltip": "'"$device"'", "class": "muted"}'
 else
-    echo ""
+    volume_amount=$(echo "$volume_output" | awk '{printf "%.0f%%", $2 * 100}')
+    echo '{"text": " '"$volume_amount"'", "tooltip": "'"$device"'", "class": "unmuted"}'
 fi
-
-echo "$device"
