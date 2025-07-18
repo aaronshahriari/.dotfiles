@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-DIR="$HOME/personal/books/"
-book_list=$(find "$DIR" -maxdepth 1 -mindepth 1 -printf "%f\n" | ~/.config/rofi/launchers/scripts/launcher.sh -i -g 1 -p)
+DIR="$HOME/personal/reading/books/"
+book_list=$(find "$DIR" -maxdepth 1 -mindepth 1 -printf "%f\n" | ~/.config/rofi/launchers/scripts/launcher.sh "Read:")
 
 # close if no selection
 [ -z "$book_list" ] && exit

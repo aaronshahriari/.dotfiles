@@ -18,7 +18,9 @@ return {
           "%.lock",
           "^node_modules/",
           "%.git/",
-          "%.jpg", "%.png",
+          "%.jpg",
+          "%.png",
+          "%target/",
         },
         preview = {
           treesitter = true,
