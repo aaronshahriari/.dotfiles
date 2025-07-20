@@ -57,7 +57,7 @@
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 && wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1",
         "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 && wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+",
         "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 && wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-",
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && pkill -RTMIN+9 waybar",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1 && pkill -RTMIN+9 waybar",
     },
     "wireplumber": {
         "format": "{icon} {volume}%",
@@ -159,6 +159,17 @@
         "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
         "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
         "format-icons": ["", "", " "]
+    },
+    "custom/voice": {
+        "format": "{}",
+        "return-type": "json",
+        "signal": 9,
+        "exec": "$HOME/.config/waybar/scripts/voice.sh",
+        "tooltip": true,
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 && wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1",
+        "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 && wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+",
+        "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 && wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1 && pkill -RTMIN+9 waybar",
     },
     "custom/bluetooth": {
         "format": "{}",

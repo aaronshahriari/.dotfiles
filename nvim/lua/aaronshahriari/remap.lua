@@ -4,6 +4,11 @@ vim.g.mapleader = " "
 vim.g.netrw_bufsettings = "noma nomod nu nowrap ro nobl"
 vim.cmd("autocmd FileType netrw set nu")
 
+-- mapping to conform current buffer
+vim.keymap.set("n", "<leader>f", function()
+  require("conform").format({ bufnr = 0 })
+end)
+
 -- navigate the quickfix/location list in normal mode
 vim.keymap.set('n', '<C-[>', ':cp<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-]>', ':cn<CR>', { noremap = true, silent = true })
