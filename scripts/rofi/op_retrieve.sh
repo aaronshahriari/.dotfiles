@@ -80,54 +80,88 @@ declare -A username_map
 declare -A totp_map
 options=()
 
-# Find the main password first
-main_password=""
-field_count=$(echo "$item_json" | jq '.fields | length')
-for i in $(seq 0 $((field_count - 1))); do
-    field=$(echo "$item_json" | jq -c ".fields[$i]")
-    purpose=$(echo "$field" | jq -r '.purpose // empty')
-    field_type=$(echo "$field" | jq -r '.type // empty')
-    value=$(echo "$field" | jq -r '.value // empty')
-
-    if [[ "$purpose" == "PASSWORD" || "$field_type" == "CONCEALED" ]] && [[ -n "$value" ]]; then
-        main_password="$value"
-        break
-    fi
-done
-
-# Now collect all credentials
-for i in $(seq 0 $((field_count - 1))); do
-    field=$(echo "$item_json" | jq -c ".fields[$i]")
-    purpose=$(echo "$field" | jq -r '.purpose // empty')
-    label=$(echo "$field" | jq -r '.label // empty')
-    value=$(echo "$field" | jq -r '.value // empty')
-    field_type=$(echo "$field" | jq -r '.type // empty')
-
-    # Handle usernames/emails
-    if [[ "$purpose" == "USERNAME" && -n "$value" ]]; then
-        if [[ "$value" == *"@"* ]]; then
-            entry="📧 Copy Email: $value"
-        else
-            entry="👤 Copy Username: $value"
+# Function to process fields from a section
+process_fields() {
+    local fields_json="$1"
+    local section_name="$2"
+    local field_count=$(echo "$fields_json" | jq 'length')
+    
+    for i in $(seq 0 $((field_count - 1))); do
+        field=$(echo "$fields_json" | jq -c ".[$i]")
+        purpose=$(echo "$field" | jq -r '.purpose // empty')
+        label=$(echo "$field" | jq -r '.label // empty')
+        value=$(echo "$field" | jq -r '.value // empty')
+        field_type=$(echo "$field" | jq -r '.type // empty')
+        
+        [[ -z "$value" ]] && continue
+        
+        # Create display name with section prefix if applicable
+        display_prefix=""
+        [[ -n "$section_name" ]] && display_prefix="[$section_name] "
+        
+        # Handle passwords
+        if [[ "$purpose" == "PASSWORD" || "$field_type" == "CONCEALED" ]]; then
+            if [[ -n "$section_name" ]]; then
+                password_entry="🔑 $section_name - Password"
+                [[ -n "$label" ]] && password_entry="🔑 $section_name - Password ($label)"
+            else
+                password_entry="🔑 Main - Password"
+                [[ -n "$label" ]] && password_entry="🔑 Main - Password ($label)"
+            fi
+            options+=("$password_entry")
+            password_map["$password_entry"]="$value"
         fi
-        options+=("$entry")
-        username_map["$entry"]="$value"
-    fi
+        
+        # Handle usernames/emails
+        if [[ "$purpose" == "USERNAME" ]]; then
+            if [[ "$value" == *"@"* ]]; then
+                if [[ -n "$section_name" ]]; then
+                    username_entry="📧 $section_name - Email"
+                else
+                    username_entry="📧 Main - Email"
+                fi
+            else
+                if [[ -n "$section_name" ]]; then
+                    username_entry="👤 $section_name - Username"
+                else
+                    username_entry="👤 Main - Username"
+                fi
+            fi
+            [[ -n "$label" ]] && username_entry="$username_entry ($label)"
+            options+=("$username_entry")
+            username_map["$username_entry"]="$value"
+        fi
+        
+        # Handle TOTP codes
+        if [[ "$field_type" == "OTP" ]]; then
+            if [[ -n "$section_name" ]]; then
+                totp_entry="🔐 $section_name - TOTP"
+            else
+                totp_entry="🔐 Main - TOTP"
+            fi
+            [[ -n "$label" ]] && totp_entry="$totp_entry ($label)"
+            options+=("$totp_entry")
+            totp_map["$totp_entry"]="$value"
+        fi
+    done
+}
 
-    # Handle TOTP codes
-    if [[ "$field_type" == "OTP" && -n "$value" ]]; then
-        totp_entry="🔐 Copy TOTP Code"
-        [[ -n "$label" ]] && totp_entry="🔐 Copy TOTP: $label"
-        options+=("$totp_entry")
-        totp_map["$totp_entry"]="$value"
-    fi
+# Process main fields (no section)
+main_fields=$(echo "$item_json" | jq '.fields // []')
+process_fields "$main_fields" ""
+
+# Process sections
+sections_count=$(echo "$item_json" | jq '.sections | length // 0')
+for s in $(seq 0 $((sections_count - 1))); do
+    section=$(echo "$item_json" | jq -c ".sections[$s]")
+    section_label=$(echo "$section" | jq -r '.label // empty')
+    section_fields=$(echo "$section" | jq '.fields // []')
+    
+    # Skip if no fields in section
+    [[ $(echo "$section_fields" | jq 'length') -eq 0 ]] && continue
+    
+    process_fields "$section_fields" "$section_label"
 done
-
-# Always add password option at the top if we found one
-if [[ -n "$main_password" ]]; then
-    options=("🔑 Copy Password" "${options[@]}")
-    password_map["🔑 Copy Password"]="$main_password"
-fi
 
 # Exit if no options found
 if [[ ${#options[@]} -eq 0 ]]; then
