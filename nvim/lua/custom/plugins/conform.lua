@@ -10,6 +10,7 @@ return {
         nix = { "nixfmt" },
         -- sql = { "sql_formatter" },
         zig = { "zigfmt" },
+        elixir = { "mix" },
       },
     }
 
@@ -26,7 +27,7 @@ return {
       group = vim.api.nvim_create_augroup("ConformAutoFormat", { clear = true }),
       callback = function(args)
         local ft = vim.bo[args.buf].filetype
-        local allowed = { lua = true, go = true, zig = false }
+        local allowed = { elixir = false, lua = true, go = true, zig = false }
 
         if allowed[ft] then
           require("conform").format({

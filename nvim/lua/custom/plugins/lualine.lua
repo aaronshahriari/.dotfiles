@@ -3,43 +3,77 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     local colors = {
-      blue   = '#80a0ff',
-      cyan   = '#79dac8',
-      black  = '#080808',
-      white  = '#c6c6c6',
-      red    = '#ff5189',
-      violet = '#d183e8',
-      grey   = '#303030',
+      blue   = '#89b4fa',
+      cyan   = '#94e2d5',
+      black  = '#1e1e2e',
+      white  = '#cdd6f4',
+      red    = '#f38ba8',
+      violet = '#cba6f7',
+      grey   = '#313244',
     }
 
-    local bubbles_theme = {
+    -- local bubbles_theme = {
+    --   normal = {
+    --     a = { fg = colors.black, bg = colors.violet },
+    --     b = { fg = colors.white, bg = colors.grey },
+    --     c = { fg = colors.white },
+    --   },
+    --
+    --   insert = { a = { fg = colors.black, bg = colors.blue } },
+    --   visual = { a = { fg = colors.black, bg = colors.cyan } },
+    --   replace = { a = { fg = colors.black, bg = colors.red } },
+    --
+    --   inactive = {
+    --     a = { fg = colors.white, bg = '#181825' },
+    --     b = { fg = colors.white, bg = '#181825' },
+    --     c = { fg = colors.white, bg = '#181825' },
+    --   },
+    -- }
+
+    local basic_theme = {
       normal = {
-        a = { fg = colors.black, bg = colors.violet },
+        a = { fg = colors.white, bg = colors.grey },
         b = { fg = colors.white, bg = colors.grey },
-        c = { fg = colors.white },
+        c = { fg = colors.white, bg = colors.grey },
       },
 
-      insert = { a = { fg = colors.black, bg = colors.blue } },
-      visual = { a = { fg = colors.black, bg = colors.cyan } },
-      replace = { a = { fg = colors.black, bg = colors.red } },
+      insert = {
+        a = { fg = colors.white, bg = colors.grey },
+        b = { fg = colors.white, bg = colors.grey },
+        c = { fg = colors.white, bg = colors.grey },
+      },
+
+      visual = {
+        a = { fg = colors.white, bg = colors.grey },
+        b = { fg = colors.white, bg = colors.grey },
+        c = { fg = colors.white, bg = colors.grey },
+      },
+
+      replace = {
+        a = { fg = colors.white, bg = colors.grey },
+        b = { fg = colors.white, bg = colors.grey },
+        c = { fg = colors.white, bg = colors.grey },
+      },
 
       inactive = {
-        a = { fg = colors.white, bg = colors.black },
-        b = { fg = colors.white, bg = colors.black },
-        c = { fg = colors.white },
+        a = { fg = colors.white, bg = '#181825' },
+        b = { fg = colors.white, bg = '#181825' },
+        c = { fg = colors.white, bg = '#181825' },
       },
     }
 
     require('lualine').setup {
       options = {
-        theme = bubbles_theme,
+        -- theme = bubbles_theme,
+        theme = basic_theme,
         component_separators = '',
         section_separators = { left = '', right = '' },
       },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_b = { { 'branch', icon = { '', color = { fg = 'grey' } } }, 'diagnostics' },
         lualine_c = {
+          '%=',
           {
             'filename',
             file_status = true,
