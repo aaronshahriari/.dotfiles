@@ -12,24 +12,6 @@ return {
       grey   = '#313244',
     }
 
-    -- local bubbles_theme = {
-    --   normal = {
-    --     a = { fg = colors.black, bg = colors.violet },
-    --     b = { fg = colors.white, bg = colors.grey },
-    --     c = { fg = colors.white },
-    --   },
-    --
-    --   insert = { a = { fg = colors.black, bg = colors.blue } },
-    --   visual = { a = { fg = colors.black, bg = colors.cyan } },
-    --   replace = { a = { fg = colors.black, bg = colors.red } },
-    --
-    --   inactive = {
-    --     a = { fg = colors.white, bg = '#181825' },
-    --     b = { fg = colors.white, bg = '#181825' },
-    --     c = { fg = colors.white, bg = '#181825' },
-    --   },
-    -- }
-
     local basic_theme = {
       normal = {
         a = { fg = colors.white, bg = colors.grey },
@@ -86,7 +68,10 @@ return {
         lualine_z = { 'location' },
       },
       inactive_sections = {
-        lualine_a = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {
+          '%=',
           {
             'filename',
             file_status = true,
@@ -94,10 +79,8 @@ return {
             path = 4,
           },
         },
-        lualine_b = {},
-        lualine_c = {},
         lualine_x = {},
-        lualine_y = {},
+        lualine_y = { 'filetype' },
         lualine_z = { 'location' },
       },
       tabline = {},
