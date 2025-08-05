@@ -41,6 +41,9 @@ esac
 # Other configuration
 engine="https://duckduckgo.com/?q=%s"
 
+# Applications that should always open in app mode (match by name)
+app_mode_names=("Tasks")
+
 # Use a recursive jq query to find all bookmarks, including those in nested folders
 mapfile -t bookmarks < <(jq -r '
   .. | objects | select(.type? == "url") | "\(.name) \t\(.url)"
@@ -87,7 +90,18 @@ fi
 
 url="${url_map["$selected_input"]}"
 
+# Check if the selected bookmark name should open in app mode
+should_use_app_mode=false
+for app_name in "${app_mode_names[@]}"; do
+  if [[ "$selected_input" == *"$app_name"* ]]; then
+    should_use_app_mode=true
+    break
+  fi
+done
+
 if [[ $rofi_exit -eq 10 && -n "$url" ]]; then
+  $browser_command --app="$url"
+elif [[ -n "$url" && "$should_use_app_mode" == true ]]; then
   $browser_command --app="$url"
 elif [[ -n "$url" ]]; then
   $browser_cmd "$url"
