@@ -36,6 +36,12 @@ profile docked {
     exec ~/.config/hypr/scripts/switch_config.sh docked
 }
 
+profile single-docked {
+    output $laptop disable
+    output $main enable
+    exec ~/.config/hypr/scripts/switch_config.sh docked
+}
+
 profile undocked {
     output $laptop enable
 }

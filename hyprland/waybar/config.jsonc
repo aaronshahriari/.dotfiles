@@ -17,7 +17,7 @@
     "modules-right": [
         "custom/media",
         "wireplumber",
-        "custom/voice",
+        // "custom/voice",
         "custom/bluetooth",
         "group/stats",
         "network",
@@ -93,7 +93,8 @@
         "tooltip-format-ethernet": "{ipaddr}/{cidr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
         "tooltip-format-disconnected": "Disconnected ⚠",
         "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤢 ", "󰤨 "],
-        "on-click": "hyprctl dispatch exec '[float] ghostty -e $HOME/.config/waybar/scripts/nmtui.sh'"
+        // "on-click": "hyprctl dispatch exec '[float] ghostty -e $HOME/.config/waybar/scripts/nmtui.sh'" // old
+        "on-click": "hyprctl dispatch exec '[float] ghostty -e impala'" // new
     },
     "battery": {
         "bat": "BAT1",
@@ -131,7 +132,7 @@
 
     "modules-right": [
         "wireplumber",
-        "custom/voice",
+        // "custom/voice",
         "custom/bluetooth",
         "battery",
         "network",
