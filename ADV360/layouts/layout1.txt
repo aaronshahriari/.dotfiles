@@ -1,5 +1,5 @@
 <base>
-[rwin]>[ralt]
+[rwin]>[rwin][t&h75][ralt]
 [hk3]>[plpa]
 [del]>[keys]
 [hk1]>[next]
@@ -21,3 +21,4 @@
 <function2>
 
 <function3>
+
