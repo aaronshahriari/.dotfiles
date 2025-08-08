@@ -14,5 +14,5 @@
  **/
 
 /* Import color-scheme from `colors` directory */
-
-@import "~/.config/rofi/colors/catppuccin.rasi"
+@import "~/.config/rofi/colors/aaron.rasi"
+// @import "~/.config/rofi/colors/catppuccin.rasi"
