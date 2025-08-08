@@ -21,6 +21,7 @@ return {
           LspSignatureActiveParameter = { fg = "#ffffff", bg = colors.base },
           Cursor = { bg = "#ffffff" },
           StatusLine = { bg = "#424242" },
+          BlinkCmpMenu = { bg = "#1d1e29" },
         }
       end
     },

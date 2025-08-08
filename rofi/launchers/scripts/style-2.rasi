@@ -117,6 +117,7 @@ entry {
     cursor:                      text;
     placeholder:                 "";
     placeholder-color:           inherit;
+    blink:                       false;
 }
 
 /*****----- Listview -----*****/
@@ -261,7 +262,7 @@ textbox {
     horizontal-align:            0.0;
     highlight:                   none;
     placeholder-color:           @foreground-colour;
-    blink:                       true;
+    blink:                       false;
     markup:                      true;
 }
 error-message {
