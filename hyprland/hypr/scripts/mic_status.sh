@@ -5,7 +5,7 @@ wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 
 get_status=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | awk '{gsub(/\[|\]/,"",$3); print $3}')
 if [[ "$get_status" == "MUTED" ]]; then
-    notify-send -t 2000 -u normal -i "$ICON_PATH" "Muted"
+    notify-send -t 2000 -u normal -i "$ICON_PATH" "Wireplumber" "Muted"
 else
-    notify-send -t 2000 -u critical -i "$ICON_PATH" "Unmuted"
+    notify-send -t 2000 -u critical -i "$ICON_PATH" "Wireplumber" "Unmuted"
 fi

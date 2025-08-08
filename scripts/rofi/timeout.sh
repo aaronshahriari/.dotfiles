@@ -13,7 +13,6 @@ restart_hypridle() {
     fi
 }
 
-# intervals = [5, 15, 30, 60, Never]
 options=("5 Minutes" "15 Minutes" "30 Minutes" "60 Minutes" "Never")
 choice=$(printf "%s\n" "${options[@]}" | $ROFI_LAUNCHER "Set:")
 
@@ -22,12 +21,12 @@ if [[ -z "$choice" ]]; then
 fi
 
 if [[ "$choice" == "Never" ]]; then
-    # pkill hypridle
-    notify-send -u critical -i "$ICON_PATH" "Hypridle Timeout" "$choice"
+    pkill hypridle
+    notify-send -t 4000 -u critical -i "$ICON_PATH" "Hypridle Timeout" "$choice"
 else
     minutes=$(echo "$choice" | awk '{print $1}')
-    # echo "ln -sfn "$DOT_DIR/timeout"$minutes".conf" $CONFIG_DIR"
-    # sleep 1
-    # restart_hypridle 
-    notify-send -u low -i "$ICON_PATH" "Hypridle Timeout" "$choice"
+    ln -sfn "$DOT_DIR/timeout$minutes.conf" $CONFIG_DIR
+    sleep 1
+    restart_hypridle 
+    notify-send -t 3000 -u normal -i "$ICON_PATH" "Hypridle Timeout" "$choice"
 fi

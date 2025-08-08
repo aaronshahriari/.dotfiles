@@ -8,19 +8,21 @@ reset_cam() {
     if [ -n "$cam_id" ]; then
         sudo usbreset "$cam_id"
     else
-        echo "Webcam could not be found" >&2
+        notify-send -u critical "Utilities" "Webcam Could Not Be Found"
         return 1
     fi
 
 }
 
-options="Wallpaper\nBackup\nLogitech Camera"
-
-choice=$(printf "$options" | $ROFI_LAUNCHER "Run:")
+options=("Timeout" "Wallpaper" "Backup" "Logitech Camera")
+choice=$(printf "%s\n" "${options[@]}" | $ROFI_LAUNCHER "Run:")
 
 case "$choice" in
+    "Timeout")
+        "$SCRIPT_DIR/rofi/timeout.sh"
+        ;;
     "Wallpaper")
-        "$HOME/.config/hypr/modules/wallpaper.sh"
+        "$HOME/.config/hypr/scripts/wallpaper.sh"
         ;;
     "Backup")
         "$SCRIPT_DIR/backup-script.sh"
