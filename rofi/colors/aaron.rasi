@@ -1,0 +1,11 @@
+* {
+    /* Muted grey-black base */
+    background:     #121214FF;  /* deep grey-black */
+    background-alt: #1A1A1EFF;  /* slightly lighter grey-black */
+    foreground:     #C6D0F5FF;  /* softer off-white text */
+
+    /* Duller Catppuccin-inspired accents */
+    selected:       #7AA2F7FF;
+    active:         #ABE9B3FF;
+    urgent:         #F28FADFF;
+}
