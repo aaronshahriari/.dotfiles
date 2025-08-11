@@ -12,10 +12,13 @@
 
 dir="$HOME/.config/rofi/launchers/scripts"
 theme='style-2'
+width="${2:-20%}"  # if $2 is empty, default to 50%
+query="$1"
 
 ## Run
 rofi \
-    -dmenu -i -p "$1" \
+    -dmenu -i -p "$query" \
+    -theme-str "window  {width:  $width;}" \
     -kb-accept-custom "" \
     -kb-custom-1 "Control+Return" \
     -theme ${dir}/${theme}.rasi
