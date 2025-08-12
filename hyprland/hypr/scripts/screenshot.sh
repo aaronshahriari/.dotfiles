@@ -14,18 +14,18 @@ capture() {
         --copy-command 'wl-copy'
 }
 
-options="Window\nSelect\nOutput"
+options="Select\nWindow\nOutput"
 screenshot_type=$(printf "$options" | ~/.config/rofi/launchers/scripts/launcher.sh "Type:")
 
 # close if no selection
 [ -z "$screenshot_type" ] && exit
 
 case "$screenshot_type" in
-    "Window")
-        capture window
-        ;;
     "Select")
         capture region
+        ;;
+    "Window")
+        capture window
         ;;
     "Output")
         capture output

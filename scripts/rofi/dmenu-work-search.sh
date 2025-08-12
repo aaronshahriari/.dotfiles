@@ -34,6 +34,7 @@ work_entries=(
     "󰧷 TimeSheet	https://timetracker.techmahindra.com/MyTime/Forms/InnerPage.aspx"
     "󱙕 Paychex	https://myapps.paychex.com/landing_remote/login.do?lang=en"
     "󰞋 HelpNxt	https://helpnxt.techmahindra.com/sp?id=index"
+    "󰩂 Insurance	https://benefits.plansource.com/"
 )
 
 entries=()

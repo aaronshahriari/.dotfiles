@@ -11,7 +11,6 @@ reset_cam() {
         notify-send -u critical "Utilities" "Webcam Could Not Be Found"
         return 1
     fi
-
 }
 
 options=("Timeout" "Wallpaper" "Backup" "Logitech Camera")
