@@ -66,7 +66,7 @@
         "on-click-right": "pgrep pavucontrol && hyprctl dispatch togglespecialworkspace volume || pavucontrol &",
         "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
         "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
-        "format-icons": ["", "", " "]
+        "format-icons": [" ", " ", " "]
     },
     "custom/bluetooth": {
         "format": "{}",
@@ -159,7 +159,7 @@
         "on-click-right": "pgrep pavucontrol && hyprctl dispatch togglespecialworkspace volume || pavucontrol &",
         "on-scroll-up": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
         "on-scroll-down": "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
-        "format-icons": ["", "", " "]
+        "format-icons": [" ", " ", " "]
     },
     "custom/voice": {
         "format": "{}",

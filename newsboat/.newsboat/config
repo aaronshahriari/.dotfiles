@@ -21,13 +21,6 @@ bind-key h quit
 # aaron binds
 bind-key N toggle-article-read
 
-# colorscheme
-# --- FEED LIST ---
-# color feedlist_unread        white   default   bold
-# color feedlist_focus         black   cyan
-# color feedlist_focus_unread  black   cyan      bold
-# highlight feedlist "\(([0-9]+)\)"   yellow   default   bold
-
 # --- ARTICLE LIST ---
 color listnormal             black   default
 color listnormal_unread      white   default   bold
