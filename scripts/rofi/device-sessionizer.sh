@@ -8,7 +8,11 @@ case "$(printf "Lock\nSuspend\nLogout\nReboot\nShutdown\n" | ~/.config/rofi/laun
             "Yes") 
                 mpc -q pause
                 amixer set Master mute
-                systemctl suspend
+                if pgrep -x hypridle >/dev/null; then
+                    systemctl suspend
+                else
+                    hyprlock & disown && systemctl suspend
+                fi
                 ;;
             *) exit 1 ;;
         esac ;;

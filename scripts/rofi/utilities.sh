@@ -13,12 +13,18 @@ reset_cam() {
     fi
 }
 
-options=("Timeout" "Wallpaper" "Backup" "Logitech Camera")
+options=("Timeout" "Network" "News" "Wallpaper" "Backup" "Logitech Camera")
 choice=$(printf "%s\n" "${options[@]}" | $ROFI_LAUNCHER "Run:")
 
 case "$choice" in
     "Timeout")
         "$SCRIPT_DIR/rofi/timeout.sh"
+        ;;
+    "Network")
+        hyprctl dispatch exec '[float] ghostty -e impala'
+        ;;
+    "News")
+        ghostty -e newsboat
         ;;
     "Wallpaper")
         "$HOME/.config/hypr/scripts/wallpaper.sh"

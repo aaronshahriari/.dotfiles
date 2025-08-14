@@ -1,0 +1,46 @@
+# general settings
+auto-reload yes
+max-items 50
+
+# externel browser
+browser "~/.newsboat/smart-open.sh %u"
+
+# unbind keys
+unbind-key ENTER
+unbind-key j
+unbind-key k
+unbind-key J
+unbind-key K
+
+# bind keys - vim style
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
+
+# aaron binds
+bind-key N toggle-article-read
+
+# colorscheme
+# --- FEED LIST ---
+# color feedlist_unread        white   default   bold
+# color feedlist_focus         black   cyan
+# color feedlist_focus_unread  black   cyan      bold
+# highlight feedlist "\(([0-9]+)\)"   yellow   default   bold
+
+# --- ARTICLE LIST ---
+color listnormal             black   default
+color listnormal_unread      white   default   bold
+color listfocus              black   cyan
+color listfocus_unread       black   cyan      bold
+
+# --- MISC ---
+color background             default default
+color info                   white   black
+color article                default default
+highlight article "(^|\\s)https?://\\S+"  cyan  default  underline
+
+# highlights
+highlight article "^(Title):.*$" blue default
+highlight article "https?://[^ ]+" red default
+highlight article "\\[image\\ [0-9]+\\]" green default

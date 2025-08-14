@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # configuration - change this to switch browsers
-browser="brave"  # Options: "brave", "chrome"
+browser="chrome"  # Options: "brave", "chrome"
 
 # browser-specific configuration - add new browsers here
 case "$browser" in
