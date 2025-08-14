@@ -60,7 +60,7 @@
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1 && pkill -RTMIN+9 waybar",
     },
     "wireplumber": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}{volume}%",
         "format-muted": " ",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-click-right": "pgrep pavucontrol && hyprctl dispatch togglespecialworkspace volume || pavucontrol &",
@@ -153,7 +153,7 @@
     },
     // right
     "wireplumber": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}{volume}%",
         "format-muted": " ",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-click-right": "pgrep pavucontrol && hyprctl dispatch togglespecialworkspace volume || pavucontrol &",
